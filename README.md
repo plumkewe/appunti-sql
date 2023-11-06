@@ -50,7 +50,7 @@ I Database Management System (DBMS) sono software progettati per gestire e organ
 DBMS Relazionale: Questo tipo di DBMS utilizza tabelle per memorizzare dati e gestisce relazioni tra tabelle. 
 Esempi noti includono [MySQL](https://www.mysql.com/), [PostgreSQL](https://www.postgresql.org/), [Oracle database](https://www.oracle.com/), [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server).
 
-<img src="https://static.packt-cdn.com/products/9781787129559/graphics/image_08_001.jpg" width="100vh"/>
+![Esempio](https://static.packt-cdn.com/products/9781787129559/graphics/image_08_001.jpg)
 #### Tipi
 ##### Relazionali
 ##### Non relazionali
