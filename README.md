@@ -4,9 +4,12 @@ Il software che utilizziamo a scuola è:
 <p>
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
+
 [Scopri di più](https://en.wikipedia.org/wiki/XAMPP)
 
+
 Gli esercizi saranno disponibili qui:
+
 
 > **Note**\
 > Verrà aggiornato solo quando avrò voglia!
@@ -29,28 +32,28 @@ Gli esercizi saranno disponibili qui:
 		* [Colonne specifiche](#Colonne-specifiche)
 		* [Colonne con alias](#Colonne-con-alias) `AS`
 		* [Colonne con espressioni aritmetiche](#Colonne-con-espressioni-aritmetiche)
-		* [Seleziona dati univoci (DISTINCT)](#Seleziona-dati-univoci)
+		* [Seleziona dati univoci](#Seleziona-dati-univoci) `DISTINCT`
 	* [Filtraggio dei dati](#Filtraggio-dei-dati)
 		* [Corrispondenze parziali o pattern](#Corrispondenze-parziali-o-pattern) `LIKE`
 		* [Valore specifico in una colonna](#Valore-specifico-in-una-colonna)
 		* [Valore NULL o non NULL](#Valore-NULL-o-non-NULL) `IS NULL`/`IS NOT NULL`
 		* [Filtrare utilizzando una lista dei valori](#Filtrare-utilizzando-una-lista-dei-valori) `IN`
-	* Operatori di confronto
-		* Ugualianza `=`
-		* Disugualianza `<>` o `!=`
-		* Maggiore di `>`
-		* Maggiore o uguale di `>=`
-		* Minore `<`
-		* Minore o uguale di `=<`
-	* Operatori logici
-		* AND
-		* OR
-		* AND e OR
-		* NOT
+	* [Operatori di confronto](#Operatori-di-confronto)
+		* [Ugualianza](#Ugualianza) `=`
+		* [Disugualianza](#Disugualianza) `<>` o `!=`
+		* [Maggiore di](#Maggiore-di) `>`
+		* [Maggiore o uguale di](#Maggiore-o-uguale-di]) `>=`
+		* [Minore](#Minore) `<`
+		* [Minore o uguale di](#Minore-o-uguale-di) `=<`
+	* [Operatori logici](Operatori-logici)
+		* [AND](#AND)
+		* [OR](#OR)
+		* [AND e OR](#AND-e-OR)
+		* [NOT](#NOT)
 			* Negare condizioni multiple
 	* Ordinamento dei risultati `ORDER BY`
 	
-<br>	
+<br>
 	
 ## Definizioni
 ### Database
@@ -78,13 +81,29 @@ I database NoSQL sono progettati per **memorizzare dati in modo flessibile e sca
 SQL (Structured Query Language) è un **linguaggio di programmazione** utilizzato per **comunicare** con i *sistemi di gestione dei database* (DBMS) al fine di creare, gestire e interrogare basi di dati relazionali. SQL è progettato per l'interazione con database relazionali, come [MySQL](https://www.mysql.com/), [PostgreSQL](https://www.postgresql.org/), [Oracle](https://www.oracle.com/), [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server) e molti altri. È un linguaggio standardizzato con una sintassi (non CASE SENSITIVE) chiara e regole ben definite.
 
 Con SQL si possono fare seguenti operazioni:
+<table>
+<tbody>
+  <tr>
+    <td><b>DDL</b></td>
+    <td>Creazione di tabelle</td>
+  </tr>
+  <tr>
+    <td rowspan="3"><b>DML</b></td>
+    <td>Aggiornamento dei dati</td>
+  </tr>
+  <tr>
+    <td>Cancellazione dei dati</td>
+  </tr>
+  <tr>
+    <td>Interrogazione dei dati</td>
+  </tr>
+  <tr>
+    <td><b>DCL</b></td>
+    <td>Gestione dei permessi di accesso</td>
+  </tr>
+</tbody>
+</table>
 
-* Creazione di tabelle (DDL)
-* Inserimento di dati (DML)
-* Aggiornamento dei dati (DML)
-* Cancellazione dei dati (DML)
-* Interrogazione dei dato (DML)
-* Gestione dei permessi di accesso (DCL)
 
 <br>
 
@@ -218,3 +237,268 @@ WHERE Prodotto IN ('Libro', 'Computer', 'Cuffie');
 [▴ top](#Contenuti)
 <br>
 <br>
+
+### Operatori di confronto
+#### Ugualianza
+Questa query selezionerà i nomi dei clienti che hanno la città di residenza uguale a "Roma". 
+
+L'operatore = viene utilizzato per confrontare i valori in modo esatto.
+```sql
+SELECT
+	Nome
+FROM Clienti
+WHERE Città = 'Roma';
+```
+#### Disugualianza
+Questa query selezionerà i prodotti nel magazzino che hanno una quantità diversa da zero. 
+
+Gli operatori <> o != indicano che il valore nella colonna "Quantità" è diverso da zero.
+```sql
+SELECT
+	Prodotto
+FROM Magazzino 
+WHERE Quantità <> 0;
+```
+#### Maggiore di
+Questa query selezionerà i nomi e le età degli studenti che hanno un'età superiore a 18 anni. 
+
+L'operatore > indica che il valore nella colonna "Età" deve essere maggiore di 18.
+```sql
+SELECT
+	Nome,
+	Età
+FROM Studenti
+WHERE Età > 18;
+```
+#### Maggiore o uguale di
+Questa query selezionerà i nomi degli studenti e i voti degli esami in cui il voto è uguale o maggiore di 60. 
+
+L'operatore >= indica che il valore nella colonna "Voto" deve essere 60 o superiore.
+```sql
+SELECT
+	Nome,
+	Voto
+FROM Esami
+WHERE Voto >= 60;
+```
+#### Minore
+Questa query selezionerà i nomi dei dipendenti con uno stipendio inferiore a 30.000 unità monetarie. 
+
+L'operatore < indica che il valore nella colonna "Stipendio" deve essere inferiore a 30.000.
+```sql
+SELECT
+	Nome
+FROM Dipendenti
+WHERE Stipendio < 30000;
+```
+#### Minore o uguale di
+Questa query selezionerà i nomi degli atleti e i punteggi in cui il punteggio è uguale o inferiore a 100. 
+
+L'operatore <= indica che il valore nella colonna "Punteggio" deve essere 100 o inferiore.
+```sql
+SELECT
+	Nome,
+	Punteggio
+FROM Atleti
+WHERE Punteggio <= 100;
+```
+
+[▴ top](#Contenuti)
+<br>
+<br>
+
+### Operatori logici
+#### AND
+Questa query selezionerà i nomi dei dipendenti che lavorano nel reparto "Vendite" e hanno uno stipendio superiore a 30.000 unità monetarie.
+
+L'operatore AND combina due condizioni e richiede che entrambe siano vere per selezionare una riga.
+```sql
+SELECT
+	Nome
+FROM Dipendenti 
+WHERE Reparto = 'Vendite' AND Stipendio > 30000;
+```
+<details>
+	<summary>Eh?</summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Reparto</th>
+			<th>Stipendio</th>
+		</tr>
+		<tr>
+			<td>Mario</td>
+			<td>Vendite</td>
+			<td>35000</td>
+		</tr>
+		<tr>
+			<td>Laura</td>
+			<td>Vendite</td>
+			<td>28000</td>
+		</tr>
+		<tr>
+			<td>Luigi</td>
+			<td>Logistica</td>
+			<td>32000</td>
+		</tr>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+		</tr>
+		<tr>
+			<td>Mario</td>
+		</tr>
+	</table>
+</details>
+
+#### OR
+Questa query selezionerà i nomi dei clienti che appartengono alla categoria "VIP" o alla categoria "Nuovi Clienti". 
+
+L'operatore OR consente di selezionare le righe che soddisfano almeno una delle condizioni.
+```sql
+SELECT
+	Nome
+FROM Clienti
+WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
+```
+<details>
+	<summary>Eh?</summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Categoria</th>
+		</tr>
+		<tr>
+			<td>Anna</td>
+			<td>VIP</td>
+		</tr>
+		<tr>
+			<td>Giovanni</td>
+			<td>Standard</td>
+		</tr>
+		<tr>
+			<td>Luca</td>
+			<td>Nuovi Clienti</td>
+		</tr>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+		</tr>
+		<tr>
+			<td>Anna</td>
+		</tr>
+		<tr>
+			<td>Luca</td>
+		</tr>
+	</table>
+</details>
+
+#### AND e OR
+Questa query selezionerà i nomi dei prodotti che appartengono alle categorie "Elettronica" o "Informatica" e hanno un prezzo superiore a 500 unità monetarie. 
+
+Le parentesi sono utilizzate per definire le priorità delle condizioni.
+```sql
+SELECT
+	Nome
+FROM Prodotti
+WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo > 500;
+```
+<details>
+	<summary>Eh?</summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Categoria</th>
+			<th>Prezzo</th>
+		</tr>
+		<tr>
+			<td>Prodotto A</td>
+			<td>Elettronica</td>
+			<td>550</td>
+		</tr>
+		<tr>
+			<td>Prodotto B</td>
+			<td>Informatica</td>
+			<td>450</td>
+		</tr>
+		<tr>
+			<td>Prodotto C</td>
+			<td>Elettronica</td>
+			<td>480</td>
+		</tr>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+		</tr>
+		<tr>
+			<td>Prodotto A</td>
+		</tr>
+	</table>	
+</details>
+
+#### NOT
+Questa query selezionerà i titoli dei libri che non appartengono al genere "Fantascienza". 
+
+L'operatore NOT nega una condizione, selezionando le righe che non la soddisfano.
+```sql
+SELECT
+	Titolo
+FROM Libri
+WHERE NOT Genere = 'Fantascienza';
+```
+<details>
+	<summary>Eh?</summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Titolo</th>
+			<th>Genere</th>
+		</tr>
+		<tr>
+			<td>Libro 1</td>
+			<td>Fantascienza</td>
+		</tr>
+		<tr>
+			<td>Libro 2</td>
+			<td>Fantasy</td>
+		</tr>
+		<tr>
+			<td>Libro 3</td>
+			<td>Romanzo</td>
+		</tr>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Titolo</th>
+		</tr>
+		<tr>
+			<td>Libro 2</td>
+		</tr>
+		<tr>
+			<td>Libro 3</td>
+		</tr>
+	</table>
+</details>
+
+[▴ top](#Contenuti)
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+<br>
+<hr>
+Il dinosauro, il dinosauro era... viola; <br>
+Machiavelli,,, è un GRRRande;

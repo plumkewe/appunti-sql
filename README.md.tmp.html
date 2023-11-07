@@ -45,7 +45,7 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <li><a href="#Colonne-specifiche">Colonne specifiche</a></li>
 <li><a href="#Colonne-con-alias">Colonne con alias</a> <code>AS</code></li>
 <li><a href="#Colonne-con-espressioni-aritmetiche">Colonne con espressioni aritmetiche</a></li>
-<li><a href="#Seleziona-dati-univoci">Seleziona dati univoci (DISTINCT)</a></li>
+<li><a href="#Seleziona-dati-univoci">Seleziona dati univoci</a> <code>DISTINCT</code></li>
 </ul></li>
 <li><a href="#Filtraggio-dei-dati">Filtraggio dei dati</a>
 <ul>
@@ -54,21 +54,21 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <li><a href="#Valore-NULL-o-non-NULL">Valore NULL o non NULL</a> <code>IS NULL</code>/<code>IS NOT NULL</code></li>
 <li><a href="#Filtrare-utilizzando-una-lista-dei-valori">Filtrare utilizzando una lista dei valori</a> <code>IN</code></li>
 </ul></li>
-<li>Operatori di confronto
+<li><a href="#Operatori-di-confronto">Operatori di confronto</a>
 <ul>
-<li>Ugualianza <code>=</code></li>
-<li>Disugualianza <code>&lt;&gt;</code> o <code>!=</code></li>
-<li>Maggiore di <code>&gt;</code></li>
-<li>Maggiore o uguale di <code>&gt;=</code></li>
-<li>Minore <code>&lt;</code></li>
-<li>Minore o uguale di <code>=&lt;</code></li>
+<li><a href="#Ugualianza">Ugualianza</a> <code>=</code></li>
+<li><a href="#Disugualianza">Disugualianza</a> <code>&lt;&gt;</code> o <code>!=</code></li>
+<li><a href="#Maggiore-di">Maggiore di</a> <code>&gt;</code></li>
+<li><a href="#Maggiore-o-uguale-di]">Maggiore o uguale di</a> <code>&gt;=</code></li>
+<li><a href="#Minore">Minore</a> <code>&lt;</code></li>
+<li><a href="#Minore-o-uguale-di">Minore o uguale di</a> <code>=&lt;</code></li>
 </ul></li>
-<li>Operatori logici
+<li><a href="Operatori-logici">Operatori logici</a>
 <ul>
-<li>AND</li>
-<li>OR</li>
-<li>AND e OR</li>
-<li>NOT
+<li><a href="#AND">AND</a></li>
+<li><a href="#OR">OR</a></li>
+<li><a href="#AND-e-OR">AND e OR</a></li>
+<li><a href="#NOT">NOT</a>
 <ul>
 <li>Negare condizioni multiple</li>
 </ul></li>
@@ -77,7 +77,7 @@ Verrà aggiornato solo quando avrò voglia!</p>
 </ul></li>
 </ul>
 
-<p><br>    </p>
+<p><br></p>
 
 <h2>Definizioni</h2>
 
@@ -113,14 +113,28 @@ Verrà aggiornato solo quando avrò voglia!</p>
 
 <p>Con SQL si possono fare seguenti operazioni:</p>
 
-<ul>
-<li>Creazione di tabelle (DDL)</li>
-<li>Inserimento di dati (DML)</li>
-<li>Aggiornamento dei dati (DML)</li>
-<li>Cancellazione dei dati (DML)</li>
-<li>Interrogazione dei dato (DML)</li>
-<li>Gestione dei permessi di accesso (DCL)</li>
-</ul>
+<table>
+<tbody>
+  <tr>
+    <td><b>DDL</b></td>
+    <td>Creazione di tabelle</td>
+  </tr>
+  <tr>
+    <td rowspan="3"><b>DML</b></td>
+    <td>Aggiornamento dei dati</td>
+  </tr>
+  <tr>
+    <td>Cancellazione dei dati</td>
+  </tr>
+  <tr>
+    <td>Interrogazione dei dati</td>
+  </tr>
+  <tr>
+    <td><b>DCL</b></td>
+    <td>Gestione dei permessi di accesso</td>
+  </tr>
+</tbody>
+</table>
 
 <p><br></p>
 
@@ -275,3 +289,284 @@ WHERE Prodotto IN ('Libro', 'Computer', 'Cuffie');
 <p><a href="#Contenuti">▴ top</a>
 <br>
 <br></p>
+
+<h3>Operatori di confronto</h3>
+
+<h4>Ugualianza</h4>
+
+<p>Questa query selezionerà i nomi dei clienti che hanno la città di residenza uguale a "Roma". </p>
+
+<p>L'operatore = viene utilizzato per confrontare i valori in modo esatto.
+<code>sql
+SELECT
+    Nome
+FROM Clienti
+WHERE Città = 'Roma';
+</code></p>
+
+<h4>Disugualianza</h4>
+
+<p>Questa query selezionerà i prodotti nel magazzino che hanno una quantità diversa da zero. </p>
+
+<p>Gli operatori &lt;> o != indicano che il valore nella colonna "Quantità" è diverso da zero.
+<code>sql
+SELECT
+    Prodotto
+FROM Magazzino 
+WHERE Quantità &lt;&gt; 0;
+</code></p>
+
+<h4>Maggiore di</h4>
+
+<p>Questa query selezionerà i nomi e le età degli studenti che hanno un'età superiore a 18 anni. </p>
+
+<p>L'operatore > indica che il valore nella colonna "Età" deve essere maggiore di 18.
+<code>sql
+SELECT
+    Nome,
+    Età
+FROM Studenti
+WHERE Età &gt; 18;
+</code></p>
+
+<h4>Maggiore o uguale di</h4>
+
+<p>Questa query selezionerà i nomi degli studenti e i voti degli esami in cui il voto è uguale o maggiore di 60. </p>
+
+<p>L'operatore >= indica che il valore nella colonna "Voto" deve essere 60 o superiore.
+<code>sql
+SELECT
+    Nome,
+    Voto
+FROM Esami
+WHERE Voto &gt;= 60;
+</code></p>
+
+<h4>Minore</h4>
+
+<p>Questa query selezionerà i nomi dei dipendenti con uno stipendio inferiore a 30.000 unità monetarie. </p>
+
+<p>L'operatore &lt; indica che il valore nella colonna "Stipendio" deve essere inferiore a 30.000.
+<code>sql
+SELECT
+    Nome
+FROM Dipendenti
+WHERE Stipendio &lt; 30000;
+</code></p>
+
+<h4>Minore o uguale di</h4>
+
+<p>Questa query selezionerà i nomi degli atleti e i punteggi in cui il punteggio è uguale o inferiore a 100. </p>
+
+<p>L'operatore &lt;= indica che il valore nella colonna "Punteggio" deve essere 100 o inferiore.
+<code>sql
+SELECT
+    Nome,
+    Punteggio
+FROM Atleti
+WHERE Punteggio &lt;= 100;
+</code></p>
+
+<p><a href="#Contenuti">▴ top</a>
+<br>
+<br></p>
+
+<h3>Operatori logici</h3>
+
+<h4>AND</h4>
+
+<p>Questa query selezionerà i nomi dei dipendenti che lavorano nel reparto "Vendite" e hanno uno stipendio superiore a 30.000 unità monetarie.</p>
+
+<p>L'operatore AND combina due condizioni e richiede che entrambe siano vere per selezionare una riga.
+<code>sql
+SELECT
+    Nome
+FROM Dipendenti 
+WHERE Reparto = 'Vendite' AND Stipendio &gt; 30000;
+</code>
+<details>
+    <summary>Eh?</summary>
+    <p>...</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Reparto</th>
+            <th>Stipendio</th>
+        </tr>
+        <tr>
+            <td>Mario</td>
+            <td>Vendite</td>
+            <td>35000</td>
+        </tr>
+        <tr>
+            <td>Laura</td>
+            <td>Vendite</td>
+            <td>28000</td>
+        </tr>
+        <tr>
+            <td>Luigi</td>
+            <td>Logistica</td>
+            <td>32000</td>
+        </tr>
+    </table>
+    <p>Risultato:</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+        </tr>
+        <tr>
+            <td>Mario</td>
+        </tr>
+    </table>
+</details></p>
+
+<h4>OR</h4>
+
+<p>Questa query selezionerà i nomi dei clienti che appartengono alla categoria "VIP" o alla categoria "Nuovi Clienti". </p>
+
+<p>L'operatore OR consente di selezionare le righe che soddisfano almeno una delle condizioni.
+<code>sql
+SELECT
+    Nome
+FROM Clienti
+WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
+</code>
+<details>
+    <summary>Eh?</summary>
+    <p>...</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+        </tr>
+        <tr>
+            <td>Anna</td>
+            <td>VIP</td>
+        </tr>
+        <tr>
+            <td>Giovanni</td>
+            <td>Standard</td>
+        </tr>
+        <tr>
+            <td>Luca</td>
+            <td>Nuovi Clienti</td>
+        </tr>
+    </table>
+    <p>Risultato:</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+        </tr>
+        <tr>
+            <td>Anna</td>
+        </tr>
+        <tr>
+            <td>Luca</td>
+        </tr>
+    </table>
+</details></p>
+
+<h4>AND e OR</h4>
+
+<p>Questa query selezionerà i nomi dei prodotti che appartengono alle categorie "Elettronica" o "Informatica" e hanno un prezzo superiore a 500 unità monetarie. </p>
+
+<p>Le parentesi sono utilizzate per definire le priorità delle condizioni.
+<code>sql
+SELECT
+    Nome
+FROM Prodotti
+WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo &gt; 500;
+</code>
+<details>
+    <summary>Eh?</summary>
+    <p>...</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Prezzo</th>
+        </tr>
+        <tr>
+            <td>Prodotto A</td>
+            <td>Elettronica</td>
+            <td>550</td>
+        </tr>
+        <tr>
+            <td>Prodotto B</td>
+            <td>Informatica</td>
+            <td>450</td>
+        </tr>
+        <tr>
+            <td>Prodotto C</td>
+            <td>Elettronica</td>
+            <td>480</td>
+        </tr>
+    </table>
+    <p>Risultato:</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+        </tr>
+        <tr>
+            <td>Prodotto A</td>
+        </tr>
+    </table> <br />
+</details></p>
+
+<h4>NOT</h4>
+
+<p>Questa query selezionerà i titoli dei libri che non appartengono al genere "Fantascienza". </p>
+
+<p>L'operatore NOT nega una condizione, selezionando le righe che non la soddisfano.
+<code>sql
+SELECT
+    Titolo
+FROM Libri
+WHERE NOT Genere = 'Fantascienza';
+</code>
+<details>
+    <summary>Eh?</summary>
+    <p>...</p>
+    <table>
+        <tr>
+            <th>Titolo</th>
+            <th>Genere</th>
+        </tr>
+        <tr>
+            <td>Libro 1</td>
+            <td>Fantascienza</td>
+        </tr>
+        <tr>
+            <td>Libro 2</td>
+            <td>Fantasy</td>
+        </tr>
+        <tr>
+            <td>Libro 3</td>
+            <td>Romanzo</td>
+        </tr>
+    </table>
+    <p>Risultato:</p>
+    <table>
+        <tr>
+            <th>Titolo</th>
+        </tr>
+        <tr>
+            <td>Libro 2</td>
+        </tr>
+        <tr>
+            <td>Libro 3</td>
+        </tr>
+    </table>
+</details></p>
+
+<p><a href="#Contenuti">▴ top</a>
+<br>
+<br></p>
+
+<p><br>
+<br>
+<br>
+<br>
+<hr>
+Il dinosauro, il dinosauro era... viola; <br>
+Machiavelli,,, è un GRRRande;</p>
