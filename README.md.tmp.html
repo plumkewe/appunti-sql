@@ -1,0 +1,277 @@
+<meta charset="UTF-8">
+<h1>🍯 Appunti SQL</h1>
+
+<p>Il software che utilizziamo a scuola è:</p>
+
+<p>
+<img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
+</p>
+
+<p><a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a></p>
+
+<p>Gli esercizi saranno disponibili qui:</p>
+
+<blockquote>
+  <p><strong>Note</strong>\
+Verrà aggiornato solo quando avrò voglia!</p>
+</blockquote>
+
+<h2>Contenuti</h2>
+
+<h3><a href="#Definizioni">Definizioni</a></h3>
+
+<ul>
+<li><a href="#Database">Database</a>
+<ul>
+<li><a href="#DBMS">DBMS</a></li>
+<li><a href="#Tipi">Tipi</a>
+<ul>
+<li>Relazionali</li>
+<li>Non relazionali</li>
+</ul></li>
+</ul></li>
+<li><a href="#SQL">SQL</a></li>
+<li><a href="#">DDL - Data Definition Language</a></li>
+<li><a href="#Data-Manipulation-Language">DML - Data Manipulation Language</a></li>
+<li><p><a href="#">DML - Data Control Language</a></p>
+
+<h3>Data Manipulation Language (DML)</h3></li>
+<li><p><a href="#Selezione-dei-dati">Selezione dei dati</a></p>
+
+<ul>
+<li><a href="#SELECT-statement">SELECT statement</a>
+<ul>
+<li><a href="#Tutte-colonne">Tutte colonne</a></li>
+<li><a href="#Colonne-specifiche">Colonne specifiche</a></li>
+<li><a href="#Colonne-con-alias">Colonne con alias</a> <code>AS</code></li>
+<li><a href="#Colonne-con-espressioni-aritmetiche">Colonne con espressioni aritmetiche</a></li>
+<li><a href="#Seleziona-dati-univoci">Seleziona dati univoci (DISTINCT)</a></li>
+</ul></li>
+<li><a href="#Filtraggio-dei-dati">Filtraggio dei dati</a>
+<ul>
+<li><a href="#Corrispondenze-parziali-o-pattern">Corrispondenze parziali o pattern</a> <code>LIKE</code></li>
+<li><a href="#Valore-specifico-in-una-colonna">Valore specifico in una colonna</a></li>
+<li><a href="#Valore-NULL-o-non-NULL">Valore NULL o non NULL</a> <code>IS NULL</code>/<code>IS NOT NULL</code></li>
+<li><a href="#Filtrare-utilizzando-una-lista-dei-valori">Filtrare utilizzando una lista dei valori</a> <code>IN</code></li>
+</ul></li>
+<li>Operatori di confronto
+<ul>
+<li>Ugualianza <code>=</code></li>
+<li>Disugualianza <code>&lt;&gt;</code> o <code>!=</code></li>
+<li>Maggiore di <code>&gt;</code></li>
+<li>Maggiore o uguale di <code>&gt;=</code></li>
+<li>Minore <code>&lt;</code></li>
+<li>Minore o uguale di <code>=&lt;</code></li>
+</ul></li>
+<li>Operatori logici
+<ul>
+<li>AND</li>
+<li>OR</li>
+<li>AND e OR</li>
+<li>NOT
+<ul>
+<li>Negare condizioni multiple</li>
+</ul></li>
+</ul></li>
+<li>Ordinamento dei risultati <code>ORDER BY</code></li>
+</ul></li>
+</ul>
+
+<p><br>    </p>
+
+<h2>Definizioni</h2>
+
+<h3>Database</h3>
+
+<h4>Tipi</h4>
+
+<h5>Relazionali</h5>
+
+<p>I database relazionali organizzano dati in tabelle con righe e colonne, seguendo uno <strong>schema rigido</strong>. Utilizzano <strong><a href="https://www.google.com/search?q=sql+database">SQL</a></strong> per gestire dati strutturati e relazionali, ideali per applicazioni aziendali, gestione di inventari e dati finanziari.</p>
+
+<h5>Non relazionali</h5>
+
+<p>I database NoSQL sono progettati per <strong>memorizzare dati in modo flessibile e scalabile</strong>, senza uno schema rigido. Possono gestire dati <strong>non strutturati</strong> o semi-strutturati, seguendo vari modelli come <em>documenti, chiave-valore, grafo o colonne</em>. Spesso offrono scalabilità orizzontale su <strong><a href="https://www.google.com/search?q=cluster+database">cluster</a></strong> e sono adatti per applicazioni con dati complessi, non strutturati o altamente distribuiti, come applicazioni Web, analisi dei big data e flussi di dati in tempo reale.</p>
+
+<p><br></p>
+
+<p>| Caratteristica                   | Database Relazionali    | Database Document-Oriented  |
+|----------------------------------|-------------------------|-----------------------------|
+| <strong>Modello di Dati</strong>                  | Tabellare con rigide relazioni tra le tabelle | Flessibile, basato su documenti con dati semi-strutturati |
+| <strong>Schema dei Dati</strong>                 | Schema rigido, definito in anticipo | Schema dinamico, senza necessità di uno schema rigido |
+| <strong>Linguaggio di Query</strong>            | SQL (Structured Query Language) | Query specifiche del database o linguaggi di query adatti |
+| <strong>Scalabilità</strong>                      | Solitamente scalabilità verticale (aggiornare l'hardware) | Scalabilità orizzontale su cluster |
+| <strong>Consistenza dei Dati</strong>             | Struttura transazionale con forte consistenza | Modello di consistenza eventuale |
+| <strong>Esempi Noti</strong>                      | MySQL, PostgreSQL, Oracle, SQL Server | MongoDB, Couchbase, RavenDB |
+| <strong>Casi d'Uso Tipici</strong>                | Applicazioni con schemi dati ben definiti e operazioni transazionali | Applicazioni con dati non strutturati o semi-strutturati, scalabilità e flessibilità di query |</p>
+
+<p><br></p>
+
+<h3>SQL</h3>
+
+<p>SQL (Structured Query Language) è un <strong>linguaggio di programmazione</strong> utilizzato per <strong>comunicare</strong> con i <em>sistemi di gestione dei database</em> (DBMS) al fine di creare, gestire e interrogare basi di dati relazionali. SQL è progettato per l'interazione con database relazionali, come <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.oracle.com/">Oracle</a>, <a href="https://www.microsoft.com/en-us/sql-server">Microsoft SQL Server</a> e molti altri. È un linguaggio standardizzato con una sintassi (non CASE SENSITIVE) chiara e regole ben definite.</p>
+
+<p>Con SQL si possono fare seguenti operazioni:</p>
+
+<ul>
+<li>Creazione di tabelle (DDL)</li>
+<li>Inserimento di dati (DML)</li>
+<li>Aggiornamento dei dati (DML)</li>
+<li>Cancellazione dei dati (DML)</li>
+<li>Interrogazione dei dato (DML)</li>
+<li>Gestione dei permessi di accesso (DCL)</li>
+</ul>
+
+<p><br></p>
+
+<h1>Data Manipulation Language</h1>
+
+<p>La Data Manipulation Language (DML) è una parte del linguaggio SQL (Structured Query Language) utilizzata per manipolare i dati all'interno di un database relazionale. </p>
+
+<p>La DML consente di eseguire le seguenti azioni principali:</p>
+
+<ul>
+<li>Inserimento di dati (INSERT): La DML permette di aggiungere nuovi dati a una tabella esistente del database.</li>
+<li>Aggiornamento dei dati (UPDATE): È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.</li>
+<li>Cancellazione dei dati (DELETE): La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.</li>
+<li>Interrogazione dei dati (SELECT)</li>
+</ul>
+
+<p><a href="#Contenuti">▴ top</a>
+<br>
+<br></p>
+
+<h2>Selezione dei dati</h2>
+
+<h3>SELECT statement</h3>
+
+<h4>Tutte colonne</h4>
+
+<p>Verranno mostrate tutte colonne di una specifica tabella
+<code>sql
+SELECT *
+FROM nome_tabella;
+</code></p>
+
+<h4>Colonne specifiche</h4>
+
+<p>Verranno mostrate solo le colonne selezionate (colonna1 e colonna2)
+<code>sql
+SELECT 
+    colonna1,
+    colonna2
+FROM nome_tabella;
+</code></p>
+
+<h4>Colonne con alias</h4>
+
+<p>Possiamo assegnare dei nomi più comprensibili utilizzando AS, in questo caso colonna1 verrà mostrata con il "Nome" e la colonna2 con il "Cognome"
+<code>sql
+SELECT 
+    colonna1 AS Nome,
+    colonna2 AS Cognome
+FROM nome_tabella;
+</code></p>
+
+<h4>Colonne con espressioni aritmetiche</h4>
+
+<p>Possiamo mostrare delle colonne che effettuando dei calcoli aritmetici, molto utili poiché non ce bisogno di creare colonne inutili!
+Espressioni supportate: + - / * %
+<code>sql
+SELECT 
+    colonna1,
+    (colonna2 * 2) AS 'Doppio valore' -- spazio? mettici le ' o "
+FROM nome_tabella;
+</code></p>
+
+<h4>Seleziona dati univoci</h4>
+
+<p>Verranno ignorati i valori ripetuti
+<code>sql
+SELECT DISTINCT colonna1
+FROM nome_tabella;
+</code></p>
+
+<p><a href="#Contenuti">▴ top</a>
+<br>
+<br></p>
+
+<h3>Filtraggio dei dati</h3>
+
+<h4>Corrispondenze parziali o pattern</h4>
+
+<p>Questa query seleziona i nomi dei clienti che iniziano con "Jo".
+<code>sql
+SELECT
+    Nome
+FROM Clienti
+WHERE Nome LIKE 'Jo%';
+</code></p>
+
+<p>Questa query selezionerà i nomi dei clienti che terminano con la sequenza "son".
+<code>sql
+SELECT
+    Nome
+FROM Clienti
+WHERE Nome LIKE '%son';
+</code></p>
+
+<p>Questa query selezionerà i titoli dei libri che contengono la parola "avventura" ovunque nel titolo.
+<code>sql
+SELECT
+    Titolo
+FROM Libri 
+WHERE Titolo LIKE '%avventura%';
+</code></p>
+
+<p>Questa query selezionerà le parole che hanno tre lettere, dove il carattere mancante può essere qualsiasi lettera. Ad esempio, potrebbe corrispondere a "cat", "cot", "cut", ecc.
+<code>sql
+SELECT
+    Parola
+FROM Dizionario
+WHERE Parola LIKE 'c_t';
+</code></p>
+
+<h4>Valore specifico in una colonna</h4>
+
+<p>Questa query seleziona tutti gli ordini in cui il prodotto è specificamente "Computer".
+<code>sql
+SELECT
+    Prodotto
+FROM Ordini
+WHERE Prodotto = 'Computer';
+</code></p>
+
+<h4>Valore NULL o non NULL</h4>
+
+<p>Questa query seleziona i nomi dei clienti che non hanno un indirizzo specificato, ovvero il valore della colonna "Indirizzo" è NULL.</p>
+
+<p>L'operatore IS NULL viene utilizzato per verificare se un valore è nullo.
+<code>sql
+SELECT
+    Nome
+FROM Clienti
+WHERE Indirizzo IS NULL;
+</code>
+Questa query selezionerà tutti i record dalla tabella "Prodotti" in cui il valore nella colonna "Descrizione" non è nullo. 
+<code>sql
+SELECT *
+FROM Prodotti
+WHERE Descrizione IS NOT NULL;
+</code></p>
+
+<h4>Filtrare utilizzando una lista dei valori</h4>
+
+<p>Questa query seleziona tutti gli ordini in cui il prodotto è uno dei valori elencati nella lista (Libro, Computer, Cuffie). </p>
+
+<p>L'operatore IN permette di filtrare i risultati in base a una lista di valori specifici.
+<code>sql
+SELECT
+    Prodotto
+FROM Ordini 
+WHERE Prodotto IN ('Libro', 'Computer', 'Cuffie');
+</code></p>
+
+<p><a href="#Contenuti">▴ top</a>
+<br>
+<br></p>
