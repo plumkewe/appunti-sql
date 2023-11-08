@@ -8,7 +8,7 @@ Il software che utilizziamo a scuola è:
 [Scopri di più](https://en.wikipedia.org/wiki/XAMPP)
 
 
-Gli esercizi saranno disponibili qui:
+`⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL)
 
 
 > **Note**\
@@ -25,7 +25,8 @@ Gli esercizi saranno disponibili qui:
 * [DDL - Data Definition Language](#)
 * [DML - Data Manipulation Language](#Data-Manipulation-Language)
 * [DML - Data Control Language](#)
-### Data Manipulation Language (DML)
+
+### [Data Manipulation Language](#Data-Manipulation-Language) (DML)
 * [Selezione dei dati](#Selezione-dei-dati)
 	* [SELECT statement](#SELECT-statement)
 		* [Tutte colonne](#Tutte-colonne)
@@ -51,7 +52,25 @@ Gli esercizi saranno disponibili qui:
 		* [AND e OR](#AND-e-OR)
 		* [NOT](#NOT)
 			* Negare condizioni multiple
-	* Ordinamento dei risultati `ORDER BY`
+	* [Ordinamento dei risultati](#Ordinamento-dei-risultati) `ORDER BY`
+		* [Ordinamento crescente per una colonna](#Ordinamento-crescente-per-una-colonna) `ASC`
+		* [Ordinamento decrescente per una colonna](#Ordinamento-decrescente-per-una-colonna) `DESC`
+		* [Ordinamento per più colonne](#Ordinamento-per-più-colonne)
+		* [Ordinamento con espressioni aritmetiche](#Ordinamento-con-espressioni-aritmetiche)
+	* [Limitazione dei risultati](#Limitazione-dei-risultati) `LIMIT`
+		* [Limitazione del numero di righe restituite](#Limitazione-del-numero-di-righe-restituite)
+		* [Limitazione dei risultati con ordinamento](#Limitazione-dei-risultati-con-ordinamento)
+		* [Limitazione dei risultati con offset](#Limitazione-dei-risultati-con-offset)
+		* [Limitazione dei risultati con combinazione di offset e limit](#Limitazione-dei-risultati-con-combinazione-di-offset-e-limit)
+* Modifica dei dati
+	* INSERT INTO
+	* UPDATE
+	* DELETE
+	* Transazioni
+		* BEGIN
+		* COMMIT
+		* ROLLBACK
+
 	
 <br>
 	
@@ -117,7 +136,6 @@ La DML consente di eseguire le seguenti azioni principali:
 * Cancellazione dei dati (DELETE): La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.
 * Interrogazione dei dati (SELECT)
 
-[▴ top](#Contenuti)
 <br>
 <br>
 
@@ -162,7 +180,7 @@ SELECT DISTINCT colonna1
 FROM nome_tabella;
 ```
 
-[▴ top](#Contenuti)
+[`🔼`](#Contenuti)
 <br>
 <br>
 
@@ -234,7 +252,7 @@ FROM Ordini
 WHERE Prodotto IN ('Libro', 'Computer', 'Cuffie');
 ```
 
-[▴ top](#Contenuti)
+[`🔼`](#Contenuti)
 <br>
 <br>
 
@@ -303,7 +321,7 @@ FROM Atleti
 WHERE Punteggio <= 100;
 ```
 
-[▴ top](#Contenuti)
+[`🔼`](#Contenuti)
 <br>
 <br>
 
@@ -319,7 +337,7 @@ FROM Dipendenti
 WHERE Reparto = 'Vendite' AND Stipendio > 30000;
 ```
 <details>
-	<summary>Eh?</summary>
+	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
 		<tr>
@@ -365,7 +383,7 @@ FROM Clienti
 WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
 ```
 <details>
-	<summary>Eh?</summary>
+	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
 		<tr>
@@ -410,7 +428,7 @@ FROM Prodotti
 WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo > 500;
 ```
 <details>
-	<summary>Eh?</summary>
+	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
 		<tr>
@@ -456,7 +474,7 @@ FROM Libri
 WHERE NOT Genere = 'Fantascienza';
 ```
 <details>
-	<summary>Eh?</summary>
+	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
 		<tr>
@@ -490,15 +508,214 @@ WHERE NOT Genere = 'Fantascienza';
 	</table>
 </details>
 
-[▴ top](#Contenuti)
+[`🔼`](#Contenuti)
 <br>
 <br>
 
+### Ordinamento dei risultati
+#### Ordinamento crescente per una colonna
+Questa query selezionerà i nomi e le età degli studenti e li ordinerà in modo crescente in base all'età.
 
+Il risultato mostrerà gli studenti dall'età più bassa alla più alta.
+
+> **Note**\
+> Se non specifici alcun tipo di ordinamento (né ASC né DESC), l'ordinamento di base sarà in modo ascendente (ASC).
+```sql
+SELECT
+	Nome,
+	Età
+FROM Studenti
+ORDER BY Età;
+```
+#### Ordinamento decrescente per una colonna
+Questa query selezionerà i prodotti e i loro prezzi e li ordinerà in modo decrescente in base al prezzo.
+
+Il risultato mostrerà i prodotti con il prezzo più alto prima.
+```sql
+SELECT
+	Prodotto,
+	Prezzo
+FROM Prodotti
+ORDER BY Prezzo DESC;
+```
+#### Ordinamento per più colonne
+Questa query selezionerà i nomi, i cognomi e i punteggi degli studenti e li ordinerà in modo decrescente in base al punteggio e poi in modo crescente in base al cognome. 
+
+> **Note**\
+> Gli studenti con punteggi più alti verranno mostrati per primi, e in caso di punteggi uguali, verranno ordinati in base al cognome in ordine alfabetico crescente.
+```sql
+SELECT
+	Nome,
+	Cognome,
+	Punteggio
+FROM Studenti
+ORDER BY Punteggio DESC, Cognome ASC;
+```
+#### Ordinamento con espressioni aritmetiche
+Questa query selezionerà i nomi e gli stipendi annuali calcolati moltiplicando lo stipendio mensile per 12.
+
+I risultati verranno ordinati in modo decrescente in base allo stipendio annuale.
+```sql
+SELECT
+	Nome,
+	Stipendio * 12 AS StipendioAnnuale
+FROM Dipendenti
+ORDER BY StipendioAnnuale DESC;
+```
+[`🔼`](#Contenuti)
 <br>
 <br>
+
+### Limitazione dei risultati
+#### Limitazione del numero di righe restituite
+Questa query restituirà i nomi e i cognomi dei primi 5 clienti nella tabella "Clienti".
+
+La clausola LIMIT viene utilizzata per limitare il numero di righe restituite ai primi 5 risultati.
+```sql
+SELECT
+	Nome,
+	Cognome
+FROM Clienti LIMIT 5;
+```
+<details>
+	<summary><b>Demostrazione</b></summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Cognome</th>
+		</tr>
+		<tr>
+			<td>John</td>
+			<td>Doe</td>
+		</tr>
+		<!-- Altri dati della tabella Clienti -->
+		<!-- ... -->
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Cognome</th>
+		</tr>
+		<tr>
+			<td>John</td>
+			<td>Doe</td>
+		</tr>
+		<!-- Altri 4 risultati della tabella Clienti -->
+		<!-- ... -->
+	</table>
+</details>
+#### Limitazione dei risultati con ordinamento
+Questa query selezionerà i nomi e i prezzi dei primi 3 prodotti ordinati in modo decrescente in base al prezzo.
+
+La combinazione di ORDER BY e LIMIT consente di ottenere i primi N risultati dell'ordinamento desiderato.
+```sql
+SELECT
+	Prodotto,
+	Prezzo
+FROM Prodotti
+ORDER BY Prezzo DESC LIMIT 3;
+```
+<details>
+	<summary><b>Demostrazione</b></summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Prodotto</th>
+			<th>Prezzo</th>
+		</tr>
+		<tr>
+			<td>Prodotto A</td>
+			<td>100</td>
+		</tr>
+		<i> Altri dati della tabella Prodotti ordinati per Prezzo </i>
+		<i> ... </i>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Prodotto</th>
+			<th>Prezzo</th>
+		</tr>
+		<tr>
+			<td>Prodotto C</td>
+			<td>80</td>
+		</tr>
+		<i> Altri 2 risultati della tabella Prodotti ordinati per Prezzo </i>
+		<i> ... </i>
+	</table>
+</details>
+#### Limitazione dei risultati con offset
+Questa query restituirà i nomi e i cognomi dei dipendenti a partire dal sesto (offset di 5) fino al decimo (5 risultati successivi).
+
+L'istruzione OFFSET specifica da quale posizione iniziare a restituire i risultati.
+```sql
+SELECT
+	Nome,
+	Cognome
+FROM Dipendenti LIMIT 5 OFFSET 5;
+```
+<details>
+	<summary><b>Demostrazione</b></summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Cognome</th>
+		</tr>
+		<i> Dati della tabella Dipendenti </i>
+		<i> ... </i>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Cognome</th>
+		</tr>
+		<tr>
+			<td>Emily</td>
+			<td>Johnson</td>
+		</tr>
+		<i> Altri 4 risultati della tabella Dipendenti (dal sesto al decimo) </i>
+		<i> ... </i>
+	</table>
+</details>
+#### Limitazione dei risultati con combinazione di offset e limit
+Questa query restituirà i titoli dei libri a partire dal 21simo (offset di 20) fino al trentesimo (10 risultati successivi).
+
+La combinazione di LIMIT e OFFSET consente di recuperare porzioni specifiche di dati.
+```sql
+SELECT
+	Titolo
+FROM Libri LIMIT 10 OFFSET 20;
+```
+<details>
+	<summary><b>Demostrazione</b></summary>
+	<p>...</p>
+	<table>
+		<tr>
+			<th>Titolo</th>
+		</tr>
+		<i>Dati della tabella Libri</i>
+		<i> ... </i>
+	</table>
+	<p>Risultato:</p>
+	<table>
+		<tr>
+			<th>Titolo</th>
+		</tr>
+		<tr>
+			<td>Libro 21</td>
+		</tr>
+		<i> Altri 9 risultati della tabella Libri (dal ventunesimo al trentesimo) </i>
+		<i> ... </i>
+	</table>
+</details>
+
+[`🔼`](#Contenuti)
 <br>
 <br>
+
 <hr>
-Il dinosauro, il dinosauro era... viola; <br>
-Machiavelli,,, è un GRRRande;
+fatto da me.
