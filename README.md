@@ -5,16 +5,20 @@ Il software che utilizziamo a scuola è:
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-[Scopri di più](https://en.wikipedia.org/wiki/XAMPP)
-
-
-`⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL)
+[Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL)
 
 
 > **Note**\
 > Verrà aggiornato solo quando avrò voglia!
 
+### Da fare
+- [ ] Migliorare la sezione contenuti
+- [ ] Migliorare la dimostrazione
+
+<br>
+
 ## Contenuti
+<!--   -->
 ### [Definizioni](#Definizioni)
 * [Database](#Database)
 	* [DBMS](#DBMS)
@@ -25,7 +29,13 @@ Il software che utilizziamo a scuola è:
 * [DDL - Data Definition Language](#)
 * [DML - Data Manipulation Language](#Data-Manipulation-Language)
 * [DML - Data Control Language](#)
-
+<!--   -->
+### [Consigli](#Consigli)
+* [`CASE WHEN` più esplicito](#CASE-WHEN-più-esplicito)
+* [Struttura più chiara](#Struttura-più-chiara)
+* [Espressioni aritmetiche](#Espressioni-aritmetiche)
+* [Alias significativi](#Alias-significativi)
+<!--   -->
 ### [Data Manipulation Language](#Data-Manipulation-Language) (DML)
 * [Selezione dei dati](#Selezione-dei-dati)
 	* [SELECT statement](#SELECT-statement)
@@ -62,6 +72,23 @@ Il software che utilizziamo a scuola è:
 		* [Limitazione dei risultati con ordinamento](#Limitazione-dei-risultati-con-ordinamento)
 		* [Limitazione dei risultati con offset](#Limitazione-dei-risultati-con-offset)
 		* [Limitazione dei risultati con combinazione di offset e limit](#Limitazione-dei-risultati-con-combinazione-di-offset-e-limit)
+* [Operatori di aggregazione](#Operatori-di-aggregazione)
+	* [Sommare i valori](#Sommare-i-valori) `SUM`
+		* [Sommare i valori per ciascun gruppo](#Sommare-i-valori-per-ciascun-gruppo) `SUM` con `GROUP BY`
+	* [Calcolare la media](#Calcolare-la-media) `AVG`
+		* [Calcolare la media condizionale](#Calcolare-la-media-condizionale) `AVG` con `CASE WHEN`
+		* [Calcolare la media ponderata](#Calcolare-la-media-ponderata) `SUM` e `AVG` con espressioni aritmetiche
+	* [Contare](#Contare) `COUNT`
+		* [Contare valori distinti](#Contare-valori-distinti) `COUNT` con `DISTINCT`
+	* [Valore massimo](#Valore-massimo) `MAX`
+		* [Valore massimo per ciascun gruppo](#Valore-massimo-per-ciascun-gruppo) `MAX` con `GROUP BY`
+	* [Valore minimo](#Valore-minimo) `MIN`
+		* [Valore minimo condizionale](#Valore-minimo-condizionale) `MIN` con `CASE WHEN`
+	* [Arrotondamento](#Arrotondamento) `ROUND`
+* `JOIN` delle tabelle
+	* INNER JOIN
+	* LEFT JOIN
+	* RIGHT JOIN
 * Modifica dei dati
 	* INSERT INTO
 	* UPDATE
@@ -70,8 +97,7 @@ Il software che utilizziamo a scuola è:
 		* BEGIN
 		* COMMIT
 		* ROLLBACK
-
-	
+<!--   -->
 <br>
 	
 ## Definizioni
@@ -124,6 +150,53 @@ Con SQL si possono fare seguenti operazioni:
 </table>
 
 
+<br>
+<br>
+
+## Consigli
+### CASE WHEN più esplicito
+Rendi il blocco CASE WHEN più esplicito, elencando tutte le condizioni in modo chiaro.
+```sql
+SELECT
+	Nome,
+	CASE
+		WHEN Età < 18 THEN 'Minorenne'
+		WHEN Età >= 18 AND Età < 65 THEN 'Adulto'
+		ELSE 'Anziano'
+	END AS FasciaEtà
+FROM
+	Persone;
+```
+### Struttura più chiara
+Indenta il codice in modo che le clausole siano chiaramente visibili e allinea i termini per una migliore leggibilità.
+```sql
+SELECT
+	Colonna1,
+	Colonna2
+FROM
+	Tabella
+WHERE
+	Condizione = 'Valore';
+```
+### Espressioni aritmetiche
+Evita ambiguità nelle operazioni aritmetiche utilizzando le parentesi per definire la precedenza degli operatori.
+```sql
+SELECT 
+	(Colonna1 + Colonna2) * Colonna3 AS Risultato
+FROM
+	Tabella;
+```
+### Alias significativi
+Usa alias significativi per rendere chiare le colonne calcolate.
+```sql
+SELECT
+	Nome,
+	(Punteggio1 + Punteggio2) / 2 AS MediaPunteggio
+FROM
+	Studenti;
+```
+
+<br>
 <br>
 
 # Data Manipulation Language
@@ -712,6 +785,105 @@ FROM Libri LIMIT 10 OFFSET 20;
 		<i> ... </i>
 	</table>
 </details>
+
+[`🔼`](#Contenuti)
+<br>
+<br>
+
+### Operatori di aggregazione
+#### Sommare i valori
+Questa query calcola la somma di tutti i valori nella colonna "Quantita" della tabella "Ordini" e restituisce il risultato con il nome "TotaleQuantita".
+```sql
+SELECT
+	SUM(Quantita) AS TotaleQuantita
+FROM Ordini;
+```
+##### Sommare i valori per ciascun gruppo
+Questa query calcola la somma delle quantità di prodotti per ciascuna categoria nella tabella "Prodotti".
+```sql
+SELECT
+	Categoria,
+	SUM(Quantita) AS TotaleQuantita
+FROM Prodotti
+GROUP BY Categoria;
+```
+#### Calcolare la media
+Questa query calcola la media dei valori nella colonna "Prezzo" della tabella "Prodotti" e restituisce il risultato con il nome "MediaPrezzo".
+```sql
+SELECT
+	AVG(Prezzo) AS MediaPrezzo
+FROM Prodotti;
+```
+##### Calcolare la media condizionale
+Questa query calcola la media dei punteggi degli esami superiori a 70 per ciascun anno nella tabella "Esami".
+```sql
+SELECT
+	Anno,
+	AVG(CASE WHEN Punteggio > 70 THEN Punteggio ELSE NULL END) AS MediaSuperiori70
+FROM Esami
+GROUP BY Anno;
+```
+##### Calcolare la media ponderata
+Questa query calcola la media ponderata dei punteggi degli studenti nella tabella "Voti", considerando il peso di ciascun voto.
+```sql
+SELECT
+	Studente,
+	AVG(Punteggio * Peso / 100) AS MediaPonderata
+FROM Voti
+GROUP BY Studente;
+```
+#### Contare
+Questa query conta il numero totale di righe nella tabella "Clienti" e restituisce il risultato con il nome "NumeroClienti".
+```sql
+SELECT
+	COUNT(*) AS NumeroClienti
+FROM Clienti;
+```
+##### Contare valori distinti
+Questa query conta il numero di categorie distinte nella tabella "Prodotti".
+```sql
+SELECT
+	COUNT(DISTINCT Categoria) AS NumeroCategorie
+FROM Prodotti;
+```
+#### Valore massimo
+Questa query restituisce il valore massimo nella colonna "Punteggio" della tabella "Studenti" con il nome "PunteggioMassimo".
+```sql
+SELECT
+	MAX(Punteggio) AS PunteggioMassimo
+FROM Studenti;
+```
+##### Valore massimo per ciascun gruppo
+Questa query restituisce il massimo stipendio per ciascun dipartimento nella tabella "Dipendenti".
+```sql
+SELECT
+	Dipartimento,
+	MAX(Stipendio) AS StipendioMassimo
+FROM Dipendenti
+GROUP BY Dipartimento;
+```
+#### Valore minimo
+Questa query restituisce il valore minimo nella colonna "Quantita" della tabella "Magazzino" con il nome "QuantitaMinima".
+```sql
+SELECT
+	MIN(Quantita) AS QuantitaMinima
+FROM Magazzino;
+```
+##### Valore minimo condizionale
+Questa query restituisce il voto minimo positivo per ciascun anno nella tabella "Esami".
+```sql
+SELECT Anno,
+	MIN(CASE WHEN Voto > 0 THEN Voto ELSE NULL END) AS VotoMinimoPositivo
+FROM Esami
+GROUP BY Anno;
+```
+#### Arrotondamento
+Questa query calcola la media dei voti nella colonna "MediaVoti" della tabella "Esami" e restituisce il risultato arrotondato a due decimali con il nome "MediaVotiArrotondata".
+```sql
+SELECT
+	ROUND(MediaVoti, 2) AS MediaVotiArrotondata
+FROM Esami;
+```
 
 [`🔼`](#Contenuti)
 <br>

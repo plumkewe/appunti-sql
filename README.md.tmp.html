@@ -7,16 +7,25 @@
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-<p><a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a></p>
-
-<p>Gli esercizi saranno disponibili qui:</p>
+<p><a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a> <code>⭐️</code> <a href="https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL">Esercizi svolti</a></p>
 
 <blockquote>
   <p><strong>Note</strong>\
 Verrà aggiornato solo quando avrò voglia!</p>
 </blockquote>
 
+<h3>Da fare</h3>
+
+<ul>
+<li>[ ] Migliorare la sezione contenuti</li>
+<li>[ ] Migliorare la dimostrazione</li>
+</ul>
+
+<p><br></p>
+
 <h2>Contenuti</h2>
+
+<!--   -->
 
 <h3><a href="#Definizioni">Definizioni</a></h3>
 
@@ -33,13 +42,19 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <li><a href="#SQL">SQL</a></li>
 <li><a href="#">DDL - Data Definition Language</a></li>
 <li><a href="#Data-Manipulation-Language">DML - Data Manipulation Language</a></li>
-<li><a href="#">DML - Data Control Language</a></li>
-</ul>
+<li><p><a href="#">DML - Data Control Language</a>
+<!--   --></p>
 
-<h3><a href="#Data-Manipulation-Language">Data Manipulation Language</a> (DML)</h3>
+<h3><a href="#Consigli">Consigli</a></h3></li>
+<li><p><a href="#CASE-WHEN-più-esplicito"><code>CASE WHEN</code> più esplicito</a></p></li>
+<li><a href="#Struttura-più-chiara">Struttura più chiara</a></li>
+<li><a href="#Espressioni-aritmetiche">Espressioni aritmetiche</a></li>
+<li><p><a href="#Alias-significativi">Alias significativi</a>
+<!--   --></p>
 
-<ul>
-<li><a href="#Selezione-dei-dati">Selezione dei dati</a>
+<h3><a href="#Data-Manipulation-Language">Data Manipulation Language</a> (DML)</h3></li>
+<li><p><a href="#Selezione-dei-dati">Selezione dei dati</a></p>
+
 <ul>
 <li><a href="#SELECT-statement">SELECT statement</a>
 <ul>
@@ -90,6 +105,37 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <li><a href="#Limitazione-dei-risultati-con-combinazione-di-offset-e-limit">Limitazione dei risultati con combinazione di offset e limit</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#Operatori-di-aggregazione">Operatori di aggregazione</a>
+<ul>
+<li><a href="#Sommare-i-valori">Sommare i valori</a> <code>SUM</code>
+<ul>
+<li><a href="#Sommare-i-valori-per-ciascun-gruppo">Sommare i valori per ciascun gruppo</a> <code>SUM</code> con <code>GROUP BY</code></li>
+</ul></li>
+<li><a href="#Calcolare-la-media">Calcolare la media</a> <code>AVG</code>
+<ul>
+<li><a href="#Calcolare-la-media-condizionale">Calcolare la media condizionale</a> <code>AVG</code> con <code>CASE WHEN</code></li>
+<li><a href="#Calcolare-la-media-ponderata">Calcolare la media ponderata</a> <code>SUM</code> e <code>AVG</code> con espressioni aritmetiche</li>
+</ul></li>
+<li><a href="#Contare">Contare</a> <code>COUNT</code>
+<ul>
+<li><a href="#Contare-valori-distinti">Contare valori distinti</a> <code>COUNT</code> con <code>DISTINCT</code></li>
+</ul></li>
+<li><a href="#Valore-massimo">Valore massimo</a> <code>MAX</code>
+<ul>
+<li><a href="#Valore-massimo-per-ciascun-gruppo">Valore massimo per ciascun gruppo</a> <code>MAX</code> con <code>GROUP BY</code></li>
+</ul></li>
+<li><a href="#Valore-minimo">Valore minimo</a> <code>MIN</code>
+<ul>
+<li><a href="#Valore-minimo-condizionale">Valore minimo condizionale</a> <code>MIN</code> con <code>CASE WHEN</code></li>
+</ul></li>
+<li><a href="#Arrotondamento">Arrotondamento</a> <code>ROUND</code></li>
+</ul></li>
+<li><code>JOIN</code> delle tabelle
+<ul>
+<li>INNER JOIN</li>
+<li>LEFT JOIN</li>
+<li>RIGHT JOIN</li>
+</ul></li>
 <li>Modifica dei dati
 <ul>
 <li>INSERT INTO</li>
@@ -99,12 +145,12 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <ul>
 <li>BEGIN</li>
 <li>COMMIT</li>
-<li>ROLLBACK</li>
+<li>ROLLBACK
+<!--   -->
+<br></li>
 </ul></li>
 </ul></li>
 </ul>
-
-<p><br></p>
 
 <h2>Definizioni</h2>
 
@@ -163,7 +209,62 @@ Verrà aggiornato solo quando avrò voglia!</p>
 </tbody>
 </table>
 
-<p><br></p>
+<p><br>
+<br></p>
+
+<h2>Consigli</h2>
+
+<h3>CASE WHEN più esplicito</h3>
+
+<p>Rendi il blocco CASE WHEN più esplicito, elencando tutte le condizioni in modo chiaro.
+<code>sql
+SELECT
+    Nome,
+    CASE
+        WHEN Età &lt; 18 THEN 'Minorenne'
+        WHEN Età &gt;= 18 AND Età &lt; 65 THEN 'Adulto'
+        ELSE 'Anziano'
+    END AS FasciaEtà
+FROM
+    Persone;
+</code></p>
+
+<h3>Struttura più chiara</h3>
+
+<p>Indenta il codice in modo che le clausole siano chiaramente visibili e allinea i termini per una migliore leggibilità.
+<code>sql
+SELECT
+    Colonna1,
+    Colonna2
+FROM
+    Tabella
+WHERE
+    Condizione = 'Valore';
+</code></p>
+
+<h3>Espressioni aritmetiche</h3>
+
+<p>Evita ambiguità nelle operazioni aritmetiche utilizzando le parentesi per definire la precedenza degli operatori.
+<code>sql
+SELECT 
+    (Colonna1 + Colonna2) * Colonna3 AS Risultato
+FROM
+    Tabella;
+</code></p>
+
+<h3>Alias significativi</h3>
+
+<p>Usa alias significativi per rendere chiare le colonne calcolate.
+<code>sql
+SELECT
+    Nome,
+    (Punteggio1 + Punteggio2) / 2 AS MediaPunteggio
+FROM
+    Studenti;
+</code></p>
+
+<p><br>
+<br></p>
 
 <h1>Data Manipulation Language</h1>
 
@@ -178,8 +279,7 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <li>Interrogazione dei dati (SELECT)</li>
 </ul>
 
-<p><a href="#Contenuti"><code>🔼</code></a>
-<br>
+<p><br>
 <br></p>
 
 <h2>Selezione dei dati</h2>
@@ -810,6 +910,129 @@ FROM Libri LIMIT 10 OFFSET 20;
         <i> ... </i>
     </table>
 </details></p>
+
+<p><a href="#Contenuti"><code>🔼</code></a>
+<br>
+<br></p>
+
+<h3>Operatori di aggregazione</h3>
+
+<h4>Sommare i valori</h4>
+
+<p>Questa query calcola la somma di tutti i valori nella colonna "Quantita" della tabella "Ordini" e restituisce il risultato con il nome "TotaleQuantita".
+<code>sql
+SELECT
+    SUM(Quantita) AS TotaleQuantita
+FROM Ordini;
+</code></p>
+
+<h5>Sommare i valori per ciascun gruppo</h5>
+
+<p>Questa query calcola la somma delle quantità di prodotti per ciascuna categoria nella tabella "Prodotti".
+<code>sql
+SELECT
+    Categoria,
+    SUM(Quantita) AS TotaleQuantita
+FROM Prodotti
+GROUP BY Categoria;
+</code></p>
+
+<h4>Calcolare la media</h4>
+
+<p>Questa query calcola la media dei valori nella colonna "Prezzo" della tabella "Prodotti" e restituisce il risultato con il nome "MediaPrezzo".
+<code>sql
+SELECT
+    AVG(Prezzo) AS MediaPrezzo
+FROM Prodotti;
+</code></p>
+
+<h5>Calcolare la media condizionale</h5>
+
+<p>Questa query calcola la media dei punteggi degli esami superiori a 70 per ciascun anno nella tabella "Esami".
+<code>sql
+SELECT
+    Anno,
+    AVG(CASE WHEN Punteggio &gt; 70 THEN Punteggio ELSE NULL END) AS MediaSuperiori70
+FROM Esami
+GROUP BY Anno;
+</code></p>
+
+<h5>Calcolare la media ponderata</h5>
+
+<p>Questa query calcola la media ponderata dei punteggi degli studenti nella tabella "Voti", considerando il peso di ciascun voto.
+<code>sql
+SELECT
+    Studente,
+    AVG(Punteggio * Peso / 100) AS MediaPonderata
+FROM Voti
+GROUP BY Studente;
+</code></p>
+
+<h4>Contare</h4>
+
+<p>Questa query conta il numero totale di righe nella tabella "Clienti" e restituisce il risultato con il nome "NumeroClienti".
+<code>sql
+SELECT
+    COUNT(*) AS NumeroClienti
+FROM Clienti;
+</code></p>
+
+<h5>Contare valori distinti</h5>
+
+<p>Questa query conta il numero di categorie distinte nella tabella "Prodotti".
+<code>sql
+SELECT
+    COUNT(DISTINCT Categoria) AS NumeroCategorie
+FROM Prodotti;
+</code></p>
+
+<h4>Valore massimo</h4>
+
+<p>Questa query restituisce il valore massimo nella colonna "Punteggio" della tabella "Studenti" con il nome "PunteggioMassimo".
+<code>sql
+SELECT
+    MAX(Punteggio) AS PunteggioMassimo
+FROM Studenti;
+</code></p>
+
+<h5>Valore massimo per ciascun gruppo</h5>
+
+<p>Questa query restituisce il massimo stipendio per ciascun dipartimento nella tabella "Dipendenti".
+<code>sql
+SELECT
+    Dipartimento,
+    MAX(Stipendio) AS StipendioMassimo
+FROM Dipendenti
+GROUP BY Dipartimento;
+</code></p>
+
+<h4>Valore minimo</h4>
+
+<p>Questa query restituisce il valore minimo nella colonna "Quantita" della tabella "Magazzino" con il nome "QuantitaMinima".
+<code>sql
+SELECT
+    MIN(Quantita) AS QuantitaMinima
+FROM Magazzino;
+</code></p>
+
+<h5>Valore minimo condizionale</h5>
+
+<p>Questa query restituisce il voto minimo positivo per ciascun anno nella tabella "Esami".
+<code>sql
+SELECT Anno,
+    MIN(CASE WHEN Voto &gt; 0 THEN Voto ELSE NULL END) AS VotoMinimoPositivo
+FROM Esami
+GROUP BY Anno;
+</code></p>
+
+<h4>Arrotondamento</h4>
+
+<p>Questa query calcola la media dei voti nella colonna "MediaVoti" della tabella "Esami" e restituisce il risultato arrotondato a due decimali con il nome "MediaVotiArrotondata".
+<code>sql
+SELECT
+    ROUND(MediaVoti, 2) AS MediaVotiArrotondata
+FROM Esami;
+</code></p>
 
 <p><a href="#Contenuti"><code>🔼</code></a>
 <br>
