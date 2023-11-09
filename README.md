@@ -5,7 +5,7 @@ Il software che utilizziamo a scuola è:
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-[Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL)
+`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL)
 
 
 > **Note**\
