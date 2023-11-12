@@ -150,8 +150,9 @@ Con SQL si possono fare seguenti operazioni:
   </tr>
 </tbody>
 </table>
+
 #### Query
-Una query SQL è un modo di comunicare con il **database** per ottenere le **informazioni** di cui hai bisogno o per effettuare ****modifiche** nei dati.	
+Una query SQL è un modo di comunicare con il **database** per ottenere le **informazioni** di cui hai bisogno o per effettuare ****modifiche** nei dati.
 ##### Query clauses
 <table>
 	<tbody>
