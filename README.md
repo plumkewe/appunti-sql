@@ -26,9 +26,11 @@ Il software che utilizziamo a scuola è:
 		* Relazionali
 		* Non relazionali
 * [SQL](#SQL)
-* [DDL - Data Definition Language](#)
-* [DML - Data Manipulation Language](#Data-Manipulation-Language)
-* [DML - Data Control Language](#)
+	* [Query](#Query)
+		* [Query clauses](#Query-clauses)
+	* [DDL](#) - Data Definition Language
+	* [DML](#Data-Manipulation-Language) - Data Manipulation Language
+	* [DML](#) - Data Control Language
 <!--   -->
 ### [Consigli](#Consigli)
 * [`CASE WHEN` più esplicito](#CASE-WHEN-più-esplicito)
@@ -36,7 +38,7 @@ Il software che utilizziamo a scuola è:
 * [Espressioni aritmetiche](#Espressioni-aritmetiche)
 * [Alias significativi](#Alias-significativi)
 <!--   -->
-### [Data Manipulation Language](#Data-Manipulation-Language) (DML)
+### [Data Manipulation Language](#Data-Manipulation-Language) (DML) 
 * [Selezione dei dati](#Selezione-dei-dati)
 	* [SELECT statement](#SELECT-statement)
 		* [Tutte colonne](#Tutte-colonne)
@@ -148,7 +150,37 @@ Con SQL si possono fare seguenti operazioni:
   </tr>
 </tbody>
 </table>
-
+#### Query
+Una query SQL è un modo di comunicare con il **database** per ottenere le **informazioni** di cui hai bisogno o per effettuare ****modifiche** nei dati.	
+##### Query clauses
+<table>
+	<tbody>
+		<tr>
+			<td><code>select</code></td>
+			<td>Determines which columns to include in the query's result set</td>
+		</tr>
+		<tr>
+			<td><code>from</code></td>
+			<td>Identifies the tables from which to retrive data and how the tables should be joined</td>
+		</tr>
+		<tr>
+			<td><code>where</code></td>
+			<td>Filters out unwanted data</td>
+		</tr>
+		<tr>
+			<td><code>group by</code></td>
+			<td>Used to group rows together by common column values</td>
+		</tr>
+		<tr>
+			<td><code>having</code></td>
+			<td>Filters out unwanted groups</td>
+		</tr>
+		<tr>
+			<td><code>order by</code></td>
+			<td>Sorts the rows of the final result set by one or more columns</td>
+		</tr>
+	</tbody>
+</table>
 
 <br>
 <br>
@@ -200,14 +232,14 @@ FROM
 <br>
 
 # Data Manipulation Language
-La Data Manipulation Language (DML) è una parte del linguaggio SQL (Structured Query Language) utilizzata per manipolare i dati all'interno di un database relazionale. 
+La **Data Manipulation Language (DML)** è una parte del linguaggio SQL (*Structured Query Language*) utilizzata per manipolare i dati all'interno di un database relazionale.
 
-La DML consente di eseguire le seguenti azioni principali:
+La **DML** consente di eseguire le seguenti azioni principali:
 
-* Inserimento di dati (INSERT): La DML permette di aggiungere nuovi dati a una tabella esistente del database.
-* Aggiornamento dei dati (UPDATE): È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.
-* Cancellazione dei dati (DELETE): La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.
-* Interrogazione dei dati (SELECT)
+* *Inserimento di dati (INSERT)*: La DML permette di aggiungere nuovi dati a una tabella esistente del database.
+* *Aggiornamento dei dati (UPDATE)*: È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.
+* *Cancellazione dei dati (DELETE)*: La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.
+* *Interrogazione dei dati (SELECT)*
 
 <br>
 <br>
@@ -215,14 +247,14 @@ La DML consente di eseguire le seguenti azioni principali:
 ## Selezione dei dati
 ### SELECT statement
 #### Tutte colonne
-Verranno mostrate tutte colonne di una specifica tabella
+Verranno mostrate **tutte colonne** di una specifica tabella
 ```sql
 SELECT *
 FROM nome_tabella;
 ```
 
 #### Colonne specifiche
-Verranno mostrate solo le colonne selezionate (colonna1 e colonna2)
+Verranno mostrate solo le **colonne selezionate** (colonna1 e colonna2)
 ```sql
 SELECT 
 	colonna1,
@@ -230,12 +262,34 @@ SELECT
 FROM nome_tabella;
 ```
 #### Colonne con alias
-Possiamo assegnare dei nomi più comprensibili utilizzando AS, in questo caso colonna1 verrà mostrata con il "Nome" e la colonna2 con il "Cognome"
+Possiamo assegnare dei nomi più comprensibili utilizzando **AS**, in questo caso colonna1 verrà mostrata con il "Nome" e la colonna2 con il "Cognome"
+> **Note**\
+> Si può anche omettere il AS, funzionerà ugualmente
+
 ```sql
-SELECT 
+SELECT
 	colonna1 AS Nome,
 	colonna2 AS Cognome
 FROM nome_tabella;
+```
+
+In questa query:
+* `Orders AS o` assegna l'alias `o` alla tabella `Orders`
+* `Customers AS c` assegna l'alias `c` alla tabella `Customers`
+* `Products AS p` assegna l'alias `p` alla tabella `Products`
+
+```sql
+SELECT
+	o.OrderID,
+	c.CustomerName,
+	p.ProductName,
+	o.Quantity
+FROM
+	Orders AS o
+INNER JOIN
+	Customers AS c ON o.CustomerID = c.CustomerID
+INNER JOIN
+	Products AS p ON o.ProductID = p.ProductID;
 ```
 #### Colonne con espressioni aritmetiche
 Possiamo mostrare delle colonne che effettuando dei calcoli aritmetici, molto utili poiché non ce bisogno di creare colonne inutili!
@@ -754,6 +808,7 @@ FROM Dipendenti LIMIT 5 OFFSET 5;
 		<i> ... </i>
 	</table>
 </details>
+
 #### Limitazione dei risultati con combinazione di offset e limit
 Questa query restituirà i titoli dei libri a partire dal 21simo (offset di 20) fino al trentesimo (10 risultati successivi).
 

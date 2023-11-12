@@ -7,7 +7,7 @@
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-<p><a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a> <code>⭐️</code> <a href="https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL">Esercizi svolti</a></p>
+<p><code>ℹ️</code> <a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a> <code>⭐️</code> <a href="https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL">Esercizi svolti</a></p>
 
 <blockquote>
   <p><strong>Note</strong>\
@@ -39,21 +39,26 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <li>Non relazionali</li>
 </ul></li>
 </ul></li>
-<li><a href="#SQL">SQL</a></li>
-<li><a href="#">DDL - Data Definition Language</a></li>
-<li><a href="#Data-Manipulation-Language">DML - Data Manipulation Language</a></li>
-<li><p><a href="#">DML - Data Control Language</a>
-<!--   --></p>
+<li><p><a href="#SQL">SQL</a></p>
 
+<ul>
+<li><a href="#Query">Query</a>
+<ul>
+<li><a href="#Query-clauses">Query clauses</a></li>
+</ul></li>
+<li><a href="#">DDL</a> - Data Definition Language</li>
+<li><a href="#Data-Manipulation-Language">DML</a> - Data Manipulation Language</li>
+<li><a href="#">DML</a> - Data Control Language
+<!--   -->
 <h3><a href="#Consigli">Consigli</a></h3></li>
+</ul></li>
 <li><p><a href="#CASE-WHEN-più-esplicito"><code>CASE WHEN</code> più esplicito</a></p></li>
 <li><a href="#Struttura-più-chiara">Struttura più chiara</a></li>
 <li><a href="#Espressioni-aritmetiche">Espressioni aritmetiche</a></li>
 <li><p><a href="#Alias-significativi">Alias significativi</a>
 <!--   --></p>
 
-<h3><a href="#Data-Manipulation-Language">Data Manipulation Language</a> (DML)</h3></li>
-<li><p><a href="#Selezione-dei-dati">Selezione dei dati</a></p>
+<h3><a href="#Data-Manipulation-Language">Data Manipulation Language</a> (DML) * <a href="#Selezione-dei-dati">Selezione dei dati</a></h3>
 
 <ul>
 <li><a href="#SELECT-statement">SELECT statement</a>
@@ -209,6 +214,41 @@ Verrà aggiornato solo quando avrò voglia!</p>
 </tbody>
 </table>
 
+<h4>Query</h4>
+
+<p>Una query SQL è un modo di comunicare con il <strong>database</strong> per ottenere le <strong>informazioni</strong> di cui hai bisogno o per effettuare <strong>**modifiche</strong> nei dati.   </p>
+
+<h5>Query clauses</h5>
+
+<table>
+    <tbody>
+        <tr>
+            <td><code>select</code></td>
+            <td>Determines which columns to include in the query's result set</td>
+        </tr>
+        <tr>
+            <td><code>from</code></td>
+            <td>Identifies the tables from which to retrive data and how the tables should be joined</td>
+        </tr>
+        <tr>
+            <td><code>where</code></td>
+            <td>Filters out unwanted data</td>
+        </tr>
+        <tr>
+            <td><code>group by</code></td>
+            <td>Used to group rows together by common column values</td>
+        </tr>
+        <tr>
+            <td><code>having</code></td>
+            <td>Filters out unwanted groups</td>
+        </tr>
+        <tr>
+            <td><code>order by</code></td>
+            <td>Sorts the rows of the final result set by one or more columns</td>
+        </tr>
+    </tbody>
+</table>
+
 <p><br>
 <br></p>
 
@@ -268,15 +308,15 @@ FROM
 
 <h1>Data Manipulation Language</h1>
 
-<p>La Data Manipulation Language (DML) è una parte del linguaggio SQL (Structured Query Language) utilizzata per manipolare i dati all'interno di un database relazionale. </p>
+<p>La <strong>Data Manipulation Language (DML)</strong> è una parte del linguaggio SQL (<em>Structured Query Language</em>) utilizzata per manipolare i dati all'interno di un database relazionale.</p>
 
-<p>La DML consente di eseguire le seguenti azioni principali:</p>
+<p>La <strong>DML</strong> consente di eseguire le seguenti azioni principali:</p>
 
 <ul>
-<li>Inserimento di dati (INSERT): La DML permette di aggiungere nuovi dati a una tabella esistente del database.</li>
-<li>Aggiornamento dei dati (UPDATE): È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.</li>
-<li>Cancellazione dei dati (DELETE): La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.</li>
-<li>Interrogazione dei dati (SELECT)</li>
+<li><em>Inserimento di dati (INSERT)</em>: La DML permette di aggiungere nuovi dati a una tabella esistente del database.</li>
+<li><em>Aggiornamento dei dati (UPDATE)</em>: È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.</li>
+<li><em>Cancellazione dei dati (DELETE)</em>: La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.</li>
+<li><em>Interrogazione dei dati (SELECT)</em></li>
 </ul>
 
 <p><br>
@@ -288,7 +328,7 @@ FROM
 
 <h4>Tutte colonne</h4>
 
-<p>Verranno mostrate tutte colonne di una specifica tabella
+<p>Verranno mostrate <strong>tutte colonne</strong> di una specifica tabella
 <code>sql
 SELECT *
 FROM nome_tabella;
@@ -296,7 +336,7 @@ FROM nome_tabella;
 
 <h4>Colonne specifiche</h4>
 
-<p>Verranno mostrate solo le colonne selezionate (colonna1 e colonna2)
+<p>Verranno mostrate solo le <strong>colonne selezionate</strong> (colonna1 e colonna2)
 <code>sql
 SELECT 
     colonna1,
@@ -306,12 +346,37 @@ FROM nome_tabella;
 
 <h4>Colonne con alias</h4>
 
-<p>Possiamo assegnare dei nomi più comprensibili utilizzando AS, in questo caso colonna1 verrà mostrata con il "Nome" e la colonna2 con il "Cognome"
-<code>sql
-SELECT 
+<p>Possiamo assegnare dei nomi più comprensibili utilizzando <strong>AS</strong>, in questo caso colonna1 verrà mostrata con il "Nome" e la colonna2 con il "Cognome"</p>
+
+<blockquote>
+  <p><strong>Note</strong>\
+Si può anche omettere il AS, funzionerà ugualmente</p>
+</blockquote>
+
+<p><code>sql
+SELECT
     colonna1 AS Nome,
     colonna2 AS Cognome
 FROM nome_tabella;
+</code></p>
+
+<p>In questa query:
+* <code>Orders AS o</code> assegna l'alias <code>o</code> alla tabella <code>Orders</code>
+* <code>Customers AS c</code> assegna l'alias <code>c</code> alla tabella <code>Customers</code>
+* <code>Products AS p</code> assegna l'alias <code>p</code> alla tabella <code>Products</code></p>
+
+<p><code>sql
+SELECT
+    o.OrderID,
+    c.CustomerName,
+    p.ProductName,
+    o.Quantity
+FROM
+    Orders AS o
+INNER JOIN
+    Customers AS c ON o.CustomerID = c.CustomerID
+INNER JOIN
+    Products AS p ON o.ProductID = p.ProductID;
 </code></p>
 
 <h4>Colonne con espressioni aritmetiche</h4>
