@@ -5,7 +5,7 @@ Il software che utilizziamo a scuola è:
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL)
+`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL) `🌎` [W3S](https://www.w3schools.com/sql/default.asp) 
 
 
 > **Note**\
@@ -22,12 +22,11 @@ Il software che utilizziamo a scuola è:
 ### [Definizioni](#Definizioni)
 * [Database](#Database)
 	* [DBMS](#DBMS)
-	* [Tipi](#Tipi)
-		* Relazionali
-		* Non relazionali
 * [SQL](#SQL)
 	* [Query](#Query)
 		* [Query clauses](#Query-clauses)
+  	* [Primary key]()
+  	* [Foreign key]()
 	* [DDL](#) - Data Definition Language
 	* [DML](#Data-Manipulation-Language) - Data Manipulation Language
 	* [DML](#) - Data Control Language
@@ -104,28 +103,22 @@ Il software che utilizziamo a scuola è:
 	
 ## Definizioni
 ### Database
-#### Tipi
-##### Relazionali
-I database relazionali organizzano dati in tabelle con righe e colonne, seguendo uno **schema rigido**. Utilizzano **[SQL](https://www.google.com/search?q=sql+database)** per gestire dati strutturati e relazionali, ideali per applicazioni aziendali, gestione di inventari e dati finanziari.
-##### Non relazionali
-I database NoSQL sono progettati per **memorizzare dati in modo flessibile e scalabile**, senza uno schema rigido. Possono gestire dati **non strutturati** o semi-strutturati, seguendo vari modelli come *documenti, chiave-valore, grafo o colonne*. Spesso offrono scalabilità orizzontale su **[cluster](https://www.google.com/search?q=cluster+database)** e sono adatti per applicazioni con dati complessi, non strutturati o altamente distribuiti, come applicazioni Web, analisi dei big data e flussi di dati in tempo reale.
+Un database è un insieme di informazioni (o dati) strutturate in genere archiviate elettronicamente in un sistema informatico. Di solito, il database viene controllato da un sistema DBMS (Database Management System). Si fa riferimento ai dati, al sistema DBMS e alle applicazioni associate come sistema di database, spesso abbreviato solo in database.
 
-<br>
+I dati all'interno dei tipi più comuni di database attualmente in funzione vengono generalmente presentati in righe e colonne contenute in una serie di tabelle per garantire l'efficienza di elaborazione e query dei dati. Tali dati possono poi essere facilmente visualizzati, gestiti, modificati, aggiornati, controllati e organizzati. La maggior parte dei database utilizza il linguaggio SQL (Structured Query Language) per scrivere i dati ed eseguirne le query.
+[source](https://www.oracle.com/it/database/what-is-database/)
 
-| Caratteristica                   | Database Relazionali    | Database Document-Oriented  |
-|----------------------------------|-------------------------|-----------------------------|
-| **Modello di Dati**                  | Tabellare con rigide relazioni tra le tabelle | Flessibile, basato su documenti con dati semi-strutturati |
-| **Schema dei Dati**                 | Schema rigido, definito in anticipo | Schema dinamico, senza necessità di uno schema rigido |
-| **Linguaggio di Query**            | SQL (Structured Query Language) | Query specifiche del database o linguaggi di query adatti |
-| **Scalabilità**                      | Solitamente scalabilità verticale (aggiornare l'hardware) | Scalabilità orizzontale su cluster |
-| **Consistenza dei Dati**             | Struttura transazionale con forte consistenza | Modello di consistenza eventuale |
-| **Esempi Noti**                      | MySQL, PostgreSQL, Oracle, SQL Server | MongoDB, Couchbase, RavenDB |
-| **Casi d'Uso Tipici**                | Applicazioni con schemi dati ben definiti e operazioni transazionali | Applicazioni con dati non strutturati o semi-strutturati, scalabilità e flessibilità di query |
+#### DBMS
+Un database, in genere, richiede un software di database completo noto come DBMS, acronimo di Database Management System, ossia un sistema di gestione del database. Un DBMS agisce da interfaccia tra il database e gli utenti finali o i programmi per consentire agli utenti di recuperare, aggiornare e gestire il modo in cui le informazioni vengono organizzate e ottimizzate. Inoltre, un DBMS agevola la supervisione e il controllo dei database, rendendo disponibile un'ampia gamma di operazioni amministrative: monitoraggio delle performance, tuning e backup e ripristino.
+
+Alcuni esempi di software di database o sistemi DBMS più diffusi sono: MySQL, Microsoft Access, Microsoft SQL Server, FileMaker Pro, Oracle Database e dBASE.
+[source](https://www.oracle.com/it/database/what-is-database/)
 
 <br>
 
 ### SQL
-SQL (Structured Query Language) è un **linguaggio di programmazione** utilizzato per **comunicare** con i *sistemi di gestione dei database* (DBMS) al fine di creare, gestire e interrogare basi di dati relazionali. SQL è progettato per l'interazione con database relazionali, come [MySQL](https://www.mysql.com/), [PostgreSQL](https://www.postgresql.org/), [Oracle](https://www.oracle.com/), [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server) e molti altri. È un linguaggio standardizzato con una sintassi (non CASE SENSITIVE) chiara e regole ben definite.
+Structured Query Language (SQL) è un linguaggio di programmazione per l'archiviazione e l'elaborazione di informazioni in un database relazionale. Un database relazionale memorizza le informazioni in forma tabulare, con righe e colonne che rappresentano diversi attributi di dati e le varie relazioni tra i valori dei dati. È possibile utilizzare le istruzioni SQL per archiviare, aggiornare, rimuovere, cercare e recuperare informazioni dal database. È inoltre possibile utilizzare SQL per mantenere e ottimizzare le prestazioni del databas
+[source]([https://www.oracle.com/it/database/what-is-database/](https://aws.amazon.com/it/what-is/sql/))
 
 Con SQL si possono fare seguenti operazioni:
 <table>
@@ -182,6 +175,12 @@ Una query SQL è un modo di comunicare con il **database** per ottenere le **inf
 		</tr>
 	</tbody>
 </table>
+
+#### Primary key
+
+
+#### Foreign key
+
 
 <br>
 <br>
