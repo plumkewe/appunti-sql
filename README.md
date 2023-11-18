@@ -12,7 +12,7 @@ Il software che utilizziamo a scuola è:
 > Verrà aggiornato solo quando avrò voglia!
 
 ### Da fare
-- [x] Migliorare la sezione contenuti
+- [x] ~Migliorare la sezione contenuti~
 - [ ] Migliorare la dimostrazione
 - [ ] Tradurre le spiegazini
 - [ ] Evidenziare parole importanti nel testo
@@ -763,6 +763,7 @@ ORDER BY Prezzo DESC LIMIT 3;
 		<i> ... </i>
 	</table>
 </details>
+
 #### Limitazione dei risultati con offset
 Questa query restituirà i nomi e i cognomi dei dipendenti a partire dal sesto (offset di 5) fino al decimo (5 risultati successivi).
 
