@@ -12,8 +12,10 @@ Il software che utilizziamo a scuola è:
 > Verrà aggiornato solo quando avrò voglia!
 
 ### Da fare
-- [ ] Migliorare la sezione contenuti
+- [x] Migliorare la sezione contenuti
 - [ ] Migliorare la dimostrazione
+- [ ] Tradurre le spiegazini
+- [ ] Evidenziare parole importanti nel testo
 
 <br>
 
