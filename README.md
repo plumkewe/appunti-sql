@@ -18,107 +18,95 @@ Il software che utilizziamo a scuola è:
 <br>
 
 ## Contenuti
-<!--   -->
-### [Definizioni](#Definizioni)
-* [Database](#Database)
-	* [DBMS](#DBMS)
-* [SQL](#SQL)
-	* [Query](#Query)
-		* [Query clauses](#Query-clauses)
-  	* [Primary key]()
-  	* [Foreign key]()
-	* [DDL](#) - Data Definition Language
-	* [DML](#Data-Manipulation-Language) - Data Manipulation Language
-	* [DML](#) - Data Control Language
-<!--   -->
-### [Consigli](#Consigli)
-* [`CASE WHEN` più esplicito](#CASE-WHEN-più-esplicito)
-* [Struttura più chiara](#Struttura-più-chiara)
-* [Espressioni aritmetiche](#Espressioni-aritmetiche)
-* [Alias significativi](#Alias-significativi)
-<!--   -->
-### [Data Manipulation Language](#Data-Manipulation-Language) (DML) 
-* [Selezione dei dati](#Selezione-dei-dati)
-	* [SELECT statement](#SELECT-statement)
-		* [Tutte colonne](#Tutte-colonne)
-		* [Colonne specifiche](#Colonne-specifiche)
-		* [Colonne con alias](#Colonne-con-alias) `AS`
-		* [Colonne con espressioni aritmetiche](#Colonne-con-espressioni-aritmetiche)
-		* [Seleziona dati univoci](#Seleziona-dati-univoci) `DISTINCT`
-	* [Filtraggio dei dati](#Filtraggio-dei-dati)
-		* [Corrispondenze parziali o pattern](#Corrispondenze-parziali-o-pattern) `LIKE`
-		* [Valore specifico in una colonna](#Valore-specifico-in-una-colonna)
-		* [Valore NULL o non NULL](#Valore-NULL-o-non-NULL) `IS NULL`/`IS NOT NULL`
-		* [Filtrare utilizzando una lista dei valori](#Filtrare-utilizzando-una-lista-dei-valori) `IN`
-	* [Operatori di confronto](#Operatori-di-confronto)
-		* [Ugualianza](#Ugualianza) `=`
-		* [Disugualianza](#Disugualianza) `<>` o `!=`
-		* [Maggiore di](#Maggiore-di) `>`
-		* [Maggiore o uguale di](#Maggiore-o-uguale-di]) `>=`
-		* [Minore](#Minore) `<`
-		* [Minore o uguale di](#Minore-o-uguale-di) `=<`
-	* [Operatori logici](Operatori-logici)
-		* [AND](#AND)
-		* [OR](#OR)
-		* [AND e OR](#AND-e-OR)
-		* [NOT](#NOT)
-			* Negare condizioni multiple
-	* [Ordinamento dei risultati](#Ordinamento-dei-risultati) `ORDER BY`
-		* [Ordinamento crescente per una colonna](#Ordinamento-crescente-per-una-colonna) `ASC`
-		* [Ordinamento decrescente per una colonna](#Ordinamento-decrescente-per-una-colonna) `DESC`
-		* [Ordinamento per più colonne](#Ordinamento-per-più-colonne)
-		* [Ordinamento con espressioni aritmetiche](#Ordinamento-con-espressioni-aritmetiche)
-	* [Limitazione dei risultati](#Limitazione-dei-risultati) `LIMIT`
-		* [Limitazione del numero di righe restituite](#Limitazione-del-numero-di-righe-restituite)
-		* [Limitazione dei risultati con ordinamento](#Limitazione-dei-risultati-con-ordinamento)
-		* [Limitazione dei risultati con offset](#Limitazione-dei-risultati-con-offset)
-		* [Limitazione dei risultati con combinazione di offset e limit](#Limitazione-dei-risultati-con-combinazione-di-offset-e-limit)
-* [Operatori di aggregazione](#Operatori-di-aggregazione)
-	* [Sommare i valori](#Sommare-i-valori) `SUM`
-		* [Sommare i valori per ciascun gruppo](#Sommare-i-valori-per-ciascun-gruppo) `SUM` con `GROUP BY`
-	* [Calcolare la media](#Calcolare-la-media) `AVG`
-		* [Calcolare la media condizionale](#Calcolare-la-media-condizionale) `AVG` con `CASE WHEN`
-		* [Calcolare la media ponderata](#Calcolare-la-media-ponderata) `SUM` e `AVG` con espressioni aritmetiche
-	* [Contare](#Contare) `COUNT`
-		* [Contare valori distinti](#Contare-valori-distinti) `COUNT` con `DISTINCT`
-	* [Valore massimo](#Valore-massimo) `MAX`
-		* [Valore massimo per ciascun gruppo](#Valore-massimo-per-ciascun-gruppo) `MAX` con `GROUP BY`
-	* [Valore minimo](#Valore-minimo) `MIN`
-		* [Valore minimo condizionale](#Valore-minimo-condizionale) `MIN` con `CASE WHEN`
-	* [Arrotondamento](#Arrotondamento) `ROUND`
-* `JOIN` delle tabelle
-	* INNER JOIN
-	* LEFT JOIN
-	* RIGHT JOIN
-* Modifica dei dati
-	* INSERT INTO
-	* UPDATE
-	* DELETE
-	* Transazioni
-		* BEGIN
-		* COMMIT
-		* ROLLBACK
-<!--   -->
-<br>
+- [Definizioni](#definizioni)
+	- [Database](#database)
+		- [DBMS](#dbms)
+		- [Relazionali](#relazionali)
+		- [NoSQL](#nosql)
+	- [SQL](#sql)
+		- [Query](#query)
+			- [Query clauses](#query-clauses)
+		- [Primary key](#primary-key)
+		- [Foreign key](#foreign-key)
+		- [DDL](#DDL)
+		- [DML](#DML)
+		- [DCL](#DCL)
+- [Consigli](#consigli)
+	- [`CASE WHEN` più esplicito](#case-when-più-esplicito)
+	- [Struttura più chiara](#struttura-più-chiara)
+	- [Espressioni aritmetiche](#espressioni-aritmetiche)
+	- [Alias significativi](#alias-significativi)
+- [Data Manipulation Language (DML)](#data-manipulation-language-dml)
+	- [Selezione dei dati](#selezione-dei-dati)
+		- [SELECT statement](#select-statement)
+			- [Tutte colonne](#tutte-colonne)
+			- [Colonne specifiche](#colonne-specifiche)
+			- [Colonne con alias](#colonne-con-alias-as)
+			- [Colonne con espressioni aritmetiche](#colonne-con-espressioni-aritmetiche)
+			- [Seleziona dati univoci](#seleziona-dati-univoci-distinct)
+		- [Filtraggio dei dati](#filtraggio-dei-dati)
+			- [Corrispondenze parziali o pattern](#corrispondenze-parziali-o-pattern-like)
+			- [Valore specifico in una colonna](#valore-specifico-in-una-colonna)
+			- [Valore NULL o non NULL](#valore-null-o-non-null-is-nullis-not-null)
+			- [Filtrare utilizzando una lista dei valori](#filtrare-utilizzando-una-lista-dei-valori-in)
+		- [Operatori di confronto](#operatori-di-confronto)
+			- [Ugualianza](#ugualianza)
+			- [Disugualianza](#disugualianza)
+			- [Maggiore di](#maggiore-di)
+			- [Maggiore o uguale di](#maggiore-o-uguale-di)
+			- [Minore](#minore)
+			- [Minore o uguale di](#minore-o-uguale-di)
+		- [Operatori logici](#operatori-logici)
+			- [AND](#and)
+			- [OR](#or)
+			- [AND e OR](#and-e-or)
+			- [NOT](#not)
+		- [Ordinamento dei risultati](#ordinamento-dei-risultati-order-by)
+		- [Limitazione dei risultati](#limitazione-dei-risultati-limit)
+	- [Operatori di aggregazione](#operatori-di-aggregazione)
+		- [Sommare i valori](#sommare-i-valori-sum)
+		- [Calcolare la media](#calcolare-la-media-avg)
+		- [Contare](#contare-count)
+		- [Valore massimo](#valore-massimo-max)
+		- [Valore minimo](#valore-minimo-min)
+		- [Arrotondamento](#arrotondamento-round)
+	- [`JOIN` delle tabelle](#join-delle-tabelle)
+		- [INNER JOIN](#inner-join)
+		- [LEFT JOIN](#left-join)
+		- [RIGHT JOIN](#right-join)
+		- [FULL JOIN](#full-join)
+- [Modifica dei dati](#modifica-dei-dati)
+	- [INSERT INTO](#insert-into)
+	- [UPDATE](#update)
+	- [DELETE](#delete)
+	- [Transazioni](#transazioni)
 	
 ## Definizioni
 ### Database
-Un database è un insieme di informazioni (o dati) strutturate in genere archiviate elettronicamente in un sistema informatico. Di solito, il database viene controllato da un sistema DBMS (Database Management System). Si fa riferimento ai dati, al sistema DBMS e alle applicazioni associate come sistema di database, spesso abbreviato solo in database.
-
-I dati all'interno dei tipi più comuni di database attualmente in funzione vengono generalmente presentati in righe e colonne contenute in una serie di tabelle per garantire l'efficienza di elaborazione e query dei dati. Tali dati possono poi essere facilmente visualizzati, gestiti, modificati, aggiornati, controllati e organizzati. La maggior parte dei database utilizza il linguaggio SQL (Structured Query Language) per scrivere i dati ed eseguirne le query.
-[source](https://www.oracle.com/it/database/what-is-database/)
+Un database è un insieme organizzato di dati. Può essere tutto, da un semplice elenco di contatti telefonici fino a un intero inventario di prodotti per un'azienda.
 
 #### DBMS
-Un database, in genere, richiede un software di database completo noto come DBMS, acronimo di Database Management System, ossia un sistema di gestione del database. Un DBMS agisce da interfaccia tra il database e gli utenti finali o i programmi per consentire agli utenti di recuperare, aggiornare e gestire il modo in cui le informazioni vengono organizzate e ottimizzate. Inoltre, un DBMS agevola la supervisione e il controllo dei database, rendendo disponibile un'ampia gamma di operazioni amministrative: monitoraggio delle performance, tuning e backup e ripristino.
+Un DBMS è un software che gestisce i database. Esempi comuni sono MySQL, PostgreSQL, MongoDB e SQLite.
 
-Alcuni esempi di software di database o sistemi DBMS più diffusi sono: MySQL, Microsoft Access, Microsoft SQL Server, FileMaker Pro, Oracle Database e dBASE.
-[source](https://www.oracle.com/it/database/what-is-database/)
+#### Relazionali
+UUn database relazionale è un tipo di database che organizza i dati in tabelle con righe e colonne, molto simile a come i dati sono organizzati in un foglio di calcolo. Ogni riga rappresenta un record distinto e ogni colonna rappresenta un campo di quel record. Le tabelle possono essere collegate tra loro attraverso chiavi primarie e chiavi esterne, permettendo di creare relazioni tra i dati. Questo modello di database è molto comune e largamente utilizzato in molte applicazioni. Esempi di DBMS relazionali includono MySQL, PostgreSQL e SQLite.
+
+#### NoSQL
+I database NoSQL, o "non solo SQL", sono un tipo di database che non seguono il modello relazionale standard. Sono progettati per essere altamente scalabili e per gestire grandi quantità di dati distribuiti su molteplici macchine. I database NoSQL non richiedono uno schema fisso, il che significa che i dati possono essere inseriti nel database senza dover prima definire la struttura della tabella. Questo li rende molto flessibili e adatti per lavorare con dati non strutturati o semi-strutturati. Esistono diversi tipi di database NoSQL, tra cui database di documenti (come MongoDB), database di chiave-valore (come Redis), database di colonne (come Cassandra) e database di grafi (come Neo4j).
+
+#### DDL
+Comandi utilizzati per definire o modificare la struttura di un database o di una tabella. Esempi di comandi DDL includono `CREATE`, `ALTER` e `DROP`.
+
+#### DML
+Comandi utilizzati per manipolare i dati all'interno delle tabelle di un database. Esempi di comandi DML includono `SELECT`, `INSERT`, `UPDATE` e `DELETE`.
+
+#### DCL
+Comandi utilizzati per controllare l'accesso ai dati all'interno del database. Esempi di comandi DCL includono `GRANT` e `REVOKE`, che sono utilizzati per gestire i diritti e i privilegi degli utenti.
 
 <br>
 
 ### SQL
-Structured Query Language (SQL) è un linguaggio di programmazione per l'archiviazione e l'elaborazione di informazioni in un database relazionale. Un database relazionale memorizza le informazioni in forma tabulare, con righe e colonne che rappresentano diversi attributi di dati e le varie relazioni tra i valori dei dati. È possibile utilizzare le istruzioni SQL per archiviare, aggiornare, rimuovere, cercare e recuperare informazioni dal database. È inoltre possibile utilizzare SQL per mantenere e ottimizzare le prestazioni del databas
-[source]([https://www.oracle.com/it/database/what-is-database/](https://aws.amazon.com/it/what-is/sql/))
+SQL è un linguaggio di programmazione utilizzato per comunicare con e manipolare i database.
 
 Con SQL si possono fare seguenti operazioni:
 <table>
@@ -145,7 +133,7 @@ Con SQL si possono fare seguenti operazioni:
 </table>
 
 #### Query
-Una query SQL è un modo di comunicare con il **database** per ottenere le **informazioni** di cui hai bisogno o per effettuare ****modifiche** nei dati.
+Una query SQL è un modo di comunicare con il **database** per ottenere le **informazioni** di cui hai bisogno o per effettuare ****modifiche** nei dati. Detto meglio: Una query è una richiesta di dati da un database.
 ##### Query clauses
 <table>
 	<tbody>
@@ -177,10 +165,10 @@ Una query SQL è un modo di comunicare con il **database** per ottenere le **inf
 </table>
 
 #### Primary key
-
+Una chiave primaria è un campo unico in una tabella che può identificare ogni riga.
 
 #### Foreign key
-
+Una chiave esterna è un campo in una tabella che fa riferimento alla chiave primaria di un'altra tabella.
 
 <br>
 <br>
@@ -944,5 +932,160 @@ FROM Esami;
 <br>
 <br>
 
+### Join
+In SQL, un "JOIN" è un metodo per combinare righe provenienti da due o più tabelle, basato su una colonna correlata tra di loro. Ci sono diversi tipi di JOIN in SQL:
+
+* **INNER JOIN**: Restituisce le righe quando c'è una corrispondenza in entrambe le tabelle.
+* **LEFT JOIN**: Restituisce tutte le righe dalla tabella di sinistra, e le righe corrispondenti dalla tabella di destra. Se non c'è corrispondenza, il risultato è NULL sulla parte destra.
+* **RIGHT JOIN**: Restituisce tutte le righe dalla tabella di destra, e le righe corrispondenti dalla tabella di sinistra. Se non c'è corrispondenza, il risultato è NULL sulla parte sinistra.
+* **FULL JOIN**: Restituisce le righe quando c'è una corrispondenza in una delle tabelle. Quindi, se c'è una riga in una delle tabelle che non corrisponde con l'altra, il risultato sarà NULL.
+
+#### INNER JOIN
+The `Orders` table:
+
+| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+| 4       | 4          | 2022-02-10|
+
+The `Customers` table:
+
+| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+| 4          | Bob          |
+
+If you want to combine these two tables to get a list of orders with the customer's name, you can use an INNER JOIN. The SQL query would look like this:
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+```
+
+This will return a table that only includes orders for which a corresponding customer exists:
+
+| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| 4       | Bob          | 2022-02-10|
+
+#### LEFT JOIN
+The `Orders` table:
+
+| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+| 4       | 5          | 2022-02-10|
+
+The `Customers` table:
+
+| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+
+If you want to combine these two tables to get a list of orders with the customer's name, you can use a LEFT JOIN. The SQL query would look like this:
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+```
+
+This will return a table that includes all orders, but customer names will only appear for orders where a corresponding customer exists. If an order has a `CustomerID` that doesn't exist in the `Customers` table, the `CustomerName` for that order will be NULL.
+
+| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| 4       | NULL         | 2022-02-10|
+
+#### RIGHT JOIN
+The `Orders` table:
+
+| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+
+The `Customers` table:
+
+| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+| 4          | Bob          |
+
+If you want to combine these two tables to get a list of customers with their orders, you can use a RIGHT JOIN. The SQL query would look like this:
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+```
+
+This will return a table that includes all customers, but orders will only appear for customers where a corresponding order exists. If a customer doesn't have any orders in the `Orders` table, the `OrderID` and `OrderDate` for that customer will be NULL.
+
+| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| NULL    | Bob          | NULL      |
+
+#### FULL JOIN
+The `Orders` table:
+
+| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+| 4       | 5          | 2022-02-10|
+
+The `Customers` table:
+
+| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+| 4          | Bob          |
+
+If you want to combine these two tables to get a list of all orders and all customers, you can use a FULL JOIN. The SQL query would look like this:
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+FULL JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+```
+
+This will return a table that includes all orders and all customers. If an order has a `CustomerID` that doesn't exist in the `Customers` table, the `CustomerName` for that order will be NULL. Similarly, if a customer doesn't have any orders in the `Orders` table, the `OrderID` and `OrderDate` for that customer will be NULL.
+
+| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| 4       | NULL         | 2022-02-10|
+| NULL    | Bob          | NULL      |
+
+[`🔼`](#Contenuti)
+<br>
+<br>
+
 <hr>
-fatto da me.
+fatto da me e GitHub Copilot.
