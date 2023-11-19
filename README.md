@@ -14,8 +14,8 @@ Il software che utilizziamo a scuola è:
 ### Da fare
 - [x] ~Migliorare la sezione contenuti~
 - [ ] Migliorare la dimostrazione
-- [ ] Tradurre le spiegazini
-- [ ] Evidenziare parole importanti nel testo
+- [x] Tradurre le spiegazini
+- [x] Evidenziare parole importanti nel testo
 
 <br>
 
@@ -34,23 +34,23 @@ Il software che utilizziamo a scuola è:
 		- [DML](#DML)
 		- [DCL](#DCL)
 - [Consigli](#consigli)
-	- [`CASE WHEN` più esplicito](#case-when-più-esplicito)
+	- [CASE WHEN più esplicito](#case-when-più-esplicito)
 	- [Struttura più chiara](#struttura-più-chiara)
 	- [Espressioni aritmetiche](#espressioni-aritmetiche)
 	- [Alias significativi](#alias-significativi)
-- [Data Manipulation Language (DML)](#data-manipulation-language-dml)
+- [Data Manipulation Language (DML)](#data-manipulation-language)
 	- [Selezione dei dati](#selezione-dei-dati)
 		- [SELECT statement](#select-statement)
 			- [Tutte colonne](#tutte-colonne)
 			- [Colonne specifiche](#colonne-specifiche)
-			- [Colonne con alias](#colonne-con-alias-as)
+			- [Colonne con alias](#colonne-con-alias)
 			- [Colonne con espressioni aritmetiche](#colonne-con-espressioni-aritmetiche)
-			- [Seleziona dati univoci](#seleziona-dati-univoci-distinct)
+			- [Seleziona dati univoci](#seleziona-dati-univoci)
 		- [Filtraggio dei dati](#filtraggio-dei-dati)
-			- [Corrispondenze parziali o pattern](#corrispondenze-parziali-o-pattern-like)
+			- [Corrispondenze parziali o pattern](#corrispondenze-parziali-o-pattern)
 			- [Valore specifico in una colonna](#valore-specifico-in-una-colonna)
-			- [Valore NULL o non NULL](#valore-null-o-non-null-is-nullis-not-null)
-			- [Filtrare utilizzando una lista dei valori](#filtrare-utilizzando-una-lista-dei-valori-in)
+			- [Valore NULL o non NULL](#valore-null-o-non-null)
+			- [Filtrare utilizzando una lista dei valori](#filtrare-utilizzando-una-lista-dei-valori)
 		- [Operatori di confronto](#operatori-di-confronto)
 			- [Ugualianza](#ugualianza)
 			- [Disugualianza](#disugualianza)
@@ -63,25 +63,25 @@ Il software che utilizziamo a scuola è:
 			- [OR](#or)
 			- [AND e OR](#and-e-or)
 			- [NOT](#not)
-		- [Ordinamento dei risultati](#ordinamento-dei-risultati-order-by)
-		- [Limitazione dei risultati](#limitazione-dei-risultati-limit)
+		- [Ordinamento dei risultati](#ordinamento-dei-risultati)
+		- [Limitazione dei risultati](#limitazione-dei-risultati)
 	- [Operatori di aggregazione](#operatori-di-aggregazione)
-		- [Sommare i valori](#sommare-i-valori-sum)
-		- [Calcolare la media](#calcolare-la-media-avg)
-		- [Contare](#contare-count)
-		- [Valore massimo](#valore-massimo-max)
-		- [Valore minimo](#valore-minimo-min)
-		- [Arrotondamento](#arrotondamento-round)
-	- [`JOIN` delle tabelle](#join-delle-tabelle)
+		- [Sommare i valori](#sommare-i-valori)
+		- [Calcolare la media](#calcolare-la-media)
+		- [Contare](#contare)
+		- [Valore massimo](#valore-massimo)
+		- [Valore minimo](#valore-minimo)
+		- [Arrotondamento](#arrotondamento)
+	- [JOIN delle tabelle](#join)
 		- [INNER JOIN](#inner-join)
 		- [LEFT JOIN](#left-join)
 		- [RIGHT JOIN](#right-join)
 		- [FULL JOIN](#full-join)
-- [Modifica dei dati](#modifica-dei-dati)
+<!-- - [Modifica dei dati](#modifica-dei-dati)
 	- [INSERT INTO](#insert-into)
 	- [UPDATE](#update)
 	- [DELETE](#delete)
-	- [Transazioni](#transazioni)
+	- [Transazioni](#transazioni) -->
 	
 ## Definizioni
 ### Database
@@ -91,10 +91,10 @@ Un database è un insieme organizzato di dati. Può essere tutto, da un semplice
 Un DBMS è un software che gestisce i database. Esempi comuni sono MySQL, PostgreSQL, MongoDB e SQLite.
 
 #### Relazionali
-UUn database relazionale è un tipo di database che organizza i dati in tabelle con righe e colonne, molto simile a come i dati sono organizzati in un foglio di calcolo. Ogni riga rappresenta un record distinto e ogni colonna rappresenta un campo di quel record. Le tabelle possono essere collegate tra loro attraverso chiavi primarie e chiavi esterne, permettendo di creare relazioni tra i dati. Questo modello di database è molto comune e largamente utilizzato in molte applicazioni. Esempi di DBMS relazionali includono MySQL, PostgreSQL e SQLite.
+Un database relazionale è un tipo di database che organizza i dati in **tabelle** con **righe** e **colonne**, molto simile a come i dati sono organizzati in un **foglio di calcolo**. Ogni **riga** rappresenta un **record** distinto e ogni **colonna** rappresenta un **campo** di quel **record**. Le **tabelle** possono essere collegate tra loro attraverso **chiavi primarie** e **chiavi esterne**, permettendo di creare **relazioni** tra i dati. Questo modello di database è molto comune e largamente utilizzato in molte applicazioni. Esempi di **DBMS relazionali** includono **MySQL**, **PostgreSQL** e **SQLite**.
 
 #### NoSQL
-I database NoSQL, o "non solo SQL", sono un tipo di database che non seguono il modello relazionale standard. Sono progettati per essere altamente scalabili e per gestire grandi quantità di dati distribuiti su molteplici macchine. I database NoSQL non richiedono uno schema fisso, il che significa che i dati possono essere inseriti nel database senza dover prima definire la struttura della tabella. Questo li rende molto flessibili e adatti per lavorare con dati non strutturati o semi-strutturati. Esistono diversi tipi di database NoSQL, tra cui database di documenti (come MongoDB), database di chiave-valore (come Redis), database di colonne (come Cassandra) e database di grafi (come Neo4j).
+I **database NoSQL**, o "non solo SQL", sono un tipo di database che non seguono il **modello relazionale** standard. Sono progettati per essere **altamente scalabili** e per gestire **grandi quantità di dati distribuiti** su molteplici macchine. I **database NoSQL** non richiedono uno **schema fisso**, il che significa che i dati possono essere inseriti nel database senza dover prima definire la **struttura della tabella**. Questo li rende molto **flessibili** e adatti per lavorare con **dati non strutturati** o **semi-strutturati**. Esistono diversi tipi di **database NoSQL**, tra cui **database di documenti** (come **MongoDB**), **database di chiave-valore** (come **Redis**), **database di colonne** (come **Cassandra**) e **database di grafi** (come **Neo4j**)..
 
 #### DDL
 Comandi utilizzati per definire o modificare la struttura di un database o di una tabella. Esempi di comandi DDL includono `CREATE`, `ALTER` e `DROP`.
@@ -230,9 +230,6 @@ La **DML** consente di eseguire le seguenti azioni principali:
 * *Aggiornamento dei dati (UPDATE)*: È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.
 * *Cancellazione dei dati (DELETE)*: La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.
 * *Interrogazione dei dati (SELECT)*
-
-<br>
-<br>
 
 ## Selezione dei dati
 ### SELECT statement
@@ -453,7 +450,7 @@ SELECT
 FROM Dipendenti 
 WHERE Reparto = 'Vendite' AND Stipendio > 30000;
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -487,7 +484,7 @@ WHERE Reparto = 'Vendite' AND Stipendio > 30000;
 			<td>Mario</td>
 		</tr>
 	</table>
-</details>
+</details> -->
 
 #### OR
 Questa query selezionerà i nomi dei clienti che appartengono alla categoria "VIP" o alla categoria "Nuovi Clienti". 
@@ -499,7 +496,7 @@ SELECT
 FROM Clienti
 WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -532,7 +529,7 @@ WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
 			<td>Luca</td>
 		</tr>
 	</table>
-</details>
+</details> -->
 
 #### AND e OR
 Questa query selezionerà i nomi dei prodotti che appartengono alle categorie "Elettronica" o "Informatica" e hanno un prezzo superiore a 500 unità monetarie. 
@@ -544,7 +541,7 @@ SELECT
 FROM Prodotti
 WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo > 500;
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -578,7 +575,7 @@ WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo > 500;
 			<td>Prodotto A</td>
 		</tr>
 	</table>	
-</details>
+</details> -->
 
 #### NOT
 Questa query selezionerà i titoli dei libri che non appartengono al genere "Fantascienza". 
@@ -590,7 +587,7 @@ SELECT
 FROM Libri
 WHERE NOT Genere = 'Fantascienza';
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -623,7 +620,7 @@ WHERE NOT Genere = 'Fantascienza';
 			<td>Libro 3</td>
 		</tr>
 	</table>
-</details>
+</details> -->
 
 [`🔼`](#Contenuti)
 <br>
@@ -694,7 +691,7 @@ SELECT
 	Cognome
 FROM Clienti LIMIT 5;
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -706,8 +703,7 @@ FROM Clienti LIMIT 5;
 			<td>John</td>
 			<td>Doe</td>
 		</tr>
-		<!-- Altri dati della tabella Clienti -->
-		<!-- ... -->
+		
 	</table>
 	<p>Risultato:</p>
 	<table>
@@ -719,10 +715,10 @@ FROM Clienti LIMIT 5;
 			<td>John</td>
 			<td>Doe</td>
 		</tr>
-		<!-- Altri 4 risultati della tabella Clienti -->
-		<!-- ... -->
-	</table>
-</details>
+		
+	</table> 
+</details> -->
+
 #### Limitazione dei risultati con ordinamento
 Questa query selezionerà i nomi e i prezzi dei primi 3 prodotti ordinati in modo decrescente in base al prezzo.
 
@@ -734,7 +730,7 @@ SELECT
 FROM Prodotti
 ORDER BY Prezzo DESC LIMIT 3;
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -762,7 +758,7 @@ ORDER BY Prezzo DESC LIMIT 3;
 		<i> Altri 2 risultati della tabella Prodotti ordinati per Prezzo </i>
 		<i> ... </i>
 	</table>
-</details>
+</details> -->
 
 #### Limitazione dei risultati con offset
 Questa query restituirà i nomi e i cognomi dei dipendenti a partire dal sesto (offset di 5) fino al decimo (5 risultati successivi).
@@ -774,7 +770,7 @@ SELECT
 	Cognome
 FROM Dipendenti LIMIT 5 OFFSET 5;
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -798,7 +794,7 @@ FROM Dipendenti LIMIT 5 OFFSET 5;
 		<i> Altri 4 risultati della tabella Dipendenti (dal sesto al decimo) </i>
 		<i> ... </i>
 	</table>
-</details>
+</details>  -->
 
 #### Limitazione dei risultati con combinazione di offset e limit
 Questa query restituirà i titoli dei libri a partire dal 21simo (offset di 20) fino al trentesimo (10 risultati successivi).
@@ -809,7 +805,7 @@ SELECT
 	Titolo
 FROM Libri LIMIT 10 OFFSET 20;
 ```
-<details>
+<!-- <details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -830,7 +826,7 @@ FROM Libri LIMIT 10 OFFSET 20;
 		<i> Altri 9 risultati della tabella Libri (dal ventunesimo al trentesimo) </i>
 		<i> ... </i>
 	</table>
-</details>
+</details> -->
 
 [`🔼`](#Contenuti)
 <br>
@@ -944,7 +940,7 @@ In SQL, un "JOIN" è un metodo per combinare righe provenienti da due o più tab
 * **FULL JOIN**: Restituisce le righe quando c'è una corrispondenza in una delle tabelle. Quindi, se c'è una riga in una delle tabelle che non corrisponde con l'altra, il risultato sarà NULL.
 
 #### INNER JOIN
-The `Orders` table:
+La tabella `Orders`:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -953,7 +949,7 @@ The `Orders` table:
 | 3       | 2          | 2022-04-22|
 | 4       | 4          | 2022-02-10|
 
-The `Customers` table:
+La tabella `Customers`:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -962,7 +958,7 @@ The `Customers` table:
 | 3          | Alice        |
 | 4          | Bob          |
 
-If you want to combine these two tables to get a list of orders with the customer's name, you can use an INNER JOIN. The SQL query would look like this:
+Se desideri combinare queste due tabelle per ottenere un elenco di ordini con il nome del cliente, puoi utilizzare un INNER JOIN. La query SQL sarebbe la seguente:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -970,7 +966,7 @@ FROM Orders
 INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-This will return a table that only includes orders for which a corresponding customer exists:
+Questa istruzione restituirà una tabella che include solo gli ordini per i quali esiste un cliente corrispondente:
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -980,7 +976,7 @@ This will return a table that only includes orders for which a corresponding cus
 | 4       | Bob          | 2022-02-10|
 
 #### LEFT JOIN
-The `Orders` table:
+La tabella `Orders`:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -989,7 +985,7 @@ The `Orders` table:
 | 3       | 2          | 2022-04-22|
 | 4       | 5          | 2022-02-10|
 
-The `Customers` table:
+La tabella `Customers`:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -997,7 +993,7 @@ The `Customers` table:
 | 2          | Jane Doe     |
 | 3          | Alice        |
 
-If you want to combine these two tables to get a list of orders with the customer's name, you can use a LEFT JOIN. The SQL query would look like this:
+Se desideri combinare queste due tabelle per ottenere un elenco di ordini con il nome del cliente, puoi utilizzare un LEFT JOIN. La query SQL sarebbe la seguente:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -1005,7 +1001,7 @@ FROM Orders
 LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-This will return a table that includes all orders, but customer names will only appear for orders where a corresponding customer exists. If an order has a `CustomerID` that doesn't exist in the `Customers` table, the `CustomerName` for that order will be NULL.
+Questa istruzione restituirà una tabella che include tutti gli ordini, ma i nomi dei clienti appariranno solo per gli ordini in cui esiste un cliente corrispondente. Se un ordine ha un `CustomerID` che non esiste nella tabella `Customers`, il `CustomerName` per quel determinato ordine sarà NULL.
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -1015,7 +1011,7 @@ This will return a table that includes all orders, but customer names will only 
 | 4       | NULL         | 2022-02-10|
 
 #### RIGHT JOIN
-The `Orders` table:
+La tabella `Orders`:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -1023,7 +1019,7 @@ The `Orders` table:
 | 2       | 1          | 2022-03-20|
 | 3       | 2          | 2022-04-22|
 
-The `Customers` table:
+La tabella `Customers`:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -1032,7 +1028,7 @@ The `Customers` table:
 | 3          | Alice        |
 | 4          | Bob          |
 
-If you want to combine these two tables to get a list of customers with their orders, you can use a RIGHT JOIN. The SQL query would look like this:
+Se desideri combinare queste due tabelle per ottenere un elenco di clienti con i relativi ordini, puoi utilizzare un RIGHT JOIN. La query SQL sarebbe la seguente:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -1040,7 +1036,7 @@ FROM Orders
 RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-This will return a table that includes all customers, but orders will only appear for customers where a corresponding order exists. If a customer doesn't have any orders in the `Orders` table, the `OrderID` and `OrderDate` for that customer will be NULL.
+Questa istruzione restituirà una tabella che include tutti i clienti, ma gli ordini appariranno solo per i clienti in cui esiste un ordine corrispondente. Se un cliente non ha nessun ordine nella tabella `Orders`, l'`OrderID` e l'`OrderDate` per quel cliente saranno NULL.
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -1050,7 +1046,7 @@ This will return a table that includes all customers, but orders will only appea
 | NULL    | Bob          | NULL      |
 
 #### FULL JOIN
-The `Orders` table:
+La tabella `Orders`:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -1059,7 +1055,7 @@ The `Orders` table:
 | 3       | 2          | 2022-04-22|
 | 4       | 5          | 2022-02-10|
 
-The `Customers` table:
+La tabella `Customers`:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -1068,7 +1064,7 @@ The `Customers` table:
 | 3          | Alice        |
 | 4          | Bob          |
 
-If you want to combine these two tables to get a list of all orders and all customers, you can use a FULL JOIN. The SQL query would look like this:
+Se vuoi combinare queste due tabelle per ottenere un elenco di tutti gli ordini e tutti i clienti, puoi utilizzare un FULL JOIN. La query SQL sarebbe la seguente:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -1076,7 +1072,7 @@ FROM Orders
 FULL JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-This will return a table that includes all orders and all customers. If an order has a `CustomerID` that doesn't exist in the `Customers` table, the `CustomerName` for that order will be NULL. Similarly, if a customer doesn't have any orders in the `Orders` table, the `OrderID` and `OrderDate` for that customer will be NULL.
+Questa istruzione restituirà una tabella che include tutti gli ordini e tutti i clienti. Se un ordine ha un `CustomerID` che non esiste nella tabella `Customers`, il `CustomerName` per quel determinato ordine sarà NULL. Allo stesso modo, se un cliente non ha nessun ordine nella tabella `Orders`, l'`OrderID` e l'`OrderDate` per quel cliente saranno NULL.
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -1091,4 +1087,4 @@ This will return a table that includes all orders and all customers. If an order
 <br>
 
 <hr>
-fatto da me e GitHub Copilot.
+fatto da me, GitHub Copilot e ChatGPT.
