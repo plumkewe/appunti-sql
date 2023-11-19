@@ -13,9 +13,9 @@ Il software che utilizziamo a scuola è:
 
 ### Da fare
 - [x] ~Migliorare la sezione contenuti~
+- [x] ~Tradurre le spiegazini~
+- [x] ~Evidenziare parole importanti nel testo~
 - [ ] Migliorare la dimostrazione
-- [x] Tradurre le spiegazini
-- [x] Evidenziare parole importanti nel testo
 
 <br>
 
@@ -77,6 +77,7 @@ Il software che utilizziamo a scuola è:
 		- [LEFT JOIN](#left-join)
 		- [RIGHT JOIN](#right-join)
 		- [FULL JOIN](#full-join)
+		- [Unione implicita](#unione-implicita)
 <!-- - [Modifica dei dati](#modifica-dei-dati)
 	- [INSERT INTO](#insert-into)
 	- [UPDATE](#update)
@@ -1082,6 +1083,28 @@ Questa istruzione restituirà una tabella che include tutti gli ordini e tutti i
 | 4       | NULL         | 2022-02-10|
 | NULL    | Bob          | NULL      |
 
+### Unione implicita
+<details>
+  <summary><b>Spiegazione</b></summary>
+
+  Questa query SQL seleziona dati da due tabelle: `Orders` e `Customers`. L'obiettivo è ottenere una lista di ordini insieme ai nomi dei clienti che hanno effettuato tali ordini.
+
+  Ecco una spiegazione dettagliata di ciascuna parte della query:
+
+  - `SELECT Orders.OrderID, Customers.CustomerName`: Questa parte della query specifica quali colonne di dati si desidera ottenere nel risultato. In questo caso, si desidera ottenere l'`OrderID` dalla tabella `Orders` e il `CustomerName` dalla tabella `Customers`.
+
+  - `FROM Orders, Customers`: Questa parte della query specifica da quali tabelle si desidera ottenere i dati. In questo caso, si desidera ottenere i dati dalle tabelle `Orders` e `Customers`.
+
+  - `WHERE Orders.CustomerID = Customers.CustomerID`: Questa è la clausola `WHERE` che stabilisce la condizione per unire le tabelle. In questo caso, le tabelle `Orders` e `Customers` vengono unite sulla base del `CustomerID`. Questo significa che per ogni riga nella tabella `Orders`, la query cerca una riga corrispondente nella tabella `Customers` dove `CustomerID` è lo stesso. In altre parole, per ogni ordine, la query trova il cliente che ha effettuato quell'ordine.
+
+  Il risultato di questa query sarà un set di righe con `OrderID` e `CustomerName`, dove ogni riga rappresenta un ordine e il cliente che ha effettuato quell'ordine.
+</details>
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders, Customers
+WHERE Orders.CustomerID = Customers.CustomerID;
+```
 [`🔼`](#Contenuti)
 <br>
 <br>
