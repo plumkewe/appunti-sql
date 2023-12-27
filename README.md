@@ -17,6 +17,7 @@ Il software che utilizziamo a scuola è:
 - [x] ~Tradurre le spiegazini~
 - [x] ~Evidenziare parole importanti nel testo~
 - [ ] Migliorare la dimostrazione
+- [ ] Rifare la repo
 
 <br>
 
@@ -1146,6 +1147,7 @@ WHERE punteggio > (SELECT AVG(punteggio) FROM studenti);
 	</ol>
 
 </details>
+
 ##### MAX
 La subquery `(SELECT MAX(punteggio) FROM studenti)` trova il punteggio più alto tra gli studenti. La query esterna poi seleziona i nomi e i punteggi degli studenti che hanno il punteggio massimo.
 
@@ -1246,17 +1248,16 @@ WHERE salario > (
 
 <details>
   <summary><b>A cosa servono</b></summary>
-	<p> Le query correlate in MySQL sono utilizzate per risolvere problemi che richiedono l'elaborazione di dati in modo sequenziale, piuttosto che in un unico set. Queste query sono utili quando il risultato di una query dipende dai risultati di altre query.
-<br>
-In termini semplici, una query correlata è come un ciclo in programmazione. Per ogni riga selezionata dalla query esterna, la subquery correlata viene eseguita una volta, utilizzando i valori di quella riga.
-<br>
-Ecco un esempio di utilizzo: supponiamo di avere un database di studenti e voti. Vuoi trovare tutti gli studenti che hanno un voto superiore alla media dei voti della loro classe. Una query correlata può aiutarti a risolvere questo problema. La query esterna andrebbe attraverso ogni studente, e per ogni studente, la subquery correlata calcolerebbe la media dei voti della sua classe e confronterebbe il voto dello studente con quella media.
-<br>
-Quindi, in sostanza, le query correlate sono utilizzate quando abbiamo bisogno di confrontare un valore con un gruppo di valori che cambia dinamicamente per ogni riga.
-	</p>
+	
+<p>Le query correlate in MySQL sono utilizzate per risolvere problemi che richiedono l'elaborazione di dati in modo sequenziale, piuttosto che in un unico set. Queste query sono utili quando il risultato di una query dipende dai risultati di altre query.</p>
 
-<br>
-<p>Supponiamo di avere la seguente tabella studenti: </p>
+<p>In termini semplici, una query correlata è come un ciclo in programmazione. Per ogni riga selezionata dalla query esterna, la subquery correlata viene eseguita una volta, utilizzando i valori di quella riga.</p>
+
+<p>Ecco un esempio di utilizzo: supponiamo di avere un database di studenti e voti. Vuoi trovare tutti gli studenti che hanno un voto superiore alla media dei voti della loro classe. Una query correlata può aiutarti a risolvere questo problema. La query esterna andrebbe attraverso ogni studente, e per ogni studente, la subquery correlata calcolerebbe la media dei voti della sua classe e confronterebbe il voto dello studente con quella media.</p>
+
+<p>Quindi, in sostanza, le query correlate sono utilizzate quando abbiamo bisogno di confrontare un valore con un gruppo di valori che cambia dinamicamente per ogni riga.</p>
+
+Supponiamo di avere la seguente tabella studenti:
 
 <table>
     <tr>
@@ -1314,12 +1315,14 @@ WHERE voto > (
     WHERE s1.classe = s2.classe
 );
 ```
-<p>La query esterna scorre ogni studente. Per ogni studente, la subquery correlata calcola la media dei voti degli studenti nella stessa classe. Se il voto dello studente è superiore a questa media, il nome dello studente viene selezionato.</p> <br>
+<p>La query esterna scorre ogni studente. Per ogni studente, la subquery correlata calcola la media dei voti degli studenti nella stessa classe. Se il voto dello studente è superiore a questa media, il nome dello studente viene selezionato.</p>
 
-<p>Nel nostro esempio, la media dei voti per la classe A è (85 + 90 + 70) / 3 = 81.67 e per la classe B è (95 + 80 + 85) / 3 = 86.67. Quindi, la query restituirà Luigi (classe A, voto 90) e Peach (classe B, voto 95) poiché i loro voti sono superiori alla media dei voti delle rispettive classi.</p>
-
+<p>
+Nel nostro esempio, la media dei voti per la classe A è (85 + 90 + 70) / 3 = 81.67 e per la classe B è (95 + 80 + 85) / 3 = 86.67. Quindi, la query restituirà Luigi (classe A, voto 90) e Peach (classe B, voto 95) poiché i loro voti sono superiori alla media dei voti delle rispettive classi.
+</p>
 
 </details>
+
 ### Subquery nella FROM
 
 Una subquery nella clausola `FROM` è utilizzata per creare una tabella temporanea che può essere utilizzata per l'elaborazione ulteriore nella query esterna. Questo è utile quando si desidera eseguire operazioni su un set di dati che è il risultato di un'altra query.
