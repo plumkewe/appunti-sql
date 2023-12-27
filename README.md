@@ -5,7 +5,7 @@ Il software che utilizziamo a scuola è:
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL) `🌎` [W3S](https://www.w3schools.com/sql/default.asp) 
+`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL) `🌎` [W3S](https://www.w3schools.com/sql/default.asp) `👩‍🏫` [Presentazioni](/presentazione)
 
 
 > **Note**\
@@ -78,6 +78,20 @@ Il software che utilizziamo a scuola è:
 		- [RIGHT JOIN](#right-join)
 		- [FULL JOIN](#full-join)
 		- [Unione implicita](#unione-implicita)
+	- [Subquery](#Subquery)
+		- [Che restituiscono un valore](#Che-restituiscono-un-valore)
+			- [MAX](#MAX)
+			- [AVG](#AVG)
+		- [Subquery che restituiscono più valori](#Subquery-che-restituiscono-più-valori)
+			- [IN](#IN)
+			- [NOT IN](#NOT-IN)
+			- [ANY](#ANY)
+			- [ALL](#ALL)
+			- [EXISTS](#EXISTS)
+			- [NOT EXISTS](#NOT-EXISTS)
+		- [Query correlate](#Query-correlate)
+		- [Subquery nella FROM](#Subquery-nella-FROM)
+		
 <!-- - [Modifica dei dati](#modifica-dei-dati)
 	- [INSERT INTO](#insert-into)
 	- [UPDATE](#update)
@@ -1105,6 +1119,248 @@ SELECT Orders.OrderID, Customers.CustomerName
 FROM Orders, Customers
 WHERE Orders.CustomerID = Customers.CustomerID;
 ```
+[`🔼`](#Contenuti)
+<br>
+<br>
+
+### Subquery
+Una subquery, o sottoquery, è una query SQL che è **incorporata all'interno di un'altra query**. Una subquery può restituire dati a un comando SQL esterno, o può essere eseguita come un comando autonomo. Le subquery possono essere utilizzate in diverse istruzioni SQL come `SELECT`, `INSERT`, `UPDATE`, o `DELETE`.
+
+#### Che restituiscono un valore
+Una subquery che restituisce un valore è una subquery che restituisce un singolo valore. Questo tipo di subquery può essere utilizzato ovunque ci si aspetti un singolo valore, come in un'istruzione `SELECT`, `WHERE` o `HAVING`.
+
+In questo esempio, la subquery `(SELECT AVG(punteggio) FROM studenti)` calcola il punteggio medio degli studenti. La query **esterna** poi seleziona i nomi e i punteggi degli studenti che hanno un punteggio superiore alla media.
+
+```sql
+SELECT nome, punteggio 
+FROM studenti 
+WHERE punteggio > (SELECT AVG(punteggio) FROM studenti);
+```
+<details>
+  <summary><b>Spiegazione</b></summary>
+	<ol>
+		<li><p> La subquery <code>(SELECT AVG(punteggio) FROM studenti)</code> viene eseguita per prima. Questa subquery calcola il punteggio medio di tutti gli studenti nella tabella studenti.</p></li>
+		<li><p> Il risultato della subquery (il punteggio medio) viene poi utilizzato nella clausola <code>WHERE</code> della query esterna.</p></li>
+		<li><p>La query esterna <code>SELECT nome, punteggio FROM studenti WHERE punteggio > ...</code> viene quindi eseguita. Questa query seleziona le colonne  <code>nome</code> e <code>punteggio</code> dalla tabella <code>studenti</code>, ma solo per le righe in cui il <code>punteggio</code> è maggiore del punteggio medio calcolato dalla subquery.</p></li>	
+	</ol>
+
+</details>
+##### MAX
+La subquery `(SELECT MAX(punteggio) FROM studenti)` trova il punteggio più alto tra gli studenti. La query esterna poi seleziona i nomi e i punteggi degli studenti che hanno il punteggio massimo.
+
+```sql
+SELECT nome, punteggio 
+FROM studenti 
+WHERE punteggio > (SELECT AVG(punteggio) FROM studenti);
+```
+##### AVG
+La subquery `(SELECT AVG(punteggio) FROM studenti)` calcola il punteggio medio degli studenti. La query esterna poi seleziona i nomi e i punteggi degli studenti che hanno un punteggio superiore alla media.
+
+```sql
+SELECT nome, punteggio 
+FROM studenti 
+WHERE punteggio = (SELECT MAX(punteggio) FROM studenti);
+```
+### Subquery che restituiscono più valori
+Una subquery può restituire più valori, solitamente sotto forma di una colonna di valori. Questi valori possono poi essere utilizzati in combinazione con operatori come `IN`, `NOT IN`, `ANY`, `ALL`, `EXISTS`, `NOT EXISTS`.
+#### IN
+L'operatore `IN` verifica se un valore specifico corrisponde a qualsiasi valore all'interno di un elenco o restituito da una subquery.
+
+la subquery restituisce un elenco di `id_studente` che hanno partecipato a un corso di matematica. La query esterna seleziona i nomi degli studenti che corrispondono a quegli ID. Quindi, otteniamo i nomi degli studenti che hanno partecipato al corso di matematica.
+
+```sql
+SELECT nome 
+FROM studenti 
+WHERE id IN (SELECT id_studente FROM corsi WHERE nome_corso = 'Matematica');
+```
+
+#### NOT IN
+`NOT IN` è l'opposto di IN. Esclude invece di includere.
+
+la subquery restituisce un elenco di `id_studente` che hanno partecipato a un corso di matematica. La query esterna seleziona i nomi degli studenti che non corrispondono a quegli ID, ovvero gli studenti che non hanno partecipato al corso di matematica.
+
+```sql
+SELECT nome 
+FROM studenti 
+WHERE id NOT IN (SELECT id_studente FROM corsi WHERE nome_corso = 'Matematica');
+```
+#### ANY
+`ANY` viene utilizzato quando si desidera confrontare un valore con qualsiasi valore in un elenco di valori. 
+
+la subquery restituisce un elenco di punteggi ottenuti in un esame di matematica. La query esterna seleziona i nomi degli studenti che hanno ottenuto un punteggio superiore a qualsiasi punteggio nell'elenco. Quindi, otteniamo i nomi degli studenti che hanno un punteggio superiore al punteggio più basso ottenuto nell'esame di matematica.
+
+```sql
+SELECT nome 
+FROM studenti 
+WHERE punteggio > ANY (SELECT punteggio FROM esami WHERE nome_esame = 'Matematica');
+```
+#### ALL
+`ALL` è utilizzato quando si desidera confrontare un valore con tutti i valori in un elenco.
+
+la subquery restituisce un elenco di punteggi ottenuti in un esame di matematica. La query esterna seleziona i nomi degli studenti che hanno ottenuto un punteggio superiore a tutti i punteggi nell'elenco. Quindi, otteniamo i nomi degli studenti che hanno un punteggio superiore al punteggio più alto ottenuto nell'esame di matematica.
+
+```sql
+SELECT nome 
+FROM studenti 
+WHERE punteggio > ALL (SELECT punteggio FROM esami WHERE nome_esame = 'Matematica');
+```
+#### EXISTS
+
+`EXISTS` è utilizzato per verificare se esistono righe che soddisfano una determinata condizione.
+
+la subquery verifica se esistono corsi a cui partecipa ciascuno studente. La query esterna seleziona i nomi degli studenti per i quali esiste almeno un corso. Quindi, otteniamo i nomi degli studenti che partecipano almeno a un corso.
+
+```sql
+SELECT nome 
+FROM studenti 
+WHERE EXISTS (SELECT * FROM corsi WHERE studenti.id = corsi.id_studente);
+```
+#### NOT EXISTS
+
+`NOT EXISTS` è l'opposto di `EXISTS`. Viene utilizzato per verificare se non esistono righe che soddisfano una determinata condizione.
+
+la subquery verifica se esistono corsi a cui partecipa ciascuno studente. La query esterna seleziona i nomi degli studenti per i quali non esiste alcun corso. Quindi, otteniamo i nomi degli studenti che non partecipano a nessun corso.
+
+```sql
+SELECT nome 
+FROM studenti 
+WHERE NOT EXISTS (SELECT * FROM corsi WHERE studenti.id = corsi.id_studente);
+```
+### Query correlate
+Una query correlata, o subquery correlata, è una subquery che dipende dalla query esterna per i suoi valori. In altre parole, la subquery correlata utilizza i valori della query esterna. Questo significa che la subquery correlata viene eseguita una volta per ogni riga elaborata dalla query esterna.
+
+In questo esempio, la query esterna seleziona i nomi degli impiegati dal database. La subquery correlata calcola la media dei salari per il dipartimento dell'impiegato corrente (come specificato dalla query esterna). La query esterna quindi confronta il salario dell'impiegato corrente con la media dei salari nel suo dipartimento, e se il salario dell'impiegato è superiore alla media, il nome dell'impiegato viene selezionato.
+
+In questo caso, la subquery correlata viene eseguita una volta per ogni impiegato, perché il risultato della subquery correlata dipende dal dipartimento dell'impiegato corrente.
+
+```sql
+SELECT e1.nome 
+FROM impiegati e1
+WHERE salario > (
+    SELECT AVG(salario)
+    FROM impiegati e2
+    WHERE e1.dipartimento = e2.dipartimento
+);
+```
+
+<details>
+  <summary><b>A cosa servono</b></summary>
+	<p> Le query correlate in MySQL sono utilizzate per risolvere problemi che richiedono l'elaborazione di dati in modo sequenziale, piuttosto che in un unico set. Queste query sono utili quando il risultato di una query dipende dai risultati di altre query.
+<br>
+In termini semplici, una query correlata è come un ciclo in programmazione. Per ogni riga selezionata dalla query esterna, la subquery correlata viene eseguita una volta, utilizzando i valori di quella riga.
+<br>
+Ecco un esempio di utilizzo: supponiamo di avere un database di studenti e voti. Vuoi trovare tutti gli studenti che hanno un voto superiore alla media dei voti della loro classe. Una query correlata può aiutarti a risolvere questo problema. La query esterna andrebbe attraverso ogni studente, e per ogni studente, la subquery correlata calcolerebbe la media dei voti della sua classe e confronterebbe il voto dello studente con quella media.
+<br>
+Quindi, in sostanza, le query correlate sono utilizzate quando abbiamo bisogno di confrontare un valore con un gruppo di valori che cambia dinamicamente per ogni riga.
+	</p>
+
+<br>
+<p>Supponiamo di avere la seguente tabella studenti: </p>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>nome</th>
+        <th>classe</th>
+        <th>voto</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Mario</td>
+        <td>A</td>
+        <td>85</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Luigi</td>
+        <td>A</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Peach</td>
+        <td>B</td>
+        <td>95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Daisy</td>
+        <td>B</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Bowser</td>
+        <td>A</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Wario</td>
+        <td>B</td>
+        <td>85</td>
+    </tr>
+</table>
+
+<p>Vogliamo trovare tutti gli studenti che hanno un voto superiore alla media dei voti della loro classe. La query correlata potrebbe essere la seguente:</p>
+
+```sql
+SELECT nome
+FROM studenti s1
+WHERE voto > (
+    SELECT AVG(voto)
+    FROM studenti s2
+    WHERE s1.classe = s2.classe
+);
+```
+<p>La query esterna scorre ogni studente. Per ogni studente, la subquery correlata calcola la media dei voti degli studenti nella stessa classe. Se il voto dello studente è superiore a questa media, il nome dello studente viene selezionato.</p> <br>
+
+<p>Nel nostro esempio, la media dei voti per la classe A è (85 + 90 + 70) / 3 = 81.67 e per la classe B è (95 + 80 + 85) / 3 = 86.67. Quindi, la query restituirà Luigi (classe A, voto 90) e Peach (classe B, voto 95) poiché i loro voti sono superiori alla media dei voti delle rispettive classi.</p>
+
+
+</details>
+### Subquery nella FROM
+
+Una subquery nella clausola `FROM` è utilizzata per creare una tabella temporanea che può essere utilizzata per l'elaborazione ulteriore nella query esterna. Questo è utile quando si desidera eseguire operazioni su un set di dati che è il risultato di un'altra query.
+
+Ecco un esempio semplice:
+
+Supponiamo di avere una tabella `vendite`:
+
+| id_prodotto | quantita |
+|-------------|----------|
+| 1           | 10       |
+| 2           | 20       |
+| 3           | 30       |
+| 1           | 40       |
+| 2           | 50       |
+| 3           | 60       |
+
+E vuoi calcolare la quantità totale venduta per ogni prodotto. Potresti prima creare una tabella temporanea con la subquery nella clausola `FROM` che raggruppa le vendite per `id_prodotto` e calcola la somma della `quantita`. Quindi, nella query esterna, puoi selezionare da questa tabella temporanea.
+
+```sql
+SELECT id_prodotto, totale_quantita
+FROM (
+    SELECT id_prodotto, SUM(quantita) as totale_quantita
+    FROM vendite
+    GROUP BY id_prodotto
+) AS vendite_aggregate;
+```
+
+La subquery nella clausola `FROM` crea una tabella temporanea `vendite_aggregate` che contiene l'`id_prodotto` e il `totale_quantita` per ogni prodotto. Quindi, la query esterna seleziona da questa tabella temporanea.
+
+Il risultato sarebbe:
+
+| id_prodotto | quantita |
+|-------------|----------|
+| 1           | 10       |
+| 2           | 20       |
+| 3           | 30       |
+| 1           | 40       |
+| 2           | 50       |
+| 3           | 60       |
+
+
 [`🔼`](#Contenuti)
 <br>
 <br>

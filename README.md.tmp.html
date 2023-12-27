@@ -7,7 +7,7 @@
 <img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
 </p>
 
-<p><code>ℹ️</code> <a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a> <code>⭐️</code> <a href="https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL">Esercizi svolti</a></p>
+<p><code>ℹ️</code> <a href="https://en.wikipedia.org/wiki/XAMPP">Scopri di più</a> <code>⭐️</code> <a href="https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL">Esercizi svolti</a> <code>🌎</code> <a href="https://www.w3schools.com/sql/default.asp">W3S</a> <code>👩‍🏫</code> <a href="file:///Users/lybomyr/Desktop/GitHub/appunti-sql/presentazione/">Presentazioni</a></p>
 
 <blockquote>
   <p><strong>Note</strong>\
@@ -17,7 +17,9 @@ Verrà aggiornato solo quando avrò voglia!</p>
 <h3>Da fare</h3>
 
 <ul>
-<li>[ ] Migliorare la sezione contenuti</li>
+<li>[x] ~Migliorare la sezione contenuti~</li>
+<li>[x] ~Tradurre le spiegazini~</li>
+<li>[x] ~Evidenziare parole importanti nel testo~</li>
 <li>[ ] Migliorare la dimostrazione</li>
 </ul>
 
@@ -25,169 +27,153 @@ Verrà aggiornato solo quando avrò voglia!</p>
 
 <h2>Contenuti</h2>
 
-<!--   -->
-
-<h3><a href="#Definizioni">Definizioni</a></h3>
-
 <ul>
-<li><a href="#Database">Database</a>
+<li><a href="#definizioni">Definizioni</a>
 <ul>
-<li><a href="#DBMS">DBMS</a></li>
-<li><a href="#Tipi">Tipi</a>
+<li><a href="#database">Database</a>
 <ul>
-<li>Relazionali</li>
-<li>Non relazionali</li>
+<li><a href="#dbms">DBMS</a></li>
+<li><a href="#relazionali">Relazionali</a></li>
+<li><a href="#nosql">NoSQL</a></li>
+</ul></li>
+<li><a href="#sql">SQL</a>
+<ul>
+<li><a href="#query">Query</a>
+<ul>
+<li><a href="#query-clauses">Query clauses</a></li>
+</ul></li>
+<li><a href="#primary-key">Primary key</a></li>
+<li><a href="#foreign-key">Foreign key</a></li>
+<li><a href="#DDL">DDL</a></li>
+<li><a href="#DML">DML</a></li>
+<li><a href="#DCL">DCL</a></li>
 </ul></li>
 </ul></li>
-<li><p><a href="#SQL">SQL</a></p>
-
+<li><a href="#consigli">Consigli</a>
 <ul>
-<li><a href="#Query">Query</a>
-<ul>
-<li><a href="#Query-clauses">Query clauses</a></li>
+<li><a href="#case-when-più-esplicito">CASE WHEN più esplicito</a></li>
+<li><a href="#struttura-più-chiara">Struttura più chiara</a></li>
+<li><a href="#espressioni-aritmetiche">Espressioni aritmetiche</a></li>
+<li><a href="#alias-significativi">Alias significativi</a></li>
 </ul></li>
-<li><a href="#">DDL</a> - Data Definition Language</li>
-<li><a href="#Data-Manipulation-Language">DML</a> - Data Manipulation Language</li>
-<li><a href="#">DML</a> - Data Control Language
-<!--   -->
-<h3><a href="#Consigli">Consigli</a></h3></li>
+<li><a href="#data-manipulation-language">Data Manipulation Language (DML)</a>
+<ul>
+<li><a href="#selezione-dei-dati">Selezione dei dati</a>
+<ul>
+<li><a href="#select-statement">SELECT statement</a>
+<ul>
+<li><a href="#tutte-colonne">Tutte colonne</a></li>
+<li><a href="#colonne-specifiche">Colonne specifiche</a></li>
+<li><a href="#colonne-con-alias">Colonne con alias</a></li>
+<li><a href="#colonne-con-espressioni-aritmetiche">Colonne con espressioni aritmetiche</a></li>
+<li><a href="#seleziona-dati-univoci">Seleziona dati univoci</a></li>
 </ul></li>
-<li><p><a href="#CASE-WHEN-più-esplicito"><code>CASE WHEN</code> più esplicito</a></p></li>
-<li><a href="#Struttura-più-chiara">Struttura più chiara</a></li>
-<li><a href="#Espressioni-aritmetiche">Espressioni aritmetiche</a></li>
-<li><p><a href="#Alias-significativi">Alias significativi</a>
-<!--   --></p>
-
-<h3><a href="#Data-Manipulation-Language">Data Manipulation Language</a> (DML) * <a href="#Selezione-dei-dati">Selezione dei dati</a></h3>
-
+<li><a href="#filtraggio-dei-dati">Filtraggio dei dati</a>
 <ul>
-<li><a href="#SELECT-statement">SELECT statement</a>
-<ul>
-<li><a href="#Tutte-colonne">Tutte colonne</a></li>
-<li><a href="#Colonne-specifiche">Colonne specifiche</a></li>
-<li><a href="#Colonne-con-alias">Colonne con alias</a> <code>AS</code></li>
-<li><a href="#Colonne-con-espressioni-aritmetiche">Colonne con espressioni aritmetiche</a></li>
-<li><a href="#Seleziona-dati-univoci">Seleziona dati univoci</a> <code>DISTINCT</code></li>
+<li><a href="#corrispondenze-parziali-o-pattern">Corrispondenze parziali o pattern</a></li>
+<li><a href="#valore-specifico-in-una-colonna">Valore specifico in una colonna</a></li>
+<li><a href="#valore-null-o-non-null">Valore NULL o non NULL</a></li>
+<li><a href="#filtrare-utilizzando-una-lista-dei-valori">Filtrare utilizzando una lista dei valori</a></li>
 </ul></li>
-<li><a href="#Filtraggio-dei-dati">Filtraggio dei dati</a>
+<li><a href="#operatori-di-confronto">Operatori di confronto</a>
 <ul>
-<li><a href="#Corrispondenze-parziali-o-pattern">Corrispondenze parziali o pattern</a> <code>LIKE</code></li>
-<li><a href="#Valore-specifico-in-una-colonna">Valore specifico in una colonna</a></li>
-<li><a href="#Valore-NULL-o-non-NULL">Valore NULL o non NULL</a> <code>IS NULL</code>/<code>IS NOT NULL</code></li>
-<li><a href="#Filtrare-utilizzando-una-lista-dei-valori">Filtrare utilizzando una lista dei valori</a> <code>IN</code></li>
+<li><a href="#ugualianza">Ugualianza</a></li>
+<li><a href="#disugualianza">Disugualianza</a></li>
+<li><a href="#maggiore-di">Maggiore di</a></li>
+<li><a href="#maggiore-o-uguale-di">Maggiore o uguale di</a></li>
+<li><a href="#minore">Minore</a></li>
+<li><a href="#minore-o-uguale-di">Minore o uguale di</a></li>
 </ul></li>
-<li><a href="#Operatori-di-confronto">Operatori di confronto</a>
+<li><a href="#operatori-logici">Operatori logici</a>
 <ul>
-<li><a href="#Ugualianza">Ugualianza</a> <code>=</code></li>
-<li><a href="#Disugualianza">Disugualianza</a> <code>&lt;&gt;</code> o <code>!=</code></li>
-<li><a href="#Maggiore-di">Maggiore di</a> <code>&gt;</code></li>
-<li><a href="#Maggiore-o-uguale-di]">Maggiore o uguale di</a> <code>&gt;=</code></li>
-<li><a href="#Minore">Minore</a> <code>&lt;</code></li>
-<li><a href="#Minore-o-uguale-di">Minore o uguale di</a> <code>=&lt;</code></li>
+<li><a href="#and">AND</a></li>
+<li><a href="#or">OR</a></li>
+<li><a href="#and-e-or">AND e OR</a></li>
+<li><a href="#not">NOT</a></li>
 </ul></li>
-<li><a href="Operatori-logici">Operatori logici</a>
-<ul>
-<li><a href="#AND">AND</a></li>
-<li><a href="#OR">OR</a></li>
-<li><a href="#AND-e-OR">AND e OR</a></li>
-<li><a href="#NOT">NOT</a>
-<ul>
-<li>Negare condizioni multiple</li>
+<li><a href="#ordinamento-dei-risultati">Ordinamento dei risultati</a></li>
+<li><a href="#limitazione-dei-risultati">Limitazione dei risultati</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#Ordinamento-dei-risultati">Ordinamento dei risultati</a> <code>ORDER BY</code>
+<li><a href="#operatori-di-aggregazione">Operatori di aggregazione</a>
 <ul>
-<li><a href="#Ordinamento-crescente-per-una-colonna">Ordinamento crescente per una colonna</a> <code>ASC</code></li>
-<li><a href="#Ordinamento-decrescente-per-una-colonna">Ordinamento decrescente per una colonna</a> <code>DESC</code></li>
-<li><a href="#Ordinamento-per-più-colonne">Ordinamento per più colonne</a></li>
-<li><a href="#Ordinamento-con-espressioni-aritmetiche">Ordinamento con espressioni aritmetiche</a></li>
+<li><a href="#sommare-i-valori">Sommare i valori</a></li>
+<li><a href="#calcolare-la-media">Calcolare la media</a></li>
+<li><a href="#contare">Contare</a></li>
+<li><a href="#valore-massimo">Valore massimo</a></li>
+<li><a href="#valore-minimo">Valore minimo</a></li>
+<li><a href="#arrotondamento">Arrotondamento</a></li>
 </ul></li>
-<li><a href="#Limitazione-dei-risultati">Limitazione dei risultati</a> <code>LIMIT</code>
+<li><a href="#join">JOIN delle tabelle</a>
 <ul>
-<li><a href="#Limitazione-del-numero-di-righe-restituite">Limitazione del numero di righe restituite</a></li>
-<li><a href="#Limitazione-dei-risultati-con-ordinamento">Limitazione dei risultati con ordinamento</a></li>
-<li><a href="#Limitazione-dei-risultati-con-offset">Limitazione dei risultati con offset</a></li>
-<li><a href="#Limitazione-dei-risultati-con-combinazione-di-offset-e-limit">Limitazione dei risultati con combinazione di offset e limit</a></li>
+<li><a href="#inner-join">INNER JOIN</a></li>
+<li><a href="#left-join">LEFT JOIN</a></li>
+<li><a href="#right-join">RIGHT JOIN</a></li>
+<li><a href="#full-join">FULL JOIN</a></li>
+<li><a href="#unione-implicita">Unione implicita</a></li>
 </ul></li>
+<li>Subquery
+<ul>
+<li>Che restituiscono un valore
+<ul>
+<li>MAX</li>
+<li>AVG</li>
 </ul></li>
-<li><a href="#Operatori-di-aggregazione">Operatori di aggregazione</a>
+<li>Subquery che restituiscono più valori 
 <ul>
-<li><a href="#Sommare-i-valori">Sommare i valori</a> <code>SUM</code>
-<ul>
-<li><a href="#Sommare-i-valori-per-ciascun-gruppo">Sommare i valori per ciascun gruppo</a> <code>SUM</code> con <code>GROUP BY</code></li>
+<li>IN </li>
+<li>NOT IN</li>
+<li>ANY</li>
+<li>ALL</li>
+<li>EXIT</li>
+<li>NOT EXIT</li>
 </ul></li>
-<li><a href="#Calcolare-la-media">Calcolare la media</a> <code>AVG</code>
-<ul>
-<li><a href="#Calcolare-la-media-condizionale">Calcolare la media condizionale</a> <code>AVG</code> con <code>CASE WHEN</code></li>
-<li><a href="#Calcolare-la-media-ponderata">Calcolare la media ponderata</a> <code>SUM</code> e <code>AVG</code> con espressioni aritmetiche</li>
-</ul></li>
-<li><a href="#Contare">Contare</a> <code>COUNT</code>
-<ul>
-<li><a href="#Contare-valori-distinti">Contare valori distinti</a> <code>COUNT</code> con <code>DISTINCT</code></li>
-</ul></li>
-<li><a href="#Valore-massimo">Valore massimo</a> <code>MAX</code>
-<ul>
-<li><a href="#Valore-massimo-per-ciascun-gruppo">Valore massimo per ciascun gruppo</a> <code>MAX</code> con <code>GROUP BY</code></li>
-</ul></li>
-<li><a href="#Valore-minimo">Valore minimo</a> <code>MIN</code>
-<ul>
-<li><a href="#Valore-minimo-condizionale">Valore minimo condizionale</a> <code>MIN</code> con <code>CASE WHEN</code></li>
-</ul></li>
-<li><a href="#Arrotondamento">Arrotondamento</a> <code>ROUND</code></li>
-</ul></li>
-<li><code>JOIN</code> delle tabelle
-<ul>
-<li>INNER JOIN</li>
-<li>LEFT JOIN</li>
-<li>RIGHT JOIN</li>
-</ul></li>
-<li>Modifica dei dati
-<ul>
-<li>INSERT INTO</li>
-<li>UPDATE</li>
-<li>DELETE</li>
-<li>Transazioni
-<ul>
-<li>BEGIN</li>
-<li>COMMIT</li>
-<li>ROLLBACK
-<!--   -->
-<br></li>
+<li>Query correlate</li>
+<li>subquery nella FROM</li>
 </ul></li>
 </ul></li>
 </ul>
+
+<!-- - [Modifica dei dati](#modifica-dei-dati)
+    - [INSERT INTO](#insert-into)
+    - [UPDATE](#update)
+    - [DELETE](#delete)
+    - [Transazioni](#transazioni) -->
 
 <h2>Definizioni</h2>
 
 <h3>Database</h3>
 
-<h4>Tipi</h4>
+<p>Un database è un insieme organizzato di dati. Può essere tutto, da un semplice elenco di contatti telefonici fino a un intero inventario di prodotti per un'azienda.</p>
 
-<h5>Relazionali</h5>
+<h4>DBMS</h4>
 
-<p>I database relazionali organizzano dati in tabelle con righe e colonne, seguendo uno <strong>schema rigido</strong>. Utilizzano <strong><a href="https://www.google.com/search?q=sql+database">SQL</a></strong> per gestire dati strutturati e relazionali, ideali per applicazioni aziendali, gestione di inventari e dati finanziari.</p>
+<p>Un DBMS è un software che gestisce i database. Esempi comuni sono MySQL, PostgreSQL, MongoDB e SQLite.</p>
 
-<h5>Non relazionali</h5>
+<h4>Relazionali</h4>
 
-<p>I database NoSQL sono progettati per <strong>memorizzare dati in modo flessibile e scalabile</strong>, senza uno schema rigido. Possono gestire dati <strong>non strutturati</strong> o semi-strutturati, seguendo vari modelli come <em>documenti, chiave-valore, grafo o colonne</em>. Spesso offrono scalabilità orizzontale su <strong><a href="https://www.google.com/search?q=cluster+database">cluster</a></strong> e sono adatti per applicazioni con dati complessi, non strutturati o altamente distribuiti, come applicazioni Web, analisi dei big data e flussi di dati in tempo reale.</p>
+<p>Un database relazionale è un tipo di database che organizza i dati in <strong>tabelle</strong> con <strong>righe</strong> e <strong>colonne</strong>, molto simile a come i dati sono organizzati in un <strong>foglio di calcolo</strong>. Ogni <strong>riga</strong> rappresenta un <strong>record</strong> distinto e ogni <strong>colonna</strong> rappresenta un <strong>campo</strong> di quel <strong>record</strong>. Le <strong>tabelle</strong> possono essere collegate tra loro attraverso <strong>chiavi primarie</strong> e <strong>chiavi esterne</strong>, permettendo di creare <strong>relazioni</strong> tra i dati. Questo modello di database è molto comune e largamente utilizzato in molte applicazioni. Esempi di <strong>DBMS relazionali</strong> includono <strong>MySQL</strong>, <strong>PostgreSQL</strong> e <strong>SQLite</strong>.</p>
 
-<p><br></p>
+<h4>NoSQL</h4>
 
-<p>| Caratteristica                   | Database Relazionali    | Database Document-Oriented  |
-|----------------------------------|-------------------------|-----------------------------|
-| <strong>Modello di Dati</strong>                  | Tabellare con rigide relazioni tra le tabelle | Flessibile, basato su documenti con dati semi-strutturati |
-| <strong>Schema dei Dati</strong>                 | Schema rigido, definito in anticipo | Schema dinamico, senza necessità di uno schema rigido |
-| <strong>Linguaggio di Query</strong>            | SQL (Structured Query Language) | Query specifiche del database o linguaggi di query adatti |
-| <strong>Scalabilità</strong>                      | Solitamente scalabilità verticale (aggiornare l'hardware) | Scalabilità orizzontale su cluster |
-| <strong>Consistenza dei Dati</strong>             | Struttura transazionale con forte consistenza | Modello di consistenza eventuale |
-| <strong>Esempi Noti</strong>                      | MySQL, PostgreSQL, Oracle, SQL Server | MongoDB, Couchbase, RavenDB |
-| <strong>Casi d'Uso Tipici</strong>                | Applicazioni con schemi dati ben definiti e operazioni transazionali | Applicazioni con dati non strutturati o semi-strutturati, scalabilità e flessibilità di query |</p>
+<p>I <strong>database NoSQL</strong>, o "non solo SQL", sono un tipo di database che non seguono il <strong>modello relazionale</strong> standard. Sono progettati per essere <strong>altamente scalabili</strong> e per gestire <strong>grandi quantità di dati distribuiti</strong> su molteplici macchine. I <strong>database NoSQL</strong> non richiedono uno <strong>schema fisso</strong>, il che significa che i dati possono essere inseriti nel database senza dover prima definire la <strong>struttura della tabella</strong>. Questo li rende molto <strong>flessibili</strong> e adatti per lavorare con <strong>dati non strutturati</strong> o <strong>semi-strutturati</strong>. Esistono diversi tipi di <strong>database NoSQL</strong>, tra cui <strong>database di documenti</strong> (come <strong>MongoDB</strong>), <strong>database di chiave-valore</strong> (come <strong>Redis</strong>), <strong>database di colonne</strong> (come <strong>Cassandra</strong>) e <strong>database di grafi</strong> (come <strong>Neo4j</strong>)..</p>
+
+<h4>DDL</h4>
+
+<p>Comandi utilizzati per definire o modificare la struttura di un database o di una tabella. Esempi di comandi DDL includono <code>CREATE</code>, <code>ALTER</code> e <code>DROP</code>.</p>
+
+<h4>DML</h4>
+
+<p>Comandi utilizzati per manipolare i dati all'interno delle tabelle di un database. Esempi di comandi DML includono <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> e <code>DELETE</code>.</p>
+
+<h4>DCL</h4>
+
+<p>Comandi utilizzati per controllare l'accesso ai dati all'interno del database. Esempi di comandi DCL includono <code>GRANT</code> e <code>REVOKE</code>, che sono utilizzati per gestire i diritti e i privilegi degli utenti.</p>
 
 <p><br></p>
 
 <h3>SQL</h3>
 
-<p>SQL (Structured Query Language) è un <strong>linguaggio di programmazione</strong> utilizzato per <strong>comunicare</strong> con i <em>sistemi di gestione dei database</em> (DBMS) al fine di creare, gestire e interrogare basi di dati relazionali. SQL è progettato per l'interazione con database relazionali, come <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.oracle.com/">Oracle</a>, <a href="https://www.microsoft.com/en-us/sql-server">Microsoft SQL Server</a> e molti altri. È un linguaggio standardizzato con una sintassi (non CASE SENSITIVE) chiara e regole ben definite.</p>
+<p>SQL è un linguaggio di programmazione utilizzato per comunicare con e manipolare i database.</p>
 
 <p>Con SQL si possono fare seguenti operazioni:</p>
 
@@ -216,7 +202,7 @@ Verrà aggiornato solo quando avrò voglia!</p>
 
 <h4>Query</h4>
 
-<p>Una query SQL è un modo di comunicare con il <strong>database</strong> per ottenere le <strong>informazioni</strong> di cui hai bisogno o per effettuare <strong>**modifiche</strong> nei dati.   </p>
+<p>Una query SQL è un modo di comunicare con il <strong>database</strong> per ottenere le <strong>informazioni</strong> di cui hai bisogno o per effettuare <strong>**modifiche</strong> nei dati. Detto meglio: Una query è una richiesta di dati da un database.</p>
 
 <h5>Query clauses</h5>
 
@@ -248,6 +234,14 @@ Verrà aggiornato solo quando avrò voglia!</p>
         </tr>
     </tbody>
 </table>
+
+<h4>Primary key</h4>
+
+<p>Una chiave primaria è un campo unico in una tabella che può identificare ogni riga.</p>
+
+<h4>Foreign key</h4>
+
+<p>Una chiave esterna è un campo in una tabella che fa riferimento alla chiave primaria di un'altra tabella.</p>
 
 <p><br>
 <br></p>
@@ -318,9 +312,6 @@ FROM
 <li><em>Cancellazione dei dati (DELETE)</em>: La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.</li>
 <li><em>Interrogazione dei dati (SELECT)</em></li>
 </ul>
-
-<p><br>
-<br></p>
 
 <h2>Selezione dei dati</h2>
 
@@ -576,7 +567,7 @@ SELECT
 FROM Dipendenti 
 WHERE Reparto = 'Vendite' AND Stipendio &gt; 30000;
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -610,7 +601,7 @@ WHERE Reparto = 'Vendite' AND Stipendio &gt; 30000;
             <td>Mario</td>
         </tr>
     </table>
-</details></p>
+</details> --></p>
 
 <h4>OR</h4>
 
@@ -623,7 +614,7 @@ SELECT
 FROM Clienti
 WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -656,7 +647,7 @@ WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
             <td>Luca</td>
         </tr>
     </table>
-</details></p>
+</details> --></p>
 
 <h4>AND e OR</h4>
 
@@ -669,7 +660,7 @@ SELECT
 FROM Prodotti
 WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo &gt; 500;
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -703,7 +694,7 @@ WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo &gt; 5
             <td>Prodotto A</td>
         </tr>
     </table> <br />
-</details></p>
+</details> --></p>
 
 <h4>NOT</h4>
 
@@ -716,7 +707,7 @@ SELECT
 FROM Libri
 WHERE NOT Genere = 'Fantascienza';
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -749,7 +740,7 @@ WHERE NOT Genere = 'Fantascienza';
             <td>Libro 3</td>
         </tr>
     </table>
-</details></p>
+</details> --></p>
 
 <p><a href="#Contenuti"><code>🔼</code></a>
 <br>
@@ -834,7 +825,7 @@ SELECT
     Cognome
 FROM Clienti LIMIT 5;
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -845,24 +836,24 @@ FROM Clienti LIMIT 5;
         <tr>
             <td>John</td>
             <td>Doe</td>
-        </tr>
-        <!-- Altri dati della tabella Clienti -->
-        <!-- ... -->
-    </table>
-    <p>Risultato:</p>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-        </tr>
-        <!-- Altri 4 risultati della tabella Clienti -->
-        <!-- ... -->
-    </table>
-</details></p>
+        </tr></p>
+
+<pre><code>&lt;/table&gt;
+&lt;p&gt;Risultato:&lt;/p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nome&lt;/th&gt;
+        &lt;th&gt;Cognome&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;Doe&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;
+</code></pre>
+
+<p></details> --></p>
 
 <h4>Limitazione dei risultati con ordinamento</h4>
 
@@ -876,7 +867,7 @@ SELECT
 FROM Prodotti
 ORDER BY Prezzo DESC LIMIT 3;
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -904,7 +895,7 @@ ORDER BY Prezzo DESC LIMIT 3;
         <i> Altri 2 risultati della tabella Prodotti ordinati per Prezzo </i>
         <i> ... </i>
     </table>
-</details></p>
+</details> --></p>
 
 <h4>Limitazione dei risultati con offset</h4>
 
@@ -917,7 +908,7 @@ SELECT
     Cognome
 FROM Dipendenti LIMIT 5 OFFSET 5;
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -941,7 +932,7 @@ FROM Dipendenti LIMIT 5 OFFSET 5;
         <i> Altri 4 risultati della tabella Dipendenti (dal sesto al decimo) </i>
         <i> ... </i>
     </table>
-</details></p>
+</details>  --></p>
 
 <h4>Limitazione dei risultati con combinazione di offset e limit</h4>
 
@@ -953,7 +944,7 @@ SELECT
     Titolo
 FROM Libri LIMIT 10 OFFSET 20;
 </code>
-<details>
+<!-- <details>
     <summary><b>Demostrazione</b></summary>
     <p>...</p>
     <table>
@@ -974,7 +965,7 @@ FROM Libri LIMIT 10 OFFSET 20;
         <i> Altri 9 risultati della tabella Libri (dal ventunesimo al trentesimo) </i>
         <i> ... </i>
     </table>
-</details></p>
+</details> --></p>
 
 <p><a href="#Contenuti"><code>🔼</code></a>
 <br>
@@ -1103,5 +1094,249 @@ FROM Esami;
 <br>
 <br></p>
 
+<h3>Join</h3>
+
+<p>In SQL, un "JOIN" è un metodo per combinare righe provenienti da due o più tabelle, basato su una colonna correlata tra di loro. Ci sono diversi tipi di JOIN in SQL:</p>
+
+<ul>
+<li><strong>INNER JOIN</strong>: Restituisce le righe quando c'è una corrispondenza in entrambe le tabelle.</li>
+<li><strong>LEFT JOIN</strong>: Restituisce tutte le righe dalla tabella di sinistra, e le righe corrispondenti dalla tabella di destra. Se non c'è corrispondenza, il risultato è NULL sulla parte destra.</li>
+<li><strong>RIGHT JOIN</strong>: Restituisce tutte le righe dalla tabella di destra, e le righe corrispondenti dalla tabella di sinistra. Se non c'è corrispondenza, il risultato è NULL sulla parte sinistra.</li>
+<li><strong>FULL JOIN</strong>: Restituisce le righe quando c'è una corrispondenza in una delle tabelle. Quindi, se c'è una riga in una delle tabelle che non corrisponde con l'altra, il risultato sarà NULL.</li>
+</ul>
+
+<h4>INNER JOIN</h4>
+
+<p>La tabella <code>Orders</code>:</p>
+
+<p>| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+| 4       | 4          | 2022-02-10|</p>
+
+<p>La tabella <code>Customers</code>:</p>
+
+<p>| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+| 4          | Bob          |</p>
+
+<p>Se desideri combinare queste due tabelle per ottenere un elenco di ordini con il nome del cliente, puoi utilizzare un INNER JOIN. La query SQL sarebbe la seguente:</p>
+
+<p><code>sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+</code></p>
+
+<p>Questa istruzione restituirà una tabella che include solo gli ordini per i quali esiste un cliente corrispondente:</p>
+
+<p>| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| 4       | Bob          | 2022-02-10|</p>
+
+<h4>LEFT JOIN</h4>
+
+<p>La tabella <code>Orders</code>:</p>
+
+<p>| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+| 4       | 5          | 2022-02-10|</p>
+
+<p>La tabella <code>Customers</code>:</p>
+
+<p>| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |</p>
+
+<p>Se desideri combinare queste due tabelle per ottenere un elenco di ordini con il nome del cliente, puoi utilizzare un LEFT JOIN. La query SQL sarebbe la seguente:</p>
+
+<p><code>sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+</code></p>
+
+<p>Questa istruzione restituirà una tabella che include tutti gli ordini, ma i nomi dei clienti appariranno solo per gli ordini in cui esiste un cliente corrispondente. Se un ordine ha un <code>CustomerID</code> che non esiste nella tabella <code>Customers</code>, il <code>CustomerName</code> per quel determinato ordine sarà NULL.</p>
+
+<p>| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| 4       | NULL         | 2022-02-10|</p>
+
+<h4>RIGHT JOIN</h4>
+
+<p>La tabella <code>Orders</code>:</p>
+
+<p>| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|</p>
+
+<p>La tabella <code>Customers</code>:</p>
+
+<p>| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+| 4          | Bob          |</p>
+
+<p>Se desideri combinare queste due tabelle per ottenere un elenco di clienti con i relativi ordini, puoi utilizzare un RIGHT JOIN. La query SQL sarebbe la seguente:</p>
+
+<p><code>sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+</code></p>
+
+<p>Questa istruzione restituirà una tabella che include tutti i clienti, ma gli ordini appariranno solo per i clienti in cui esiste un ordine corrispondente. Se un cliente non ha nessun ordine nella tabella <code>Orders</code>, l'<code>OrderID</code> e l'<code>OrderDate</code> per quel cliente saranno NULL.</p>
+
+<p>| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| NULL    | Bob          | NULL      |</p>
+
+<h4>FULL JOIN</h4>
+
+<p>La tabella <code>Orders</code>:</p>
+
+<p>| OrderID | CustomerID | OrderDate |
+|---------|------------|-----------|
+| 1       | 3          | 2022-01-22|
+| 2       | 1          | 2022-03-20|
+| 3       | 2          | 2022-04-22|
+| 4       | 5          | 2022-02-10|</p>
+
+<p>La tabella <code>Customers</code>:</p>
+
+<p>| CustomerID | CustomerName |
+|------------|--------------|
+| 1          | John Doe     |
+| 2          | Jane Doe     |
+| 3          | Alice        |
+| 4          | Bob          |</p>
+
+<p>Se vuoi combinare queste due tabelle per ottenere un elenco di tutti gli ordini e tutti i clienti, puoi utilizzare un FULL JOIN. La query SQL sarebbe la seguente:</p>
+
+<p><code>sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+FULL JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+</code></p>
+
+<p>Questa istruzione restituirà una tabella che include tutti gli ordini e tutti i clienti. Se un ordine ha un <code>CustomerID</code> che non esiste nella tabella <code>Customers</code>, il <code>CustomerName</code> per quel determinato ordine sarà NULL. Allo stesso modo, se un cliente non ha nessun ordine nella tabella <code>Orders</code>, l'<code>OrderID</code> e l'<code>OrderDate</code> per quel cliente saranno NULL.</p>
+
+<p>| OrderID | CustomerName | OrderDate |
+|---------|--------------|-----------|
+| 1       | Alice        | 2022-01-22|
+| 2       | John Doe     | 2022-03-20|
+| 3       | Jane Doe     | 2022-04-22|
+| 4       | NULL         | 2022-02-10|
+| NULL    | Bob          | NULL      |</p>
+
+<h3>Unione implicita</h3>
+
+<p><details>
+  <summary><b>Spiegazione</b></summary></p>
+
+<p>Questa query SQL seleziona dati da due tabelle: <code>Orders</code> e <code>Customers</code>. L'obiettivo è ottenere una lista di ordini insieme ai nomi dei clienti che hanno effettuato tali ordini.</p>
+
+<p>Ecco una spiegazione dettagliata di ciascuna parte della query:</p>
+
+<ul>
+<li><p><code>SELECT Orders.OrderID, Customers.CustomerName</code>: Questa parte della query specifica quali colonne di dati si desidera ottenere nel risultato. In questo caso, si desidera ottenere l'<code>OrderID</code> dalla tabella <code>Orders</code> e il <code>CustomerName</code> dalla tabella <code>Customers</code>.</p></li>
+<li><p><code>FROM Orders, Customers</code>: Questa parte della query specifica da quali tabelle si desidera ottenere i dati. In questo caso, si desidera ottenere i dati dalle tabelle <code>Orders</code> e <code>Customers</code>.</p></li>
+<li><p><code>WHERE Orders.CustomerID = Customers.CustomerID</code>: Questa è la clausola <code>WHERE</code> che stabilisce la condizione per unire le tabelle. In questo caso, le tabelle <code>Orders</code> e <code>Customers</code> vengono unite sulla base del <code>CustomerID</code>. Questo significa che per ogni riga nella tabella <code>Orders</code>, la query cerca una riga corrispondente nella tabella <code>Customers</code> dove <code>CustomerID</code> è lo stesso. In altre parole, per ogni ordine, la query trova il cliente che ha effettuato quell'ordine.</p>
+
+<p>Il risultato di questa query sarà un set di righe con <code>OrderID</code> e <code>CustomerName</code>, dove ogni riga rappresenta un ordine e il cliente che ha effettuato quell'ordine.
+</details></p></li>
+</ul>
+
+<p><code>sql
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders, Customers
+WHERE Orders.CustomerID = Customers.CustomerID;
+</code>
+<a href="#Contenuti"><code>🔼</code></a>
+<br>
+<br></p>
+
+<h3>Subquery</h3>
+
+<p>Una subquery, o sottoquery, è una query SQL che è <strong>incorporata all'interno di un'altra query</strong>. Una subquery può restituire dati a un comando SQL esterno, o può essere eseguita come un comando autonomo. Le subquery possono essere utilizzate in diverse istruzioni SQL come <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, o <code>DELETE</code>.</p>
+
+<h4>Che restituiscono un valore</h4>
+
+<p>Una subquery che restituisce un valore è una subquery che restituisce un singolo valore. Questo tipo di subquery può essere utilizzato ovunque ci si aspetti un singolo valore, come in un'istruzione <code>SELECT</code>, <code>WHERE</code> o <code>HAVING</code>.</p>
+
+<p>In questo esempio, la subquery <code>(SELECT AVG(punteggio) FROM studenti)</code> calcola il punteggio medio degli studenti. La query <strong>esterna</strong> poi seleziona i nomi e i punteggi degli studenti che hanno un punteggio superiore alla media.</p>
+
+<p><code>sql
+SELECT nome, punteggio 
+FROM studenti 
+WHERE punteggio &gt; (SELECT AVG(punteggio) FROM studenti);
+</code>
+<details>
+  <summary><b>Spiegazione</b></summary>
+    <ol>
+        <li><p> La subquery <code>(SELECT AVG(punteggio) FROM studenti)</code> viene eseguita per prima. Questa subquery calcola il punteggio medio di tutti gli studenti nella tabella studenti.</p></li>
+        <li><p> Il risultato della subquery (il punteggio medio) viene poi utilizzato nella clausola <code>WHERE</code> della query esterna.</p></li>
+        <li><p>La query esterna <code>SELECT nome, punteggio FROM studenti WHERE punteggio > ...</code> viene quindi eseguita. Questa query seleziona le colonne  <code>nome</code> e <code>punteggio</code> dalla tabella <code>studenti</code>, ma solo per le righe in cui il <code>punteggio</code> è maggiore del punteggio medio calcolato dalla subquery.</p></li> <br />
+    </ol></p>
+
+<p></details></p>
+
+<h5>MAX</h5>
+
+<p>```sql</p>
+
+<p>```</p>
+
+<h5>AVG</h5>
+
+<p>```sql</p>
+
+<p>```</p>
+
+<h3>Subquery che restituiscono più valori</h3>
+
+<h4>IN</h4>
+
+<h4>NOT IN</h4>
+
+<h4>ANY</h4>
+
+<h4>ALL</h4>
+
+<h4>EXIT</h4>
+
+<h4>NOT EXIT</h4>
+
+<h3>Query correlate</h3>
+
+<h3>Subquery nella FROM</h3>
+
+<p><a href="#Contenuti"><code>🔼</code></a>
+<br>
+<br></p>
+
 <p><hr>
-fatto da me.</p>
+fatto da me, GitHub Copilot e ChatGPT.</p>
