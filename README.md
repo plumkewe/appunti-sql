@@ -7,8 +7,9 @@ Il software che utilizziamo a scuola è:
 
 `ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL) `🌎` [W3S](https://www.w3schools.com/sql/default.asp) `👩‍🏫` [Presentazioni](/presentazione)
 
+<br>
 
-> **Note**\
+> [!NOTE]  
 > Verrà aggiornato solo quando avrò voglia!
 
 ### Da fare
