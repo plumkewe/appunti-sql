@@ -2,22 +2,21 @@
 
 Il software che utilizziamo a scuola è:
 <p>
-<img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
+	<img height="32" width="32" src="https://cdn.simpleicons.org/xampp/orange" alt="XAMPP"/>
+	<a href="https://app.diagrams.net/">
+   	 <img height="32" width="32" src="https://cdn.simpleicons.org/diagramsdotnet/orange" alt="diagramsdotnet"/>
+	</a>
 </p>
 
-`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL) `🌎` [W3S](https://www.w3schools.com/sql/default.asp) `👩‍🏫` [Presentazioni](/presentazione)
+`ℹ️` [Scopri di più](https://en.wikipedia.org/wiki/XAMPP) `⭐️` [Esercizi svolti](https://github.com/plumkewe/scuola/tree/main/Attivita-svolta/2023/SQL) `🌎` [W3S](https://www.w3schools.com/sql/default.asp)
 
-<br>
 
-> [!NOTE]  
+> **Note**\
 > Verrà aggiornato solo quando avrò voglia!
 
 ### Da fare
-- [x] ~Migliorare la sezione contenuti~
-- [x] ~Tradurre le spiegazini~
-- [x] ~Evidenziare parole importanti nel testo~
+- [ ] Migliorare la sezione contenuti
 - [ ] Migliorare la dimostrazione
-- [ ] Rifare la repo
 
 <br>
 
@@ -27,6 +26,15 @@ Il software che utilizziamo a scuola è:
 		- [DBMS](#dbms)
 		- [Relazionali](#relazionali)
 		- [NoSQL](#nosql)
+		- [Normalizzazione](#normalizzazione)
+		- [Denormalizazzione](#denormalizzazione)
+		- [Indice](#indice)  
+		- [Schema](#schema)
+			- [Star](#star)
+			- [Snowflake](#snowflake)
+			- [Flat](#Flat)
+			- [Entity-Relationship](#e-r-entity-relationship)
+			- [Object-Relational](#object-relational)
 	- [SQL](#sql)
 		- [Query](#query)
 			- [Query clauses](#query-clauses)
@@ -36,23 +44,23 @@ Il software che utilizziamo a scuola è:
 		- [DML](#DML)
 		- [DCL](#DCL)
 - [Consigli](#consigli)
-	- [CASE WHEN più esplicito](#case-when-più-esplicito)
+	- [`CASE WHEN` più esplicito](#case-when-più-esplicito)
 	- [Struttura più chiara](#struttura-più-chiara)
 	- [Espressioni aritmetiche](#espressioni-aritmetiche)
 	- [Alias significativi](#alias-significativi)
-- [Data Manipulation Language (DML)](#data-manipulation-language)
+- [Data Manipulation Language (DML)](#data-manipulation-language-dml)
 	- [Selezione dei dati](#selezione-dei-dati)
 		- [SELECT statement](#select-statement)
 			- [Tutte colonne](#tutte-colonne)
 			- [Colonne specifiche](#colonne-specifiche)
-			- [Colonne con alias](#colonne-con-alias)
+			- [Colonne con alias](#colonne-con-alias-as)
 			- [Colonne con espressioni aritmetiche](#colonne-con-espressioni-aritmetiche)
-			- [Seleziona dati univoci](#seleziona-dati-univoci)
+			- [Seleziona dati univoci](#seleziona-dati-univoci-distinct)
 		- [Filtraggio dei dati](#filtraggio-dei-dati)
-			- [Corrispondenze parziali o pattern](#corrispondenze-parziali-o-pattern)
+			- [Corrispondenze parziali o pattern](#corrispondenze-parziali-o-pattern-like)
 			- [Valore specifico in una colonna](#valore-specifico-in-una-colonna)
-			- [Valore NULL o non NULL](#valore-null-o-non-null)
-			- [Filtrare utilizzando una lista dei valori](#filtrare-utilizzando-una-lista-dei-valori)
+			- [Valore NULL o non NULL](#valore-null-o-non-null-is-nullis-not-null)
+			- [Filtrare utilizzando una lista dei valori](#filtrare-utilizzando-una-lista-dei-valori-in)
 		- [Operatori di confronto](#operatori-di-confronto)
 			- [Ugualianza](#ugualianza)
 			- [Disugualianza](#disugualianza)
@@ -65,40 +73,25 @@ Il software che utilizziamo a scuola è:
 			- [OR](#or)
 			- [AND e OR](#and-e-or)
 			- [NOT](#not)
-		- [Ordinamento dei risultati](#ordinamento-dei-risultati)
-		- [Limitazione dei risultati](#limitazione-dei-risultati)
+		- [Ordinamento dei risultati](#ordinamento-dei-risultati-order-by)
+		- [Limitazione dei risultati](#limitazione-dei-risultati-limit)
 	- [Operatori di aggregazione](#operatori-di-aggregazione)
-		- [Sommare i valori](#sommare-i-valori)
-		- [Calcolare la media](#calcolare-la-media)
-		- [Contare](#contare)
-		- [Valore massimo](#valore-massimo)
-		- [Valore minimo](#valore-minimo)
-		- [Arrotondamento](#arrotondamento)
-	- [JOIN delle tabelle](#join)
+		- [Sommare i valori](#sommare-i-valori-sum)
+		- [Calcolare la media](#calcolare-la-media-avg)
+		- [Contare](#contare-count)
+		- [Valore massimo](#valore-massimo-max)
+		- [Valore minimo](#valore-minimo-min)
+		- [Arrotondamento](#arrotondamento-round)
+	- [`JOIN` delle tabelle](#join-delle-tabelle)
 		- [INNER JOIN](#inner-join)
 		- [LEFT JOIN](#left-join)
 		- [RIGHT JOIN](#right-join)
 		- [FULL JOIN](#full-join)
-		- [Unione implicita](#unione-implicita)
-	- [Subquery](#Subquery)
-		- [Che restituiscono un valore](#Che-restituiscono-un-valore)
-			- [MAX](#MAX)
-			- [AVG](#AVG)
-		- [Subquery che restituiscono più valori](#Subquery-che-restituiscono-più-valori)
-			- [IN](#IN)
-			- [NOT IN](#NOT-IN)
-			- [ANY](#ANY)
-			- [ALL](#ALL)
-			- [EXISTS](#EXISTS)
-			- [NOT EXISTS](#NOT-EXISTS)
-		- [Query correlate](#Query-correlate)
-		- [Subquery nella FROM](#Subquery-nella-FROM)
-		
-<!-- - [Modifica dei dati](#modifica-dei-dati)
+- [Modifica dei dati](#modifica-dei-dati)
 	- [INSERT INTO](#insert-into)
 	- [UPDATE](#update)
 	- [DELETE](#delete)
-	- [Transazioni](#transazioni) -->
+	- [Transazioni](#transazioni)
 	
 ## Definizioni
 ### Database
@@ -108,10 +101,10 @@ Un database è un insieme organizzato di dati. Può essere tutto, da un semplice
 Un DBMS è un software che gestisce i database. Esempi comuni sono MySQL, PostgreSQL, MongoDB e SQLite.
 
 #### Relazionali
-Un database relazionale è un tipo di database che organizza i dati in **tabelle** con **righe** e **colonne**, molto simile a come i dati sono organizzati in un **foglio di calcolo**. Ogni **riga** rappresenta un **record** distinto e ogni **colonna** rappresenta un **campo** di quel **record**. Le **tabelle** possono essere collegate tra loro attraverso **chiavi primarie** e **chiavi esterne**, permettendo di creare **relazioni** tra i dati. Questo modello di database è molto comune e largamente utilizzato in molte applicazioni. Esempi di **DBMS relazionali** includono **MySQL**, **PostgreSQL** e **SQLite**.
+Un database relazionale è un tipo di database che organizza i dati in tabelle con righe e colonne, molto simile a come i dati sono organizzati in un foglio di calcolo. Ogni riga rappresenta un record distinto e ogni colonna rappresenta un campo di quel record. Le tabelle possono essere collegate tra loro attraverso chiavi primarie e chiavi esterne, permettendo di creare relazioni tra i dati. Questo modello di database è molto comune e largamente utilizzato in molte applicazioni. Esempi di DBMS relazionali includono MySQL, PostgreSQL e SQLite.
 
 #### NoSQL
-I **database NoSQL**, o "non solo SQL", sono un tipo di database che non seguono il **modello relazionale** standard. Sono progettati per essere **altamente scalabili** e per gestire **grandi quantità di dati distribuiti** su molteplici macchine. I **database NoSQL** non richiedono uno **schema fisso**, il che significa che i dati possono essere inseriti nel database senza dover prima definire la **struttura della tabella**. Questo li rende molto **flessibili** e adatti per lavorare con **dati non strutturati** o **semi-strutturati**. Esistono diversi tipi di **database NoSQL**, tra cui **database di documenti** (come **MongoDB**), **database di chiave-valore** (come **Redis**), **database di colonne** (come **Cassandra**) e **database di grafi** (come **Neo4j**)..
+I database NoSQL, o "non solo SQL", sono un tipo di database che non seguono il modello relazionale standard. Sono progettati per essere altamente scalabili e per gestire grandi quantità di dati distribuiti su molteplici macchine. I database NoSQL non richiedono uno schema fisso, il che significa che i dati possono essere inseriti nel database senza dover prima definire la struttura della tabella. Questo li rende molto flessibili e adatti per lavorare con dati non strutturati o semi-strutturati. Esistono diversi tipi di database NoSQL, tra cui database di documenti (come MongoDB), database di chiave-valore (come Redis), database di colonne (come Cassandra) e database di grafi (come Neo4j).
 
 #### DDL
 Comandi utilizzati per definire o modificare la struttura di un database o di una tabella. Esempi di comandi DDL includono `CREATE`, `ALTER` e `DROP`.
@@ -125,7 +118,7 @@ Comandi utilizzati per controllare l'accesso ai dati all'interno del database. E
 <br>
 
 ### SQL
-SQL è un linguaggio di programmazione utilizzato per comunicare con e manipolare i database.
+Linguaggio di interrogazione strutturato, utilizzato per gestire e manipolare i database.
 
 Con SQL si possono fare seguenti operazioni:
 <table>
@@ -153,6 +146,7 @@ Con SQL si possono fare seguenti operazioni:
 
 #### Query
 Una query SQL è un modo di comunicare con il **database** per ottenere le **informazioni** di cui hai bisogno o per effettuare ****modifiche** nei dati. Detto meglio: Una query è una richiesta di dati da un database.
+
 ##### Query clauses
 <table>
 	<tbody>
@@ -183,11 +177,166 @@ Una query SQL è un modo di comunicare con il **database** per ottenere le **inf
 	</tbody>
 </table>
 
-#### Primary key
-Una chiave primaria è un campo unico in una tabella che può identificare ogni riga.
+#### Primary key (chiave primaria)
+Un identificatore univoco per una riga in una tabella.
 
-#### Foreign key
-Una chiave esterna è un campo in una tabella che fa riferimento alla chiave primaria di un'altra tabella.
+#### Foreign key (Chiave esterna)
+Un campo in una tabella che fa riferimento alla chiave primaria di un'altra tabella.
+
+#### Normalizzazione
+Il processo di organizzazione dei dati in un database per ridurre la ridondanza e migliorare l'integrità dei dati.
+<details>
+	<summary><b>Leggi di più</b></summary>
+
+La normalizzazione è un concetto fondamentale nella progettazione di database. L'obiettivo della normalizzazione è di eliminare la ridondanza dei dati e di garantire l'integrità dei dati. Ci sono diverse forme di normalizzazione, ognuna delle quali è chiamata "forma normale". Le prime tre forme normali sono le più comuni.
+
+1. **Prima forma normale (1NF)**: In questa forma, ogni colonna di una tabella deve contenere valori atomici, cioè valori indivisibili. Inoltre, ogni colonna deve essere unica.
+
+   Esempio:
+
+   Non normalizzato:
+
+   | ID | Nome   | Telefoni         |
+   |----|--------|------------------|
+   | 1  | Mario  | 123456, 789012   |
+   | 2  | Luigi  | 345678           |
+
+   1NF:
+
+   | ID | Nome   | Telefono |
+   |----|--------|----------|
+   | 1  | Mario  | 123456   |
+   | 1  | Mario  | 789012   |
+   | 2  | Luigi  | 345678   |
+
+2. **Seconda forma normale (2NF)**: Una tabella è in 2NF se è in 1NF e ogni colonna non chiave dipende interamente dalla chiave primaria.
+
+   Esempio:
+
+   Non 2NF:
+
+   | ID | Nome   | Telefono | Città     |
+   |----|--------|----------|-----------|
+   | 1  | Mario  | 123456   | Roma      |
+   | 1  | Mario  | 789012   | Roma      |
+   | 2  | Luigi  | 345678   | Milano    |
+
+   2NF:
+
+   Tabella Utenti:
+
+   | ID | Nome   | Città   |
+   |----|--------|---------|
+   | 1  | Mario  | Roma    |
+   | 2  | Luigi  | Milano  |
+
+   Tabella Telefoni:
+
+   | ID | Telefono |
+   |----|----------|
+   | 1  | 123456   |
+   | 1  | 789012   |
+   | 2  | 345678   |
+
+3. **Terza forma normale (3NF)**: Una tabella è in 3NF se è in 2NF e non esistono dipendenze transitiva, cioè una colonna non chiave non dipende da altre colonne non chiave.
+
+   Esempio:
+
+   Non 3NF:
+
+   | ID | Nome   | Città   | Provincia |
+   |----|--------|---------|-----------|
+   | 1  | Mario  | Roma    | Lazio     |
+   | 2  | Luigi  | Milano  | Lombardia |
+
+   3NF:
+
+   Tabella Utenti:
+
+   | ID | Nome   | ID_Città |
+   |----|--------|----------|
+   | 1  | Mario  | 1        |
+   | 2  | Luigi  | 2        |
+
+   Tabella Città:
+
+   | ID | Nome   | Provincia |
+   |----|--------|-----------|
+   | 1  | Roma   | Lazio     |
+   | 2  | Milano | Lombardia |
+   
+4. **Quarta forma normale (4NF):** Una tabella è in 4NF se è in 3NF e non ha dipendenze multivalutate. Una dipendenza multivalutata si verifica quando un insieme di attributi dipende da un altro insieme di attributi.
+
+	4NF:
+
+	Tabella Utenti:
+
+	| ID | Nome   |
+	|----|--------|
+	| 1  | Mario  |
+	| 2  | Luigi  |
+
+	Tabella Lingue:
+
+	| ID | Lingua |
+	|----|--------|
+	| 1  | Inglese |
+	| 2  | Italiano |
+	| 3  | Francese |
+
+	Tabella Utenti_Lingue:
+
+	| ID_Utente | ID_Lingua |
+	|-----------|-----------|
+	| 1         | 1         |
+	| 1         | 2         |
+	| 2         | 1         |
+	| 2         | 3         |
+
+5. **Quinta forma normale (5NF, AKA SWAG)**: Assicura che ogni dipendenza di join sia implicitamente rappresentata dalle dipendenze di chiave e di inclusione. Questo è un concetto avanzato che va oltre il campo di applicazione di questo esempio. 
+</details>
+
+#### Denormalizzazione
+Il processo di combinazione di tabelle per migliorare le prestazioni di lettura a scapito delle prestazioni di scrittura.
+
+#### Indice
+Struttura di dati che migliora la velocità delle operazioni di database.
+
+#### Schema
+Un modello o struttura per un database definito in un linguaggio formale supportato dal sistema di gestione del database.
+
+##### Star
+Questo schema è chiamato "star" perché i diagrammi delle sue tabelle sembrano una stella. Al centro c'è una tabella dei fatti, e le tabelle dimensionali si irradiano da essa come i raggi di una stella. Questo schema è comunemente usato nei data warehouse.
+* **Punti di forza:** Facile da comprendere e da navigare. Ottimo per le query di analisi dei dati. <br>
+* **Debolezze:** Può portare a una certa ridondanza dei dati a causa della denormalizzazione.
+
+##### Snowflake
+Questo schema è una variante dello schema star in cui le tabelle dimensionali sono normalizzate. Questo riduce la ridondanza dei dati, ma può rendere le query più complesse.
+* **Punti di forza:** Riduce la ridondanza dei dati grazie alla normalizzazione. Può risparmiare spazio di archiviazione.
+* **Debolezze:** Le query possono diventare più complesse a causa delle tabelle aggiuntive. Può richiedere più tempo per eseguire le query rispetto allo schema star.
+
+##### Flat
+In questo schema, tutti i dati sono memorizzati in una singola tabella. Questo può essere semplice da implementare, ma può portare a problemi di ridondanza dei dati e di integrità dei dati.
+* **Punti di forza:** Semplice da implementare. Non richiede la gestione delle relazioni tra le tabelle.
+* **Debolezze:** Può portare a una grande ridondanza dei dati. Può causare problemi di integrità dei dati. Non è adatto per i dati complessi.
+
+##### Schema di normalizzazione
+Questo schema utilizza la normalizzazione per ridurre la ridondanza dei dati e migliorare l'integrità dei dati. Questo può comportare la creazione di molte tabelle correlate.
+* **Punti di forza:** Riduce la ridondanza dei dati e migliora l'integrità dei dati. Facilita l'aggiornamento dei dati.
+* **Debolezze:** Può portare a un gran numero di tabelle correlate, rendendo le query più complesse. Può richiedere più tempo per eseguire le query rispetto agli schemi denormalizzati.
+
+##### E-R (Entity-Relationship)
+Questo schema è usato per modellare le relazioni tra entità in un database. Le entità sono cose come persone, luoghi o oggetti, e le relazioni sono i modi in cui queste entità sono collegate.
+* **Punti di forza:** Molto intuitivo e facile da comprendere. Ottimo per modellare relazioni complesse tra entità.
+* **Debolezze:** Può diventare complicato con un gran numero di entità e relazioni. Non è ottimizzato per le prestazioni di query.
+
+![swag](https://vertabelo.com/blog/vertabelo-tips-good-er-diagram-layout/6.png)
+
+##### Object-Relational
+Questo schema combina elementi dei database relazionali e dei database orientati agli oggetti. Permette di memorizzare dati complessi e relazioni tra i dati.
+* **Punti di forza:** Flessibile e potente, permette di modellare dati complessi e relazioni tra i dati. Supporta l'ereditarietà, che può essere utile per la modellazione di dati.
+* **Debolezze:** Più complesso da implementare e gestire rispetto ai database puramente relazionali. Non tutti i DBMS supportano pienamente il modello object-relational.
+
 
 <br>
 <br>
@@ -247,6 +396,9 @@ La **DML** consente di eseguire le seguenti azioni principali:
 * *Aggiornamento dei dati (UPDATE)*: È possibile utilizzare la DML per modificare o aggiornare dati esistenti all'interno di una tabella.
 * *Cancellazione dei dati (DELETE)*: La DML consente di rimuovere dati da una tabella, sia in base a condizioni specifiche che per eliminare tutti i dati.
 * *Interrogazione dei dati (SELECT)*
+
+<br>
+<br>
 
 ## Selezione dei dati
 ### SELECT statement
@@ -467,7 +619,7 @@ SELECT
 FROM Dipendenti 
 WHERE Reparto = 'Vendite' AND Stipendio > 30000;
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -501,7 +653,7 @@ WHERE Reparto = 'Vendite' AND Stipendio > 30000;
 			<td>Mario</td>
 		</tr>
 	</table>
-</details> -->
+</details>
 
 #### OR
 Questa query selezionerà i nomi dei clienti che appartengono alla categoria "VIP" o alla categoria "Nuovi Clienti". 
@@ -513,7 +665,7 @@ SELECT
 FROM Clienti
 WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -546,7 +698,7 @@ WHERE Categoria = 'VIP' OR Categoria = 'Nuovi Clienti';
 			<td>Luca</td>
 		</tr>
 	</table>
-</details> -->
+</details>
 
 #### AND e OR
 Questa query selezionerà i nomi dei prodotti che appartengono alle categorie "Elettronica" o "Informatica" e hanno un prezzo superiore a 500 unità monetarie. 
@@ -558,7 +710,7 @@ SELECT
 FROM Prodotti
 WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo > 500;
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -592,7 +744,7 @@ WHERE (Categoria = 'Elettronica' OR Categoria = 'Informatica') AND Prezzo > 500;
 			<td>Prodotto A</td>
 		</tr>
 	</table>	
-</details> -->
+</details>
 
 #### NOT
 Questa query selezionerà i titoli dei libri che non appartengono al genere "Fantascienza". 
@@ -604,7 +756,7 @@ SELECT
 FROM Libri
 WHERE NOT Genere = 'Fantascienza';
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -637,7 +789,7 @@ WHERE NOT Genere = 'Fantascienza';
 			<td>Libro 3</td>
 		</tr>
 	</table>
-</details> -->
+</details>
 
 [`🔼`](#Contenuti)
 <br>
@@ -708,7 +860,7 @@ SELECT
 	Cognome
 FROM Clienti LIMIT 5;
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -720,7 +872,8 @@ FROM Clienti LIMIT 5;
 			<td>John</td>
 			<td>Doe</td>
 		</tr>
-		
+		<!-- Altri dati della tabella Clienti -->
+		<!-- ... -->
 	</table>
 	<p>Risultato:</p>
 	<table>
@@ -732,10 +885,10 @@ FROM Clienti LIMIT 5;
 			<td>John</td>
 			<td>Doe</td>
 		</tr>
-		
-	</table> 
-</details> -->
-
+		<!-- Altri 4 risultati della tabella Clienti -->
+		<!-- ... -->
+	</table>
+</details>
 #### Limitazione dei risultati con ordinamento
 Questa query selezionerà i nomi e i prezzi dei primi 3 prodotti ordinati in modo decrescente in base al prezzo.
 
@@ -747,7 +900,7 @@ SELECT
 FROM Prodotti
 ORDER BY Prezzo DESC LIMIT 3;
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -775,8 +928,7 @@ ORDER BY Prezzo DESC LIMIT 3;
 		<i> Altri 2 risultati della tabella Prodotti ordinati per Prezzo </i>
 		<i> ... </i>
 	</table>
-</details> -->
-
+</details>
 #### Limitazione dei risultati con offset
 Questa query restituirà i nomi e i cognomi dei dipendenti a partire dal sesto (offset di 5) fino al decimo (5 risultati successivi).
 
@@ -787,7 +939,7 @@ SELECT
 	Cognome
 FROM Dipendenti LIMIT 5 OFFSET 5;
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -811,7 +963,7 @@ FROM Dipendenti LIMIT 5 OFFSET 5;
 		<i> Altri 4 risultati della tabella Dipendenti (dal sesto al decimo) </i>
 		<i> ... </i>
 	</table>
-</details>  -->
+</details>
 
 #### Limitazione dei risultati con combinazione di offset e limit
 Questa query restituirà i titoli dei libri a partire dal 21simo (offset di 20) fino al trentesimo (10 risultati successivi).
@@ -822,7 +974,7 @@ SELECT
 	Titolo
 FROM Libri LIMIT 10 OFFSET 20;
 ```
-<!-- <details>
+<details>
 	<summary><b>Demostrazione</b></summary>
 	<p>...</p>
 	<table>
@@ -843,7 +995,7 @@ FROM Libri LIMIT 10 OFFSET 20;
 		<i> Altri 9 risultati della tabella Libri (dal ventunesimo al trentesimo) </i>
 		<i> ... </i>
 	</table>
-</details> -->
+</details>
 
 [`🔼`](#Contenuti)
 <br>
@@ -957,7 +1109,7 @@ In SQL, un "JOIN" è un metodo per combinare righe provenienti da due o più tab
 * **FULL JOIN**: Restituisce le righe quando c'è una corrispondenza in una delle tabelle. Quindi, se c'è una riga in una delle tabelle che non corrisponde con l'altra, il risultato sarà NULL.
 
 #### INNER JOIN
-La tabella `Orders`:
+The `Orders` table:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -966,7 +1118,7 @@ La tabella `Orders`:
 | 3       | 2          | 2022-04-22|
 | 4       | 4          | 2022-02-10|
 
-La tabella `Customers`:
+The `Customers` table:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -975,7 +1127,7 @@ La tabella `Customers`:
 | 3          | Alice        |
 | 4          | Bob          |
 
-Se desideri combinare queste due tabelle per ottenere un elenco di ordini con il nome del cliente, puoi utilizzare un INNER JOIN. La query SQL sarebbe la seguente:
+If you want to combine these two tables to get a list of orders with the customer's name, you can use an INNER JOIN. The SQL query would look like this:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -983,7 +1135,7 @@ FROM Orders
 INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-Questa istruzione restituirà una tabella che include solo gli ordini per i quali esiste un cliente corrispondente:
+This will return a table that only includes orders for which a corresponding customer exists:
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -993,7 +1145,7 @@ Questa istruzione restituirà una tabella che include solo gli ordini per i qual
 | 4       | Bob          | 2022-02-10|
 
 #### LEFT JOIN
-La tabella `Orders`:
+The `Orders` table:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -1002,7 +1154,7 @@ La tabella `Orders`:
 | 3       | 2          | 2022-04-22|
 | 4       | 5          | 2022-02-10|
 
-La tabella `Customers`:
+The `Customers` table:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -1010,7 +1162,7 @@ La tabella `Customers`:
 | 2          | Jane Doe     |
 | 3          | Alice        |
 
-Se desideri combinare queste due tabelle per ottenere un elenco di ordini con il nome del cliente, puoi utilizzare un LEFT JOIN. La query SQL sarebbe la seguente:
+If you want to combine these two tables to get a list of orders with the customer's name, you can use a LEFT JOIN. The SQL query would look like this:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -1018,7 +1170,7 @@ FROM Orders
 LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-Questa istruzione restituirà una tabella che include tutti gli ordini, ma i nomi dei clienti appariranno solo per gli ordini in cui esiste un cliente corrispondente. Se un ordine ha un `CustomerID` che non esiste nella tabella `Customers`, il `CustomerName` per quel determinato ordine sarà NULL.
+This will return a table that includes all orders, but customer names will only appear for orders where a corresponding customer exists. If an order has a `CustomerID` that doesn't exist in the `Customers` table, the `CustomerName` for that order will be NULL.
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -1028,7 +1180,7 @@ Questa istruzione restituirà una tabella che include tutti gli ordini, ma i nom
 | 4       | NULL         | 2022-02-10|
 
 #### RIGHT JOIN
-La tabella `Orders`:
+The `Orders` table:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -1036,7 +1188,7 @@ La tabella `Orders`:
 | 2       | 1          | 2022-03-20|
 | 3       | 2          | 2022-04-22|
 
-La tabella `Customers`:
+The `Customers` table:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -1045,7 +1197,7 @@ La tabella `Customers`:
 | 3          | Alice        |
 | 4          | Bob          |
 
-Se desideri combinare queste due tabelle per ottenere un elenco di clienti con i relativi ordini, puoi utilizzare un RIGHT JOIN. La query SQL sarebbe la seguente:
+If you want to combine these two tables to get a list of customers with their orders, you can use a RIGHT JOIN. The SQL query would look like this:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -1053,7 +1205,7 @@ FROM Orders
 RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-Questa istruzione restituirà una tabella che include tutti i clienti, ma gli ordini appariranno solo per i clienti in cui esiste un ordine corrispondente. Se un cliente non ha nessun ordine nella tabella `Orders`, l'`OrderID` e l'`OrderDate` per quel cliente saranno NULL.
+This will return a table that includes all customers, but orders will only appear for customers where a corresponding order exists. If a customer doesn't have any orders in the `Orders` table, the `OrderID` and `OrderDate` for that customer will be NULL.
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -1063,7 +1215,7 @@ Questa istruzione restituirà una tabella che include tutti i clienti, ma gli or
 | NULL    | Bob          | NULL      |
 
 #### FULL JOIN
-La tabella `Orders`:
+The `Orders` table:
 
 | OrderID | CustomerID | OrderDate |
 |---------|------------|-----------|
@@ -1072,7 +1224,7 @@ La tabella `Orders`:
 | 3       | 2          | 2022-04-22|
 | 4       | 5          | 2022-02-10|
 
-La tabella `Customers`:
+The `Customers` table:
 
 | CustomerID | CustomerName |
 |------------|--------------|
@@ -1081,7 +1233,7 @@ La tabella `Customers`:
 | 3          | Alice        |
 | 4          | Bob          |
 
-Se vuoi combinare queste due tabelle per ottenere un elenco di tutti gli ordini e tutti i clienti, puoi utilizzare un FULL JOIN. La query SQL sarebbe la seguente:
+If you want to combine these two tables to get a list of all orders and all customers, you can use a FULL JOIN. The SQL query would look like this:
 
 ```sql
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
@@ -1089,7 +1241,7 @@ FROM Orders
 FULL JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-Questa istruzione restituirà una tabella che include tutti gli ordini e tutti i clienti. Se un ordine ha un `CustomerID` che non esiste nella tabella `Customers`, il `CustomerName` per quel determinato ordine sarà NULL. Allo stesso modo, se un cliente non ha nessun ordine nella tabella `Orders`, l'`OrderID` e l'`OrderDate` per quel cliente saranno NULL.
+This will return a table that includes all orders and all customers. If an order has a `CustomerID` that doesn't exist in the `Customers` table, the `CustomerName` for that order will be NULL. Similarly, if a customer doesn't have any orders in the `Orders` table, the `OrderID` and `OrderDate` for that customer will be NULL.
 
 | OrderID | CustomerName | OrderDate |
 |---------|--------------|-----------|
@@ -1099,275 +1251,9 @@ Questa istruzione restituirà una tabella che include tutti gli ordini e tutti i
 | 4       | NULL         | 2022-02-10|
 | NULL    | Bob          | NULL      |
 
-### Unione implicita
-<details>
-  <summary><b>Spiegazione</b></summary>
-
-  Questa query SQL seleziona dati da due tabelle: `Orders` e `Customers`. L'obiettivo è ottenere una lista di ordini insieme ai nomi dei clienti che hanno effettuato tali ordini.
-
-  Ecco una spiegazione dettagliata di ciascuna parte della query:
-
-  - `SELECT Orders.OrderID, Customers.CustomerName`: Questa parte della query specifica quali colonne di dati si desidera ottenere nel risultato. In questo caso, si desidera ottenere l'`OrderID` dalla tabella `Orders` e il `CustomerName` dalla tabella `Customers`.
-
-  - `FROM Orders, Customers`: Questa parte della query specifica da quali tabelle si desidera ottenere i dati. In questo caso, si desidera ottenere i dati dalle tabelle `Orders` e `Customers`.
-
-  - `WHERE Orders.CustomerID = Customers.CustomerID`: Questa è la clausola `WHERE` che stabilisce la condizione per unire le tabelle. In questo caso, le tabelle `Orders` e `Customers` vengono unite sulla base del `CustomerID`. Questo significa che per ogni riga nella tabella `Orders`, la query cerca una riga corrispondente nella tabella `Customers` dove `CustomerID` è lo stesso. In altre parole, per ogni ordine, la query trova il cliente che ha effettuato quell'ordine.
-
-  Il risultato di questa query sarà un set di righe con `OrderID` e `CustomerName`, dove ogni riga rappresenta un ordine e il cliente che ha effettuato quell'ordine.
-</details>
-
-```sql
-SELECT Orders.OrderID, Customers.CustomerName
-FROM Orders, Customers
-WHERE Orders.CustomerID = Customers.CustomerID;
-```
-[`🔼`](#Contenuti)
-<br>
-<br>
-
-### Subquery
-Una subquery, o sottoquery, è una query SQL che è **incorporata all'interno di un'altra query**. Una subquery può restituire dati a un comando SQL esterno, o può essere eseguita come un comando autonomo. Le subquery possono essere utilizzate in diverse istruzioni SQL come `SELECT`, `INSERT`, `UPDATE`, o `DELETE`.
-
-#### Che restituiscono un valore
-Una subquery che restituisce un valore è una subquery che restituisce un singolo valore. Questo tipo di subquery può essere utilizzato ovunque ci si aspetti un singolo valore, come in un'istruzione `SELECT`, `WHERE` o `HAVING`.
-
-In questo esempio, la subquery `(SELECT AVG(punteggio) FROM studenti)` calcola il punteggio medio degli studenti. La query **esterna** poi seleziona i nomi e i punteggi degli studenti che hanno un punteggio superiore alla media.
-
-```sql
-SELECT nome, punteggio 
-FROM studenti 
-WHERE punteggio > (SELECT AVG(punteggio) FROM studenti);
-```
-<details>
-  <summary><b>Spiegazione</b></summary>
-	<ol>
-		<li><p> La subquery <code>(SELECT AVG(punteggio) FROM studenti)</code> viene eseguita per prima. Questa subquery calcola il punteggio medio di tutti gli studenti nella tabella studenti.</p></li>
-		<li><p> Il risultato della subquery (il punteggio medio) viene poi utilizzato nella clausola <code>WHERE</code> della query esterna.</p></li>
-		<li><p>La query esterna <code>SELECT nome, punteggio FROM studenti WHERE punteggio > ...</code> viene quindi eseguita. Questa query seleziona le colonne  <code>nome</code> e <code>punteggio</code> dalla tabella <code>studenti</code>, ma solo per le righe in cui il <code>punteggio</code> è maggiore del punteggio medio calcolato dalla subquery.</p></li>	
-	</ol>
-
-</details>
-
-##### MAX
-La subquery `(SELECT MAX(punteggio) FROM studenti)` trova il punteggio più alto tra gli studenti. La query esterna poi seleziona i nomi e i punteggi degli studenti che hanno il punteggio massimo.
-
-```sql
-SELECT nome, punteggio 
-FROM studenti 
-WHERE punteggio > (SELECT AVG(punteggio) FROM studenti);
-```
-##### AVG
-La subquery `(SELECT AVG(punteggio) FROM studenti)` calcola il punteggio medio degli studenti. La query esterna poi seleziona i nomi e i punteggi degli studenti che hanno un punteggio superiore alla media.
-
-```sql
-SELECT nome, punteggio 
-FROM studenti 
-WHERE punteggio = (SELECT MAX(punteggio) FROM studenti);
-```
-### Subquery che restituiscono più valori
-Una subquery può restituire più valori, solitamente sotto forma di una colonna di valori. Questi valori possono poi essere utilizzati in combinazione con operatori come `IN`, `NOT IN`, `ANY`, `ALL`, `EXISTS`, `NOT EXISTS`.
-#### IN
-L'operatore `IN` verifica se un valore specifico corrisponde a qualsiasi valore all'interno di un elenco o restituito da una subquery.
-
-la subquery restituisce un elenco di `id_studente` che hanno partecipato a un corso di matematica. La query esterna seleziona i nomi degli studenti che corrispondono a quegli ID. Quindi, otteniamo i nomi degli studenti che hanno partecipato al corso di matematica.
-
-```sql
-SELECT nome 
-FROM studenti 
-WHERE id IN (SELECT id_studente FROM corsi WHERE nome_corso = 'Matematica');
-```
-
-#### NOT IN
-`NOT IN` è l'opposto di IN. Esclude invece di includere.
-
-la subquery restituisce un elenco di `id_studente` che hanno partecipato a un corso di matematica. La query esterna seleziona i nomi degli studenti che non corrispondono a quegli ID, ovvero gli studenti che non hanno partecipato al corso di matematica.
-
-```sql
-SELECT nome 
-FROM studenti 
-WHERE id NOT IN (SELECT id_studente FROM corsi WHERE nome_corso = 'Matematica');
-```
-#### ANY
-`ANY` viene utilizzato quando si desidera confrontare un valore con qualsiasi valore in un elenco di valori. 
-
-la subquery restituisce un elenco di punteggi ottenuti in un esame di matematica. La query esterna seleziona i nomi degli studenti che hanno ottenuto un punteggio superiore a qualsiasi punteggio nell'elenco. Quindi, otteniamo i nomi degli studenti che hanno un punteggio superiore al punteggio più basso ottenuto nell'esame di matematica.
-
-```sql
-SELECT nome 
-FROM studenti 
-WHERE punteggio > ANY (SELECT punteggio FROM esami WHERE nome_esame = 'Matematica');
-```
-#### ALL
-`ALL` è utilizzato quando si desidera confrontare un valore con tutti i valori in un elenco.
-
-la subquery restituisce un elenco di punteggi ottenuti in un esame di matematica. La query esterna seleziona i nomi degli studenti che hanno ottenuto un punteggio superiore a tutti i punteggi nell'elenco. Quindi, otteniamo i nomi degli studenti che hanno un punteggio superiore al punteggio più alto ottenuto nell'esame di matematica.
-
-```sql
-SELECT nome 
-FROM studenti 
-WHERE punteggio > ALL (SELECT punteggio FROM esami WHERE nome_esame = 'Matematica');
-```
-#### EXISTS
-
-`EXISTS` è utilizzato per verificare se esistono righe che soddisfano una determinata condizione.
-
-la subquery verifica se esistono corsi a cui partecipa ciascuno studente. La query esterna seleziona i nomi degli studenti per i quali esiste almeno un corso. Quindi, otteniamo i nomi degli studenti che partecipano almeno a un corso.
-
-```sql
-SELECT nome 
-FROM studenti 
-WHERE EXISTS (SELECT * FROM corsi WHERE studenti.id = corsi.id_studente);
-```
-#### NOT EXISTS
-
-`NOT EXISTS` è l'opposto di `EXISTS`. Viene utilizzato per verificare se non esistono righe che soddisfano una determinata condizione.
-
-la subquery verifica se esistono corsi a cui partecipa ciascuno studente. La query esterna seleziona i nomi degli studenti per i quali non esiste alcun corso. Quindi, otteniamo i nomi degli studenti che non partecipano a nessun corso.
-
-```sql
-SELECT nome 
-FROM studenti 
-WHERE NOT EXISTS (SELECT * FROM corsi WHERE studenti.id = corsi.id_studente);
-```
-### Query correlate
-Una query correlata, o subquery correlata, è una subquery che dipende dalla query esterna per i suoi valori. In altre parole, la subquery correlata utilizza i valori della query esterna. Questo significa che la subquery correlata viene eseguita una volta per ogni riga elaborata dalla query esterna.
-
-In questo esempio, la query esterna seleziona i nomi degli impiegati dal database. La subquery correlata calcola la media dei salari per il dipartimento dell'impiegato corrente (come specificato dalla query esterna). La query esterna quindi confronta il salario dell'impiegato corrente con la media dei salari nel suo dipartimento, e se il salario dell'impiegato è superiore alla media, il nome dell'impiegato viene selezionato.
-
-In questo caso, la subquery correlata viene eseguita una volta per ogni impiegato, perché il risultato della subquery correlata dipende dal dipartimento dell'impiegato corrente.
-
-```sql
-SELECT e1.nome 
-FROM impiegati e1
-WHERE salario > (
-    SELECT AVG(salario)
-    FROM impiegati e2
-    WHERE e1.dipartimento = e2.dipartimento
-);
-```
-
-<details>
-  <summary><b>A cosa servono</b></summary>
-	
-<p>Le query correlate in MySQL sono utilizzate per risolvere problemi che richiedono l'elaborazione di dati in modo sequenziale, piuttosto che in un unico set. Queste query sono utili quando il risultato di una query dipende dai risultati di altre query.</p>
-
-<p>In termini semplici, una query correlata è come un ciclo in programmazione. Per ogni riga selezionata dalla query esterna, la subquery correlata viene eseguita una volta, utilizzando i valori di quella riga.</p>
-
-<p>Ecco un esempio di utilizzo: supponiamo di avere un database di studenti e voti. Vuoi trovare tutti gli studenti che hanno un voto superiore alla media dei voti della loro classe. Una query correlata può aiutarti a risolvere questo problema. La query esterna andrebbe attraverso ogni studente, e per ogni studente, la subquery correlata calcolerebbe la media dei voti della sua classe e confronterebbe il voto dello studente con quella media.</p>
-
-<p>Quindi, in sostanza, le query correlate sono utilizzate quando abbiamo bisogno di confrontare un valore con un gruppo di valori che cambia dinamicamente per ogni riga.</p>
-
-Supponiamo di avere la seguente tabella studenti:
-
-<table>
-    <tr>
-        <th>id</th>
-        <th>nome</th>
-        <th>classe</th>
-        <th>voto</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Mario</td>
-        <td>A</td>
-        <td>85</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Luigi</td>
-        <td>A</td>
-        <td>90</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Peach</td>
-        <td>B</td>
-        <td>95</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Daisy</td>
-        <td>B</td>
-        <td>80</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Bowser</td>
-        <td>A</td>
-        <td>70</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Wario</td>
-        <td>B</td>
-        <td>85</td>
-    </tr>
-</table>
-
-<p>Vogliamo trovare tutti gli studenti che hanno un voto superiore alla media dei voti della loro classe. La query correlata potrebbe essere la seguente:</p>
-
-```sql
-SELECT nome
-FROM studenti s1
-WHERE voto > (
-    SELECT AVG(voto)
-    FROM studenti s2
-    WHERE s1.classe = s2.classe
-);
-```
-<p>La query esterna scorre ogni studente. Per ogni studente, la subquery correlata calcola la media dei voti degli studenti nella stessa classe. Se il voto dello studente è superiore a questa media, il nome dello studente viene selezionato.</p>
-
-<p>
-Nel nostro esempio, la media dei voti per la classe A è (85 + 90 + 70) / 3 = 81.67 e per la classe B è (95 + 80 + 85) / 3 = 86.67. Quindi, la query restituirà Luigi (classe A, voto 90) e Peach (classe B, voto 95) poiché i loro voti sono superiori alla media dei voti delle rispettive classi.
-</p>
-
-</details>
-
-### Subquery nella FROM
-
-Una subquery nella clausola `FROM` è utilizzata per creare una tabella temporanea che può essere utilizzata per l'elaborazione ulteriore nella query esterna. Questo è utile quando si desidera eseguire operazioni su un set di dati che è il risultato di un'altra query.
-
-Ecco un esempio semplice:
-
-Supponiamo di avere una tabella `vendite`:
-
-| id_prodotto | quantita |
-|-------------|----------|
-| 1           | 10       |
-| 2           | 20       |
-| 3           | 30       |
-| 1           | 40       |
-| 2           | 50       |
-| 3           | 60       |
-
-E vuoi calcolare la quantità totale venduta per ogni prodotto. Potresti prima creare una tabella temporanea con la subquery nella clausola `FROM` che raggruppa le vendite per `id_prodotto` e calcola la somma della `quantita`. Quindi, nella query esterna, puoi selezionare da questa tabella temporanea.
-
-```sql
-SELECT id_prodotto, totale_quantita
-FROM (
-    SELECT id_prodotto, SUM(quantita) as totale_quantita
-    FROM vendite
-    GROUP BY id_prodotto
-) AS vendite_aggregate;
-```
-
-La subquery nella clausola `FROM` crea una tabella temporanea `vendite_aggregate` che contiene l'`id_prodotto` e il `totale_quantita` per ogni prodotto. Quindi, la query esterna seleziona da questa tabella temporanea.
-
-Il risultato sarebbe:
-
-| id_prodotto | quantita |
-|-------------|----------|
-| 1           | 10       |
-| 2           | 20       |
-| 3           | 30       |
-| 1           | 40       |
-| 2           | 50       |
-| 3           | 60       |
-
-
 [`🔼`](#Contenuti)
 <br>
 <br>
 
 <hr>
-fatto da me, GitHub Copilot e ChatGPT.
+fatto da me e GitHub Copilot.
